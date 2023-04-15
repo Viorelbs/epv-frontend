@@ -99,13 +99,25 @@ export default function MobileMenu(props: Props) {
               />
             </div>
             <div className="flex flex-col gap-2 text-[20px]  ">
-              <Link className="border-b py-3" href="/">
+              <Link
+                className="border-b py-3"
+                href="/"
+                onClick={() => setOpen(false)}
+              >
                 Acasă
               </Link>
-              <Link className="border-b py-3" href="/despre-noi">
+              <Link
+                className="border-b py-3"
+                href="/despre-noi"
+                onClick={() => setOpen(false)}
+              >
                 Despre Noi
               </Link>
-              <Link className="border-b py-3" href="/produse">
+              <Link
+                className="border-b py-3"
+                href="/produse"
+                onClick={() => setOpen(false)}
+              >
                 Produse
               </Link>
               <Accordion open={openAc} icon={<Icon open={openAc} />}>
