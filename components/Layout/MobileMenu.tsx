@@ -142,7 +142,11 @@ export default function MobileMenu(props: Props) {
                   </AccordionBody>
                 )}
               </Accordion>
-              <Link className="border-b py-3" href="/contact">
+              <Link
+                className="border-b py-3"
+                href="/contact"
+                onClick={() => setOpen(false)}
+              >
                 Contact
               </Link>
             </div>
