@@ -255,7 +255,7 @@ export const CREATE_REVIEW_MUTATION = gql`
     createReviewProduse(data: $data) {
       data {
         attributes {
-          produse {
+          produs {
             data {
               id
             }
