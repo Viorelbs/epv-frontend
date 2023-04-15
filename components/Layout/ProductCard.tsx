@@ -105,6 +105,7 @@ export default function ProductCard({
             productImages: productImages,
             rating: rating,
             id: id,
+            slug: slug,
           })
         );
     }
