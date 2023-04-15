@@ -314,7 +314,7 @@ export async function getStaticPaths() {
   const paths = data.produses.data.map((product: ProdusCardType) => ({
     params: { slug: product.attributes.slug },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }: any) {

@@ -77,7 +77,7 @@ export async function getStaticPaths() {
   const paths = data.serviciis.data.map((service: any) => ({
     params: { slug: service.attributes.slug },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export const getStaticProps = async ({ params }: any) => {
