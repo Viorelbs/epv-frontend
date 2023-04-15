@@ -44,7 +44,7 @@ export default function CartItem({
       <div className="relative pt-[10%] flex-[2] md:flex-1 mr-3 ">
         <Image
           onClick={() => router.push(`/produse/${title}`)}
-          src={`${URL}${image}`}
+          src={image}
           alt={"Produs in cos"}
           width={300}
           height={300}

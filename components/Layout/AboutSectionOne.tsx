@@ -24,7 +24,7 @@ export default function AboutSectionOne({
     <div className="container mx-auto grid lg:grid-cols-2 gap-[5vw] px-4 ">
       <div className="my-auto">
         <h2>{title}</h2>
-        <p className="mt-4">{HTMLReactParser(description)}</p>
+        <div className="mt-4">{HTMLReactParser(description)}</div>
         <div className="flex gap-12 mt-8">
           <div>
             <p className="text-md font-light mb-2">Panouri Montate</p>

@@ -16,8 +16,8 @@ export default function AboutSectionThree({
       <div className="container mx-auto pb-[70px] px-4">
         <h2>{title}</h2>
         <div className="flex flex-col md:flex-row gap-2">
-          <p>{HTMLReactParser(descriptionOne)}</p>
-          <p>{HTMLReactParser(descriptionTwo)}</p>
+          <div>{HTMLReactParser(descriptionOne)}</div>
+          <div>{HTMLReactParser(descriptionTwo)}</div>
         </div>
       </div>
     </div>

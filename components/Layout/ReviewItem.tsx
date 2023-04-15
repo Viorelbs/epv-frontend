@@ -36,7 +36,7 @@ export default function ReviewItem({
         <h3 className="text-lg font-bold">{name}</h3>
         <span className="text-[15px] text-gray-400">{formatedDate}</span>
       </div>
-      <p className="my-2 text-[16px]">{HTMLReactParser(review)}</p>
+      <div className="my-2 text-[16px]">{HTMLReactParser(review)}</div>
       <Rating rating={rating} />
     </div>
   );

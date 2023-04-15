@@ -29,7 +29,7 @@ export default function Servicii({ servicii, contactInfo }: Props) {
             <div className="relative pt-[40%]">
               <Image
                 className="absolute top-0 left-0 w-full h-full rounded-xl object-cover object-top"
-                src={`${URL}${servicii.attributes.ImageOne.data.attributes.url}`}
+                src={servicii.attributes.ImageOne.data.attributes.url}
                 alt="imagine servicii panouri solare"
                 width={400}
                 height={400}
@@ -41,14 +41,14 @@ export default function Servicii({ servicii, contactInfo }: Props) {
             <div className="grid grid-cols-2 gap-4 mt-14">
               <Image
                 className="grow rounded-xl"
-                src={`${URL}${servicii.attributes.ImageTwo.data.attributes.url}`}
+                src={servicii.attributes.ImageTwo.data.attributes.url}
                 alt="imagine servicii panouri solare"
                 width={400}
                 height={400}
               />
               <Image
                 className="grow  rounded-xl"
-                src={`${URL}${servicii.attributes.ImageThree.data.attributes.url}`}
+                src={servicii.attributes.ImageThree.data.attributes.url}
                 alt="imagine servicii panouri solare"
                 width={400}
                 height={400}

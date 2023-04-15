@@ -228,9 +228,9 @@ export default function ProductPage({ product, productsCards }: Props) {
                   <span className="text-gray-400">Inca nu exista recenzii</span>
                 )}
               </div>
-              <p className="my-5 ">
+              <div className="my-5 ">
                 {HTMLReactParser(product.attributes.ScurtaDescriere)}
-              </p>
+              </div>
               <div className="flex gap-4 items-center">
                 <QtyButtons qty={qty} setQty={setQty} />
                 {windowWidth > 600 ? (

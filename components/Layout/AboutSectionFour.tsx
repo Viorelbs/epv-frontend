@@ -26,7 +26,7 @@ export default function AboutSectionFour({
       />
       <div className="flex-[5]">
         <h2>{title}</h2>
-        <p className="mt-4">{HTMLReactParser(description)}</p>
+        <div className="mt-4">{HTMLReactParser(description)}</div>
         <Image
           className="mt-10 w-full rounded-xl "
           src={imageTwo}
