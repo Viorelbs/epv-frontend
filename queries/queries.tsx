@@ -215,7 +215,7 @@ export const GET_PRODUCT_BY_NAME = gql`
 
 export const GET_PROD_REVIEWS_QUERY = gql`
   query {
-    reviewProduses {
+    reviewProduse {
       data {
         attributes {
           NumeUtilizator
