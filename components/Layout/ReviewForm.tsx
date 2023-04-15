@@ -119,7 +119,9 @@ export default function ReviewForm({ prodId }: Props) {
               onChange={handleChange}
             />
           </div>
+
           <StarRating value={rating} onChange={handleRatingChange} />
+
           <div className="flex flex-col gap-1">
             <label className="font-medium">Recenzie</label>
 
