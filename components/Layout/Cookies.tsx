@@ -22,7 +22,7 @@ const CookiePopup = () => {
         <div
           className={`cookie-popup ${
             showPopup ? "visible" : "hidden"
-          } fixed bottom-0 bg-black w-full flex items-center py-4 justify-between px-[5vw] text-white gap-[20vw]`}
+          } fixed bottom-0 bg-black w-full flex items-center py-4 justify-between px-[5vw] text-white gap-6 text-center md:text-start flex-col md:flex-row  md:gap-[20vw]`}
         >
           <p className="font-light text-[15px]">
             Acest website utilizează cookie-uri pentru a îmbunătăți experiența

@@ -78,7 +78,7 @@ export default function ReviewForm({ prodId }: Props) {
     <Loader />
   ) : (
     <>
-      <div className="flex gap-4 items-center ">
+      <div className="flex gap-4 flex-col md:flex-row items-center ">
         <span>Nu ezita sa iti spui parerea !</span>
         <button className="btn-primary" onClick={handleOpen}>
           Adauga recenzie
@@ -92,7 +92,7 @@ export default function ReviewForm({ prodId }: Props) {
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-white top-0 bottom-0 left-0 right-0 m-auto h-fit absolute gap-8 max-w-4xl border p-5 rounded-md"
+          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto h-fit absolute gap-8 md:max-w-4xl border p-5 rounded-md"
         >
           <div className="flex flex-col gap-1">
             <label className="font-medium">Nume</label>
