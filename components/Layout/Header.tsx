@@ -18,6 +18,7 @@ import { LinkType } from "@/typings";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import IndustrialForm from "./IndustrialForm";
 
 export default function Header() {
   const { windowWidth } = useWidth();
@@ -85,7 +86,7 @@ export default function Header() {
         <Link href="/contact"> Contact</Link>
       </nav>
       <div className="flex items-center gap-6">
-        <button className="btn-primary">Montaje Industriale</button>
+        <IndustrialForm />
         <Link href="/produse-favorite">
           <RiHeartsLine
             className={`w-7 h-7 hover:text-[#F7CD1F] cursor-pointer ${

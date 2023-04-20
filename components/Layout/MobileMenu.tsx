@@ -19,6 +19,7 @@ import Cart from "./Cart";
 import { RiHeartsLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import IndustrialForm from "./IndustrialForm";
 
 interface Props {
   window?: () => Window;
@@ -152,7 +153,9 @@ export default function MobileMenu(props: Props) {
             </div>
           </div>
 
-          <button className="btn-primary mb-[5vh]">Montaje Industriale</button>
+          <div className="mb-[5vh]">
+            <IndustrialForm />
+          </div>
         </div>
       </SwipeableDrawer>
     </div>

@@ -21,16 +21,33 @@ const CONTACT_MESSAGE_FIELDS: ContactMessageFields = {
   subject: "Subiect",
   message: "Mesaj",
 };
+const CONTACT_MESSAGE_FIELDS_MONTAJE: ContactMessageFields = {
+  name: "Nume Client",
+  email: "Email Client",
+  phone: "Numar Telefon",
+  subject: "Subiect",
+  message: "Mesaj",
+  kilowati: "Kilowati",
+  locatie: "Adresă",
+};
 
 const generateEmailContat = (data: Data) => {
   const stringData = Object.entries(data).reduce((str, [key, val]) => {
-    return (str += `${CONTACT_MESSAGE_FIELDS[key]} : \n${val}} \n \n`);
+    return (str += `${
+      data.subject === "Montaje Industriale"
+        ? CONTACT_MESSAGE_FIELDS_MONTAJE[key]
+        : CONTACT_MESSAGE_FIELDS[key]
+    } : \n${val}} \n \n`);
   }, "");
 
   const htmlData = Object.entries(data).reduce(
     (str, [key, val]) =>
       (str += `<h1 
-    class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h1><p class="form-answer" align="left">${val}</p>`),
+    class="form-heading" align="left">${
+      data.subject === "Montaje Industriale"
+        ? CONTACT_MESSAGE_FIELDS_MONTAJE[key]
+        : CONTACT_MESSAGE_FIELDS[key]
+    }</h1><p class="form-answer" align="left">${val}</p>`),
     ""
   );
 
@@ -50,13 +67,6 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const data = req.body;
-    if (!data.name || !data.email || !data.phone || !data.message) {
-      return res.status(400).json({
-        message: "Bad request",
-        suceess: false,
-      });
-    }
-
     try {
       await transporter.sendMail({
         ...mailOptions,

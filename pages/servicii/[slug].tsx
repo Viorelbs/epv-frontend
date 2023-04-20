@@ -31,8 +31,8 @@ export default function Servicii({ servicii, contactInfo }: Props) {
                 className="absolute top-0 left-0 w-full h-full rounded-xl object-cover object-top"
                 src={servicii.attributes.ImageOne.data.attributes.url}
                 alt="imagine servicii panouri solare"
-                width={400}
-                height={400}
+                width={800}
+                height={800}
               />
             </div>
             <div className="mt-14 font-light parsed-text">

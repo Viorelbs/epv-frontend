@@ -19,7 +19,6 @@ export default function AboutSectionOne({
   imageOne,
   imageTwo,
 }: Props) {
-  console.log(imageOne);
   return (
     <div className="container mx-auto grid lg:grid-cols-2 gap-[5vw] px-4 ">
       <div className="my-auto">

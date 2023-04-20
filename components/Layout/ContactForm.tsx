@@ -21,6 +21,7 @@ export default function ContactForm() {
   const { values, isLoading, error } = state;
   const [touched, setTouched] = useState({});
   const [subjectSt, setSubjectSt] = useState("");
+  const [acceptance, setAcceptance] = useState(false);
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) =>
     setTouched((prev) => ({ ...prev, [event.target.name]: true }));
@@ -132,6 +133,20 @@ export default function ContactForm() {
             color="orange"
             className="placeholder:text-[17px]"
           />
+          <div>
+            <input
+              type="checkbox"
+              id="accept"
+              required
+              className="w-4 h-4 mr-2 relative top-1"
+              onChange={() => setAcceptance(!acceptance)}
+            />
+            <label htmlFor="accept" className="text-[15px] cursor-pointer">
+              Sunt de acord ca datele personale colectate în formularul de mai
+              sus să fie folosite exclusiv pentru scopul de a primi un raspuns
+              la solicitare.*
+            </label>
+          </div>
           <button className="btn-primary flex items-center gap-4" type="submit">
             Trimite
             <BsSend className="text-xl" />
