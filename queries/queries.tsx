@@ -374,6 +374,7 @@ export const QUERY_SIMPLE_SECTION_HP = gql`
   query {
     simpleSectionHome {
       data {
+        id
         attributes {
           titlu
           Descriere
@@ -419,6 +420,7 @@ export const QUERY_REVIEWS = gql`
   query {
     reviews {
       data {
+        id
         attributes {
           NumeClient
           DataRecenzie

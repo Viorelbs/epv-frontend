@@ -64,10 +64,10 @@ export default function SimpleSection({
       <div className="container mx-auto mt-14 px-4 md:px-0 space-y-4">
         <h3>Colaboram cu cele mai mari nume din industrie</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center  flex-wrap gap-8">
-          {partenersList.map((partener) => (
+          {partenersList.map((partener, idx) => (
             <Image
               className="object-contain saturate-0 hover:saturate-100 p-4 "
-              key={partener.id}
+              key={idx}
               width={150}
               height={150}
               src={partener.attributes.url}

@@ -53,9 +53,9 @@ export default function ProductsSpecs({ desc, spec, id, reviews }: Props) {
             {<ReviewForm prodId={id} />}
 
             {reviews.length > 0 ? (
-              reviews.map((review) => (
+              reviews.map((review, idx) => (
                 <ReviewsItem
-                  key={review.id}
+                  key={idx}
                   name={review.attributes.NumeUtilizator}
                   email={review.attributes.EmailUtilizator}
                   rating={review.attributes.Rating}

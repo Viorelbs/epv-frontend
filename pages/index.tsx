@@ -89,6 +89,7 @@ export default function Home({
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
+
   return (
     <>
       <Head>

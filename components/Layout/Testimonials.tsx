@@ -2,7 +2,6 @@ import { ReviewImageType } from "@/typings";
 import googleLogo from "../../public/google-logo.png";
 import Image from "next/image";
 import Rating from "../Common/Rating";
-import { URL } from "@/pages/_app";
 import HTMLReactParser from "html-react-parser";
 
 interface Props {
