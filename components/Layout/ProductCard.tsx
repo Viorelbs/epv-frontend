@@ -131,6 +131,7 @@ export default function ProductCard({
         image: image,
         price: price,
         oldPrice: oldPrice,
+        slug: slug,
         qty: 1,
       })
     );
@@ -189,7 +190,7 @@ export default function ProductCard({
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}{" "}
-                Lei
+                Lei + TVA
               </span>
             )}
             <span className="price">
@@ -198,6 +199,7 @@ export default function ProductCard({
                 maximumFractionDigits: 2,
               })}
               Lei
+              <span className="text-xs"> + TVA</span>
             </span>
           </div>
           <div className="flex gap-2 items-center ml-auto  ">

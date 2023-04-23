@@ -14,6 +14,8 @@ import {
 import { useDispatch } from "react-redux";
 import { setCart } from "@/redux/cartOpen";
 import { useRouter } from "next/router";
+import { loadStripe } from "@stripe/stripe-js";
+import { makeRequest } from "@/lib/makeReuest";
 interface Props {
   window?: () => Window;
   scroll: boolean;
@@ -26,6 +28,7 @@ interface ProductType {
   qty: number;
   title: string;
   oldPrice?: number;
+  slug: string;
 }
 
 export default function Cart(props: Props) {
@@ -37,7 +40,12 @@ export default function Cart(props: Props) {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-  const router = useRouter();
+  const stripePromise = loadStripe(
+    "pk_test_51MpGMuFePddeeTHlZW6gj6Ql59FVNotZlNXq6LdfN9ca7blsBeJrVVcZfa8F3vaiuBmO3psqebic1T4oiMdgK1Dz00b2ZeAnlv"
+  );
+
+  // const router = useRouter();
+  console.log(products);
 
   useEffect(() => {
     if (cartState === true) {
@@ -70,12 +78,28 @@ export default function Cart(props: Props) {
     (acc: number, product: { qty: number }) => acc + product.qty,
     0
   );
+
   // Closing modal when no products
   useEffect(() => {
     if (products.length === 0) {
       setOpen(false);
     }
   }, [products]);
+
+  // Handle Payment
+  const handlePayment = async () => {
+    try {
+      const stripe = await stripePromise;
+      console.log(products);
+      const res = await makeRequest.post("api/orders", { products });
+
+      await stripe?.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -139,6 +163,7 @@ export default function Cart(props: Props) {
                 key={product.id}
                 id={product.id}
                 image={product.image}
+                slug={product.slug}
                 title={product.title}
                 quantity={product.qty}
                 price={product.price}
@@ -151,18 +176,19 @@ export default function Cart(props: Props) {
           <div className="flex justify-between  ">
             <span className="font-light text-sm md:text-base">Economisiți</span>
             <span className="font-medium text-sm md:text-base text-green-500">
-              {(totalSum - totalSumOldPrice).toFixed(2)} Lei
+              {(totalSum - totalSumOldPrice).toFixed(2)} Lei + TVA
             </span>
           </div>
           <div className="flex justify-between">
             <span className="font-medium text-base md:text-lg">Total</span>
             <span className="font-medium text-base md:text-lg">
-              {totalSum.toFixed(2)} Lei
+              {totalSum.toFixed(2)} Lei + TVA
             </span>
           </div>
         </div>
         <button
-          onClick={() => router.push("/checkout")}
+          // onClick={() => router.push("/checkout")}
+          onClick={handlePayment}
           className="btn-primary text-center hover:!text-black text-sm md:text-base mb-10 mx-8"
         >
           Finalizeză Comanda

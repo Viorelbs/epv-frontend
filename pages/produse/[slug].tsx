@@ -56,6 +56,7 @@ export default function ProductPage({ product, productsCards }: Props) {
     );
   };
 
+  console.log(product);
   const sumRatings = product.attributes.review_produses.data.reduce(
     (acc, review) => acc + review.attributes.Rating,
     0
@@ -203,7 +204,7 @@ export default function ProductPage({ product, productsCards }: Props) {
               <h1 className="text-[20px] lg:text-[30px]">
                 {product.attributes.Nume}
               </h1>
-              <div className="flex justify-between my-2 flex-wrap">
+              <div className="flex justify-between my-2 flex-wrap ">
                 <div>
                   {product.attributes.PretVechi && (
                     <span className="reduced-price text-base lg:text-[20px]">
@@ -211,15 +212,15 @@ export default function ProductPage({ product, productsCards }: Props) {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
-                      Lei
+                      Lei + TVA
                     </span>
                   )}
-                  <span className="price text-[20px] lg:text-[30px]">
+                  <span className="price text-[20px] lg:text-[30px] ml-4">
                     {product.attributes.Pret.toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}
-                    Lei
+                    Lei + TVA
                   </span>
                 </div>
                 {ratingLength > 0 ? (

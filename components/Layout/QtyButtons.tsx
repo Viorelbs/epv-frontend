@@ -27,7 +27,7 @@ export default function QtyButtons({ qty, setQty }: Props) {
   };
 
   const adjustCount = (amount: number) => {
-    if (amount > 0 && qty < 98) {
+    if (amount > 0 && qty < 99) {
       setQty((currentQty) => currentQty + amount);
     } else if (amount < 0 && qty > 1) {
       setQty((currentQty) => currentQty + amount);
@@ -36,7 +36,12 @@ export default function QtyButtons({ qty, setQty }: Props) {
 
   return (
     <div className="flex  text-xl ">
-      <AiOutlineMinus className="qty-btn" onClick={() => adjustCount(-1)} />
+      <AiOutlineMinus
+        className={`qty-btn ${
+          qty === 1 && "text-gray-400 hover:bg-gray-100 hover:text-gray-400"
+        }`}
+        onClick={() => adjustCount(-1)}
+      />
       <input
         type="number"
         value={qty}
@@ -46,7 +51,12 @@ export default function QtyButtons({ qty, setQty }: Props) {
         max={99}
         min={1}
       />
-      <AiOutlinePlus className="qty-btn" onClick={() => adjustCount(1)} />
+      <AiOutlinePlus
+        className={`qty-btn ${
+          qty === 99 && "text-gray-400 hover:bg-gray-100 hover:text-gray-400"
+        }`}
+        onClick={() => adjustCount(1)}
+      />
     </div>
   );
 }

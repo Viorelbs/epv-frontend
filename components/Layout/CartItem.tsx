@@ -13,6 +13,7 @@ interface Props {
   quantity: number;
   price: number;
   oldPrice?: number;
+  slug: string;
 }
 
 export default function CartItem({
@@ -22,6 +23,7 @@ export default function CartItem({
   quantity,
   price,
   oldPrice,
+  slug,
 }: Props) {
   const [qty, setQty] = useState(quantity);
   const dispatch = useDispatch();
@@ -43,7 +45,7 @@ export default function CartItem({
     <div className="flex  justify-between border-b box-shadow rounded-xl mx-1 px-1 py-3 md:min-h-[150px]">
       <div className="relative pt-[10%] flex-[2] md:flex-1 mr-3 ">
         <Image
-          onClick={() => router.push(`/produse/${title}`)}
+          onClick={() => router.push(`/produse/${slug}`)}
           src={image}
           alt={"Produs in cos"}
           width={300}
@@ -55,17 +57,17 @@ export default function CartItem({
         <div className="flex justify-between max-w-xl md:items-center gap-[5vw] flex-col md:flex-row items-start">
           <span
             className="cursor-pointer text-sm md:text-base"
-            onClick={() => router.push(`/produse/${title}`)}
+            onClick={() => router.push(`/produse/${slug}`)}
           >
             {title}
           </span>
           <div className="flex flex-col gap-1 shrink-0">
             <span className="font-semibold text-sm">
-              {(price * qty).toFixed(2)} Lei{" "}
+              {(price * qty).toFixed(2)} Lei + TVA{" "}
             </span>
             {oldPrice ? (
               <span className="font-light line-through text-sm shrink-0">
-                {(oldPrice * qty).toFixed(2)} Lei{" "}
+                {(oldPrice * qty).toFixed(2)} Lei + TVA{" "}
               </span>
             ) : null}
           </div>
