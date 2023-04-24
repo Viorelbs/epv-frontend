@@ -471,12 +471,70 @@ export const QUERY_QA_SECTION = gql`
   }
 `;
 
+export const QUERY_CONTACT_SEO = gql`
+  query {
+    contactSeo {
+      data {
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+export const QUERY_PRODUCT_SEO = gql`
+  query {
+    productPageSeo {
+      data {
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_ABOUT_S_ONE = gql`
   query {
     aboutSOne {
       data {
         attributes {
           title
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+          }
           description
           panelsNumber
           projectsNumber

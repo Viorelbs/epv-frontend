@@ -17,7 +17,6 @@ interface Props {
   contactInfo: ContactInfoType;
 }
 export default function Servicii({ service, contactInfo }: Props) {
-  console.log(service);
   return (
     <>
       <Head>

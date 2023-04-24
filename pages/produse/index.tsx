@@ -5,6 +5,7 @@ import {
   QUERY_BRANDS,
   QUERY_CATEGORIES,
   QUERY_POWERS,
+  QUERY_PRODUCT_SEO,
 } from "@/queries/queries";
 import {
   BrandsType,
@@ -13,6 +14,7 @@ import {
   ProdusCardType,
 } from "@/typings";
 import { client } from "../_app";
+import Head from "next/head";
 
 interface Props {
   productCard: { data: ProdusCardType[]; meta: {} };
@@ -25,32 +27,65 @@ interface Props {
   powers: {
     data: PowersType[];
   };
+  seo: any;
 }
 export default function Produse({
   productCard,
   categories,
   brands,
   powers,
+  seo,
 }: Props) {
+  console.log(seo);
   return (
-    <main>
-      <Banner text="Produse" />
+    <>
+      <Head>
+        <title>Contact</title>
+        <meta
+          name="description"
+          content={
+            seo.data.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta
+          name="og:description"
+          content={
+            seo.data.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        {seo.data.attributes.seo[0]?.metaImage && (
+          <meta
+            name="og:image"
+            content={seo.data.attributes.seo[0]?.metaImage.data.attributes.url}
+          />
+        )}
+        <meta
+          name="og:title"
+          content={
+            seo.data.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <main>
+        <Banner text="Produse" />
 
-      <ProductsGrid
-        products={productCard}
-        filters={true}
-        categories={categories}
-        brands={brands}
-        powers={powers}
-      />
-    </main>
+        <ProductsGrid
+          products={productCard}
+          filters={true}
+          categories={categories}
+          brands={brands}
+          powers={powers}
+        />
+      </main>
+    </>
   );
 }
 
 export const getServerSideProps = async (context: any) => {
   const { query } = context;
 
-  const [productsData, categoriesData, brandsData, powerData] =
+  const [productsData, categoriesData, brandsData, powerData, seo] =
     await Promise.all([
       client.query({
         query: PRODUCTS_CARDS_QUERY,
@@ -83,6 +118,9 @@ export const getServerSideProps = async (context: any) => {
       client.query({
         query: QUERY_POWERS,
       }),
+      client.query({
+        query: QUERY_PRODUCT_SEO,
+      }),
     ]);
 
   return {
@@ -91,6 +129,7 @@ export const getServerSideProps = async (context: any) => {
       categories: categoriesData.data.categories,
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,
+      seo: seo.data.productPageSeo,
     },
   };
 };

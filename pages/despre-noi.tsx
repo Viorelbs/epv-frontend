@@ -10,7 +10,6 @@ import {
   QUERY_ABOUT_S_THREE,
   QUERY_ABOUT_S_TWO,
   QUERY_QA,
-  QUERY_QA_SECTION,
 } from "@/queries/queries";
 import {
   AboutSectionFourType,
@@ -21,6 +20,7 @@ import {
   QuestionsType,
 } from "@/typings";
 import { client } from "./_app";
+import Head from "next/head";
 
 interface Props {
   sectionOne: AboutSectionOneType;
@@ -42,34 +42,69 @@ export default function About({
   questions,
 }: Props) {
   return (
-    <main className="space-y-20 mb-20">
-      <Banner text="Despre Noi" />
-      <AboutSectionOne
-        title={sectionOne.data.attributes.title}
-        description={sectionOne.data.attributes.description}
-        panelsNumber={sectionOne.data.attributes.panelsNumber}
-        projectsNumber={sectionOne.data.attributes.projectsNumber}
-        imageOne={sectionOne.data.attributes.ImageOne}
-        imageTwo={sectionOne.data.attributes.ImageTwo}
-      />
-      <AboutSectionTwo
-        title={sectionTwo.data.attributes.title}
-        description={sectionTwo.data.attributes.descriptionOne}
-        image={sectionTwo.data.attributes.image.data.attributes.url}
-      />
-      <AboutSectionThree
-        title={sectionThree.data.attributes.titlu}
-        descriptionOne={sectionThree.data.attributes.descriptionOne}
-        descriptionTwo={sectionThree.data.attributes.descriptionTwo}
-      />
-      <AboutSectionFour
-        title={sectionFour.data.attributes.title}
-        description={sectionFour.data.attributes.description}
-        imageOne={sectionFour.data.attributes.imageOne.data.attributes.url}
-        imageTwo={sectionFour.data.attributes.imageTwo.data.attributes.url}
-      />
-      <Questions questions={questions.data} />
-    </main>
+    <>
+      <Head>
+        <title>Despre Noi</title>
+        <meta
+          name="description"
+          content={
+            sectionOne.data.attributes.seo[0]?.metaDescription ||
+            "Panorui solare"
+          }
+        />
+        <meta
+          name="og:description"
+          content={
+            sectionOne.data.attributes.seo[0]?.metaDescription ||
+            "Panorui solare"
+          }
+        />
+        {sectionOne.data.attributes.seo[0]?.metaImage && (
+          <meta
+            name="og:image"
+            content={
+              sectionOne.data.attributes.seo[0]?.metaImage.data.attributes.url
+            }
+          />
+        )}
+        <meta
+          name="og:title"
+          content={
+            sectionOne.data.attributes.seo[0]?.metaDescription ||
+            "Panorui solare"
+          }
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <main className="space-y-20 mb-20">
+        <Banner text="Despre Noi" />
+        <AboutSectionOne
+          title={sectionOne.data.attributes.title}
+          description={sectionOne.data.attributes.description}
+          panelsNumber={sectionOne.data.attributes.panelsNumber}
+          projectsNumber={sectionOne.data.attributes.projectsNumber}
+          imageOne={sectionOne.data.attributes.ImageOne}
+          imageTwo={sectionOne.data.attributes.ImageTwo}
+        />
+        <AboutSectionTwo
+          title={sectionTwo.data.attributes.title}
+          description={sectionTwo.data.attributes.descriptionOne}
+          image={sectionTwo.data.attributes.image.data.attributes.url}
+        />
+        <AboutSectionThree
+          title={sectionThree.data.attributes.titlu}
+          descriptionOne={sectionThree.data.attributes.descriptionOne}
+          descriptionTwo={sectionThree.data.attributes.descriptionTwo}
+        />
+        <AboutSectionFour
+          title={sectionFour.data.attributes.title}
+          description={sectionFour.data.attributes.description}
+          imageOne={sectionFour.data.attributes.imageOne.data.attributes.url}
+          imageTwo={sectionFour.data.attributes.imageTwo.data.attributes.url}
+        />
+        <Questions questions={questions.data} />
+      </main>
+    </>
   );
 }
 

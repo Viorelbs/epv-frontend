@@ -19,10 +19,10 @@ export default function AboutSectionFour({
     <div className="container mx-auto flex gap-[5vw] px-4">
       <Image
         src={imageOne}
-        width={400}
-        height={400}
+        width={600}
+        height={600}
         alt="panouri solare"
-        className="object-contain rounded-xl flex-[6] hidden md:block"
+        className="object-contain rounded-xl flex-[6] hidden md:block h-fit"
       />
       <div className="flex-[5]">
         <h2>{title}</h2>
@@ -30,8 +30,8 @@ export default function AboutSectionFour({
         <Image
           className="mt-10 w-full rounded-xl "
           src={imageTwo}
-          width={400}
-          height={400}
+          width={600}
+          height={600}
           alt="panouri solare"
         />
       </div>

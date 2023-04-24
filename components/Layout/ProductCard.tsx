@@ -160,7 +160,7 @@ export default function ProductCard({
       <Link href={`/produse/${slug}`}>
         <div className="relative cursor-pointer pt-[80%]  ">
           <Image
-            className="absolute top-0 transition-transform duration-300 ease-out  transform-gpu group-hover:scale-[1.1] left-0 w-full h-full object-contain -z-10"
+            className="absolute top-0 transition-transform duration-300 ease-out  transform-gpu group-hover:scale-[1.03] left-0 w-full h-full object-contain -z-10"
             src={url}
             alt="product image"
             width={200}
