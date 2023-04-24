@@ -47,7 +47,7 @@ export default function Produse({
   );
 }
 
-export const getStaticProps = async (context: any) => {
+export const getServerSideProps = async (context: any) => {
   const { query } = context;
 
   const [productsData, categoriesData, brandsData, powerData] =
