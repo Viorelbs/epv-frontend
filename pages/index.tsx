@@ -169,7 +169,7 @@ export default function Home({
     </>
   );
 }
-export const getStaticProps = async (context: any) => {
+export const getServerSideProps = async (context: any) => {
   const { query } = context;
 
   const [
