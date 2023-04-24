@@ -73,7 +73,7 @@ export default function About({
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const [sectionOne, sectionTwo, sectionThree, sectionFour, questions] =
     await Promise.all([
       client.query({

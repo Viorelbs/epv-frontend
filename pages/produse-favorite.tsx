@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 export default function FavouriteProducts() {
   const favProducts = useSelector((state: RootState) => state.favourite);
-  console.log(favProducts);
   return (
     <>
       <Banner text="Produse Favorite" />

@@ -37,7 +37,7 @@ export default function Contact({ contactInfo }: Props) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const contactInfo = await client.query({
     query: QUERY_CONTACT,
   });

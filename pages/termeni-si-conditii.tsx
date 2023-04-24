@@ -14,7 +14,7 @@ export default function Termeni({ data }: any) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const terms = await client.query({
     query: QUERY_TERMENI,
   });
