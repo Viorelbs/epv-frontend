@@ -13,49 +13,75 @@ import ContactInfo from "@/components/Layout/ContactInfo";
 import Head from "next/head";
 
 interface Props {
-  servicii: ServiceType;
+  service: ServiceType;
   contactInfo: ContactInfoType;
 }
-export default function Servicii({ servicii, contactInfo }: Props) {
+export default function Servicii({ service, contactInfo }: Props) {
+  console.log(service);
   return (
     <>
       <Head>
-        <title>{servicii.attributes.title}</title>
+        <title>{service.attributes.title}</title>
+        <meta
+          name="description"
+          content={
+            service.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta
+          name="og:description"
+          content={
+            service.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        {service.attributes.seo[0]?.metaImage && (
+          <meta
+            name="og:image"
+            content={service.attributes.seo[0]?.metaImage.data.attributes.url}
+          />
+        )}
+        <meta
+          name="og:title"
+          content={
+            service.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Banner text={servicii.attributes.title} />
+      <Banner text={service.attributes.title} />
       <div className="bg-[#F5F3ED] py-20">
         <div className="container mx-auto grid lg:grid-cols-6 gap-[5vw] px-4">
           <div className="col-span-3 xl:col-span-4">
             <div className="relative pt-[40%]">
               <Image
                 className="absolute top-0 left-0 w-full h-full rounded-xl object-cover object-top"
-                src={servicii.attributes.ImageOne.data.attributes.url}
+                src={service.attributes.ImageOne.data.attributes.url}
                 alt="imagine servicii panouri solare"
                 width={800}
                 height={800}
               />
             </div>
             <div className="mt-14 font-light parsed-text">
-              {parse(servicii.attributes.descriptionOne)}
+              {parse(service.attributes.descriptionOne)}
             </div>
             <div className="grid grid-cols-2 gap-4 mt-14">
               <Image
                 className="grow rounded-xl"
-                src={servicii.attributes.ImageTwo.data.attributes.url}
+                src={service.attributes.ImageTwo.data.attributes.url}
                 alt="imagine servicii panouri solare"
                 width={400}
                 height={400}
               />
               <Image
                 className="grow  rounded-xl"
-                src={servicii.attributes.ImageThree.data.attributes.url}
+                src={service.attributes.ImageThree.data.attributes.url}
                 alt="imagine servicii panouri solare"
                 width={400}
                 height={400}
               />
             </div>
             <div className="mt-14 parsed-text font-light">
-              {parse(servicii.attributes.descriptionTwo)}
+              {parse(service.attributes.descriptionTwo)}
             </div>
           </div>
           <div className="col-span-3 xl:col-span-2 ">
@@ -94,7 +120,7 @@ export const getStaticProps = async ({ params }: any) => {
 
   return {
     props: {
-      servicii: serviceData.data.serviciis.data[0],
+      service: serviceData.data.serviciis.data[0],
       contactInfo: contactInfo.data.contactInfo.data,
     },
   };

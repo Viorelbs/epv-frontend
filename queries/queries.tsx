@@ -583,6 +583,21 @@ export const QUERY_SERVICES = gql`
           descriptionOne
           descriptionTwo
           descriptionThree
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+          }
           ImageOne {
             data {
               attributes {

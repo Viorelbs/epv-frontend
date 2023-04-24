@@ -397,6 +397,7 @@ export interface ServiceType {
     ImageOne: ImageType;
     ImageTwo: ImageType;
     ImageThree: ImageType;
+    seo: ComponentSharedSeoType[];
   };
 }
 
