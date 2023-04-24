@@ -13,9 +13,9 @@ import {
 } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
 import { setCart } from "@/redux/cartOpen";
-import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { makeRequest } from "@/lib/makeReuest";
+import Loader from "../Common/Loader";
 interface Props {
   window?: () => Window;
   scroll: boolean;
@@ -34,6 +34,7 @@ interface ProductType {
 export default function Cart(props: Props) {
   const products = useSelector((state: RootState) => state.cart.products);
   const { window, scroll } = props;
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const cartState = useSelector((state: RootState) => state.cartOpen.open);
   const dispatch = useDispatch();
@@ -41,11 +42,8 @@ export default function Cart(props: Props) {
     setOpen(newOpen);
   };
   const stripePromise = loadStripe(
-    "pk_test_51MpGMuFePddeeTHlZW6gj6Ql59FVNotZlNXq6LdfN9ca7blsBeJrVVcZfa8F3vaiuBmO3psqebic1T4oiMdgK1Dz00b2ZeAnlv"
+    process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
   );
-
-  // const router = useRouter();
-  console.log(products);
 
   useEffect(() => {
     if (cartState === true) {
@@ -89,13 +87,13 @@ export default function Cart(props: Props) {
   // Handle Payment
   const handlePayment = async () => {
     try {
+      setLoading(true);
       const stripe = await stripePromise;
-      console.log(products);
       const res = await makeRequest.post("api/orders", { products });
-
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
       });
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -186,13 +184,18 @@ export default function Cart(props: Props) {
             </span>
           </div>
         </div>
-        <button
-          // onClick={() => router.push("/checkout")}
-          onClick={handlePayment}
-          className="btn-primary text-center hover:!text-black text-sm md:text-base mb-10 mx-8"
-        >
-          Finalizeză Comanda
-        </button>
+        {loading ? (
+          <button className="btn-primary text-center hover:!text-black text-sm md:text-base mb-10 mx-8 opacity-70">
+            <Loader size={5} />
+          </button>
+        ) : (
+          <button
+            onClick={handlePayment}
+            className="btn-primary text-center hover:!text-black text-sm md:text-base mb-10 mx-8"
+          >
+            Finalizeză Comanda
+          </button>
+        )}
       </SwipeableDrawer>
     </>
   );

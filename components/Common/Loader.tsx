@@ -1,9 +1,14 @@
-function Loader() {
+interface Props {
+  size: number;
+}
+function Loader({ size }: Props) {
   return (
-    <div className="min-h-screen min-w-screen grid place-content-center">
+    <div
+    // className="min-h-screen min-w-screen grid place-content-center"
+    >
       <svg
         role="status"
-        className={`m-auto h-10 w-10 animate-spin text-gray-200 dark:text-transparent fill-[orange]`}
+        className={`m-auto h-${size} w-${size} animate-spin text-gray-200 dark:text-transparent fill-[orange]`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

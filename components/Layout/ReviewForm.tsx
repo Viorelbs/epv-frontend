@@ -75,7 +75,9 @@ export default function ReviewForm({ prodId }: Props) {
   };
 
   return loading ? (
-    <Loader />
+    <div className="min-h-screen min-w-screen grid place-content-center fixed left-0 right-0 bottom-0 top-0 bg-[#ffffff90]">
+      <Loader size={10} />
+    </div>
   ) : (
     <>
       <div className="flex gap-4 flex-col md:flex-row items-center ">

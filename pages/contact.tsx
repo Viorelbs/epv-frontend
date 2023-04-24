@@ -9,7 +9,6 @@ interface Props {
   contactInfo: ContactInfoType;
 }
 export default function Contact({ contactInfo }: Props) {
-  console.log(contactInfo);
   return (
     <div>
       <Banner text="Contact" />

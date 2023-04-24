@@ -61,7 +61,7 @@ export default function ContactForm() {
   };
 
   return isLoading ? (
-    <Loader />
+    <Loader size={10} />
   ) : (
     <>
       <form onSubmit={handleSubmit}>

@@ -52,6 +52,7 @@ export default function IndustrialForm() {
     }));
     try {
       await sendContactForm(values);
+      setOpen(false);
       setTouched({});
       setState(initState);
       setConfirmOpen(true);
@@ -65,7 +66,9 @@ export default function IndustrialForm() {
   };
 
   return isLoading ? (
-    <Loader />
+    <div className="min-h-screen min-w-screen grid place-content-center fixed left-0 right-0 bottom-0 top-0 bg-[#ffffff90]">
+      <Loader size={10} />
+    </div>
   ) : (
     <>
       <button className="btn-primary" onClick={handleOpen}>
