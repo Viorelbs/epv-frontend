@@ -18,30 +18,27 @@ export default function Contact({ contactInfo, contactSeo }: Props) {
         <meta
           name="description"
           content={
-            contactSeo.data.attributes.seo[0]?.metaDescription ||
-            "Panorui solare"
+            contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         <meta
           name="og:description"
           content={
-            contactSeo.data.attributes.seo[0]?.metaDescription ||
-            "Panorui solare"
+            contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
-        {contactSeo.data.attributes.seo[0]?.metaImage && (
+        {contactSeo.data?.attributes.seo?.metaImage && (
           <meta
             name="og:image"
             content={
-              contactSeo.data.attributes.seo[0]?.metaImage.data.attributes.url
+              contactSeo.data?.attributes.seo?.metaImage.data?.attributes.url
             }
           />
         )}
         <meta
           name="og:title"
           content={
-            contactSeo.data.attributes.seo[0]?.metaDescription ||
-            "Panorui solare"
+            contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

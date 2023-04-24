@@ -40,29 +40,35 @@ export default function Produse({
   return (
     <>
       <Head>
-        <title>Contact</title>
+        <title>Produse</title>
         <meta
           name="description"
           content={
-            seo.data.attributes.seo[0]?.metaDescription || "Panorui solare"
+            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta
+          name="description"
+          content={
+            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         <meta
           name="og:description"
           content={
-            seo.data.attributes.seo[0]?.metaDescription || "Panorui solare"
+            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
-        {seo.data.attributes.seo[0]?.metaImage && (
+        {seo.data?.attributes.seo?.metaImage && (
           <meta
             name="og:image"
-            content={seo.data.attributes.seo[0]?.metaImage.data.attributes.url}
+            content={seo.data?.attributes.seo?.metaImage.data?.attributes.url}
           />
         )}
         <meta
           name="og:title"
           content={
-            seo.data.attributes.seo[0]?.metaDescription || "Panorui solare"
+            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

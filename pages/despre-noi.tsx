@@ -48,30 +48,27 @@ export default function About({
         <meta
           name="description"
           content={
-            sectionOne.data.attributes.seo[0]?.metaDescription ||
-            "Panorui solare"
+            sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         <meta
           name="og:description"
           content={
-            sectionOne.data.attributes.seo[0]?.metaDescription ||
-            "Panorui solare"
+            sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
-        {sectionOne.data.attributes.seo[0]?.metaImage && (
+        {sectionOne.data?.attributes.seo?.metaImage && (
           <meta
             name="og:image"
             content={
-              sectionOne.data.attributes.seo[0]?.metaImage.data.attributes.url
+              sectionOne.data.attributes.seo?.metaImage.data?.attributes.url
             }
           />
         )}
         <meta
           name="og:title"
           content={
-            sectionOne.data.attributes.seo[0]?.metaDescription ||
-            "Panorui solare"
+            sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

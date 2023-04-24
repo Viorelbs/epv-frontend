@@ -342,7 +342,7 @@ export interface AboutSectionOneType {
     attributes: {
       ImageOne: ImageType;
       ImageTwo: ImageType;
-      seo: ComponentSharedSeoType[];
+      seo: ComponentSharedSeoType;
       description: string;
       title: string;
       panelsNumber: number;
