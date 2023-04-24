@@ -56,7 +56,6 @@ export default function ProductPage({ product, productsCards }: Props) {
     );
   };
 
-  console.log(product);
   const sumRatings = product.attributes.review_produses.data.reduce(
     (acc, review) => acc + review.attributes.Rating,
     0
