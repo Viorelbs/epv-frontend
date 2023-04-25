@@ -27,9 +27,7 @@ export default function CostCalculator() {
     <div className="py-14 md:py-24 lg:py-32 px-4 bg-[#F5F3ED] flex flex-col items-center">
       <div className="max-w-5xl">
         <div className="text-center mb-10">
-          <h2 className="mb-3 leading-7 ">
-            Ce cost lunar ai cu energia electrica?
-          </h2>
+          <h2 className="mb-3">Ce cost lunar ai cu energia electrica?</h2>
           <p>
             Afla in cat timp iti amortizezi investitia in functie de veniturile
             lunare
