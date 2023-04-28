@@ -137,7 +137,7 @@ export default function ReviewForm({ prodId }: Props) {
             />
           </div>
           <button type="submit" className="btn-primary w-fit">
-            Submit Review
+            Adaugă Review
           </button>
         </form>
       </Modal>

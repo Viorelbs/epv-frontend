@@ -128,6 +128,7 @@ export default function ProductPage({ product, productsCards }: Props) {
         );
     }
   };
+
   return (
     <>
       <Head>

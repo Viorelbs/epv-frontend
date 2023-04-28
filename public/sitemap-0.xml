@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>http://localhost:3000</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/contact</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/despre-noi</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/failed</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/politica-cookie</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/politica-de-retur</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/produse</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/produse-favorite</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/success</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/termeni-si-conditii</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/produse/panou-5-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm-2</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/produse/panou-4-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/produse/panoul-2-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/produse/panou-1-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/servicii/instalare-panouri</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3000/servicii/curatare-panouri</loc><lastmod>2023-04-24T14:34:57.689Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/contact</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/despre-noi</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/failed</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/politica-cookie</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/politica-de-retur</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/produse</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/produse-favorite</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/success</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/termeni-si-conditii</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/servicii/instalare-panouri</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/servicii/curatare-panouri</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/produse/panou-4-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/produse/panoul-2-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/produse/panou-1-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/produse/panou-5-solar-540-w-half-cell-cut-fotovoltaic-monocristalin-cu-conector-mc-4-2279-x-1134-x-35mm-2</loc><lastmod>2023-04-28T17:55:58.621Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
