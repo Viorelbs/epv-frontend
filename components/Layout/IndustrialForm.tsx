@@ -22,7 +22,7 @@ const initValues: FormValues = {
 };
 
 interface Props {
-  MenuOpen: (arg: boolean) => void;
+  MenuOpen?: (arg: boolean) => void;
 }
 export default function IndustrialForm({ MenuOpen }: Props) {
   const initState = { isLoading: false, error: "", values: initValues };
@@ -35,7 +35,7 @@ export default function IndustrialForm({ MenuOpen }: Props) {
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
     setOpen(true);
-    MenuOpen(false);
+    MenuOpen && MenuOpen(false);
   };
 
   const handleChange = (
