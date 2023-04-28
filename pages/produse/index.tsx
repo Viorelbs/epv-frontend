@@ -12,6 +12,7 @@ import {
   CategoryType,
   PowersType,
   ProdusCardType,
+  SEO,
 } from "@/typings";
 import { client } from "../_app";
 import Head from "next/head";
@@ -27,7 +28,7 @@ interface Props {
   powers: {
     data: PowersType[];
   };
-  seo: any;
+  seo: SEO;
 }
 export default function Produse({
   productCard,

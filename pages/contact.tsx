@@ -2,13 +2,13 @@ import Banner from "@/components/Layout/Banner";
 import ContactForm from "@/components/Layout/ContactForm";
 import ContactInfo from "@/components/Layout/ContactInfo";
 import { QUERY_CONTACT, QUERY_CONTACT_SEO } from "@/queries/queries";
-import { ComponentSharedSeoType, ContactInfoType } from "@/typings";
+import { ComponentSharedSeoType, ContactInfoType, SEO } from "@/typings";
 import { client } from "./_app";
 import Head from "next/head";
 
 interface Props {
   contactInfo: ContactInfoType;
-  contactSeo: any;
+  contactSeo: SEO;
 }
 export default function Contact({ contactInfo, contactSeo }: Props) {
   return (

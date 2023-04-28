@@ -23,6 +23,7 @@ import HTMLReactParser from "html-react-parser";
 import Head from "next/head";
 import { FiShoppingBag } from "react-icons/fi";
 import useWidth from "@/hooks/useWidth";
+import { Link } from "react-bootstrap-icons";
 
 interface Props {
   product: Product;
@@ -129,6 +130,8 @@ export default function ProductPage({ product, productsCards }: Props) {
     }
   };
 
+  console.log(product);
+
   return (
     <>
       <Head>
@@ -145,12 +148,15 @@ export default function ProductPage({ product, productsCards }: Props) {
             product.attributes.seo[0]?.metaDescription || "Panorui solare"
           }
         />
+        <meta property="og:url" content={`${URL}${product.attributes.slug}`} />
+
         {product.attributes.seo[0]?.metaImage && (
           <meta
             name="og:image"
             content={product.attributes.seo[0]?.metaImage.data.attributes.url}
           />
         )}
+
         <meta
           name="og:title"
           content={
@@ -158,7 +164,10 @@ export default function ProductPage({ product, productsCards }: Props) {
           }
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <Link rel="canonical" href={`${URL}${product.attributes.slug}`} /> */}
+        <link
+          rel="canonical"
+          href={`${URL}${product.attributes.seo[0]?.canonicalURL}`}
+        />
       </Head>
 
       <main className="py-24 lg:py-32 ">

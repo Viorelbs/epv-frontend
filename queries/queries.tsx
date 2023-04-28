@@ -162,6 +162,8 @@ export const GET_PRODUCT_BY_NAME = gql`
           seo {
             metaTitle
             metaDescription
+            canonicalURL
+            metaRobots
             metaImage {
               data {
                 attributes {
@@ -479,6 +481,32 @@ export const QUERY_CONTACT_SEO = gql`
           seo {
             metaTitle
             metaDescription
+            canonicalURL
+            metaRobots
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_HOME_SEO = gql`
+  query {
+    homepageSeo {
+      data {
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            canonicalURL
+            metaRobots
             metaImage {
               data {
                 attributes {
@@ -500,6 +528,8 @@ export const QUERY_PRODUCT_SEO = gql`
           seo {
             metaTitle
             metaDescription
+            canonicalURL
+            metaRobots
             metaImage {
               data {
                 attributes {
@@ -523,6 +553,8 @@ export const QUERY_ABOUT_S_ONE = gql`
           seo {
             metaTitle
             metaDescription
+            canonicalURL
+            metaRobots
             metaImage {
               data {
                 attributes {
@@ -644,6 +676,8 @@ export const QUERY_SERVICES = gql`
           seo {
             metaTitle
             metaDescription
+            canonicalURL
+            metaRobots
             metaImage {
               data {
                 attributes {

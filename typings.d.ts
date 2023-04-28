@@ -410,3 +410,23 @@ export interface ContactInfoType {
     PhoneNrTwo?: string;
   };
 }
+
+export interface SEO {
+  data: {
+    attributes: {
+      seo: {
+        metaTitle: string;
+        metaDescription: string;
+        canonicalURL: string;
+        metaRobots: string;
+        metaImage: {
+          data: {
+            attributes: {
+              url: string;
+            };
+          };
+        };
+      };
+    };
+  };
+}
