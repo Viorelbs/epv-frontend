@@ -21,11 +21,10 @@ const initValues: FormValues = {
   locatie: "",
 };
 
-export default function IndustrialForm({
-  MenuOpen,
-}: {
-  MenuOpen: (arg: any) => void;
-}) {
+interface Props {
+  MenuOpen: (arg: boolean) => void;
+}
+export default function IndustrialForm({ MenuOpen }: Props) {
   const initState = { isLoading: false, error: "", values: initValues };
   const [state, setState] = useState(initState);
   const [open, setOpen] = useState(false);
