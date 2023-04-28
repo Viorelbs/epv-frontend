@@ -28,7 +28,7 @@ export default function Header() {
   const favProducts = useSelector((state: RootState) => state.favourite);
 
   useEffect(() => {
-    if (router.asPath?.includes("produse/")) {
+    if (router.pathname?.includes("produse/")) {
       return () => setScroll(true);
     }
 
@@ -44,7 +44,7 @@ export default function Header() {
         window.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [router.query]);
+  }, [router]);
 
   const desktopMenu = (
     <div
