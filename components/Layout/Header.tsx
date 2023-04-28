@@ -28,23 +28,19 @@ export default function Header() {
   const favProducts = useSelector((state: RootState) => state.favourite);
 
   useEffect(() => {
-    if (router.pathname?.includes("produse/")) {
-      return () => setScroll(true);
-    }
-
     const handleScroll = () => {
-      setScroll(window.pageYOffset > 100);
-    };
-
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("scroll", handleScroll);
+      if (!router.pathname?.includes("produse/")) {
+        setScroll(window.pageYOffset > 100);
+      } else {
+        setScroll(true);
       }
     };
-  }, [router]);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [router.pathname]);
 
   const desktopMenu = (
     <div

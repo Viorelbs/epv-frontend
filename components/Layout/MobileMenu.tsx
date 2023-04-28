@@ -1,7 +1,6 @@
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { SwipeableDrawer } from "@mui/material";
 import logo from "../../public/logo.png";
-import { BiBasket } from "react-icons/bi";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
