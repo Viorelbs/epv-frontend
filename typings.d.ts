@@ -269,10 +269,12 @@ export interface MetaImage {
 }
 
 export interface ComponentSharedSeoType {
+  canonicalURL: string | undefined;
   metaTitle: string | null;
   metaDescription: string | null;
   metaImage: MetaImage | null;
   keywords: string | null;
+  canonicalURL: string;
   metaRobots: string | null;
   structuredData: any | null;
   metaViewport: string | null;

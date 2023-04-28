@@ -506,6 +506,7 @@ export const QUERY_HOME_SEO = gql`
             metaTitle
             metaDescription
             canonicalURL
+
             metaRobots
             metaImage {
               data {
