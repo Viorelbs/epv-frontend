@@ -154,7 +154,7 @@ export default function MobileMenu(props: Props) {
           </div>
 
           <div className="mb-[5vh]">
-            <IndustrialForm />
+            <IndustrialForm MenuOpen={(arg) => setOpen(arg)} />
           </div>
         </div>
       </SwipeableDrawer>

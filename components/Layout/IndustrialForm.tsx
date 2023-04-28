@@ -21,16 +21,23 @@ const initValues: FormValues = {
   locatie: "",
 };
 
-export default function IndustrialForm() {
+export default function IndustrialForm({
+  MenuOpen,
+}: {
+  MenuOpen: (arg: any) => void;
+}) {
   const initState = { isLoading: false, error: "", values: initValues };
   const [state, setState] = useState(initState);
   const [open, setOpen] = useState(false);
   const { values, isLoading, error } = state;
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
   const [touched, setTouched] = useState({});
 
   const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setOpen(true);
+    MenuOpen(false);
+  };
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -83,7 +90,7 @@ export default function IndustrialForm() {
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto h-fit absolute gap-8 lg:max-w-4xl border p-5 rounded-md"
+          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-8 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[95vh] h-full"
         >
           <div className="flex gap-4 flex-wrap">
             <div className="flex flex-col gap-1 grow">
