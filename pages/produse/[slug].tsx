@@ -130,8 +130,6 @@ export default function ProductPage({ product, productsCards }: Props) {
     }
   };
 
-  console.log(URL);
-
   return (
     <>
       <Head>
@@ -142,6 +140,8 @@ export default function ProductPage({ product, productsCards }: Props) {
             product.attributes.seo[0]?.metaDescription || "Panorui solare"
           }
         />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
         <meta
           name="og:description"
           content={
