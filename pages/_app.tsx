@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+import { Analytics } from "@vercel/analytics/react";
 
 export const URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <WidthProvider>
               <Layout>
                 <Component {...pageProps} />
+                <Analytics />
               </Layout>
             </WidthProvider>
           </StrapiApolloProvider>
