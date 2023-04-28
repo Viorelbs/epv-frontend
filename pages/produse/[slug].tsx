@@ -148,7 +148,7 @@ export default function ProductPage({ product, productsCards }: Props) {
             product.attributes.seo[0]?.metaDescription || "Panorui solare"
           }
         />
-        <meta property="og:url" content={`${URL}${product.attributes.slug}`} />
+        <meta property="og:url" content={`${URL}/${product.attributes.slug}`} />
 
         {product.attributes.seo[0]?.metaImage && (
           <meta
@@ -166,7 +166,7 @@ export default function ProductPage({ product, productsCards }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="canonical"
-          href={`${URL}${product.attributes.seo[0]?.canonicalURL}`}
+          href={`${URL}/${product.attributes.seo[0]?.canonicalURL}`}
         />
       </Head>
 
