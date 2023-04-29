@@ -117,6 +117,8 @@ export default function Home({
             content={seo.data?.attributes.seo?.metaImage.data?.attributes.url}
           />
         )}
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
+        <meta property="og:type" content="website" />
         <meta
           name="og:title"
           content={
