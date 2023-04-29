@@ -99,8 +99,24 @@ export default function Home({
     <>
       <Head>
         <title>EPV Infinity</title>
+        {/* HTML Meta Tags */}
         <meta
           name="description"
+          content={
+            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta property="og:site_name" content="EPV Infinity" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta property="og:locale" content="ro-RO" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Facebook Meta Tags */}
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
           content={
             seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
@@ -117,25 +133,7 @@ export default function Home({
             content={seo.data?.attributes.seo?.metaImage.data?.attributes.url}
           />
         )}
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />{" "}
-        <meta property="og:site_name" content="EPV Infinity" />
-        <meta property="og:locale" content="ro-RO" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="canonical"
-          href={
-            `${process.env.NEXT_PUBLIC_BASE_URL}/${seo.data?.attributes.seo?.canonicalURL} ` ||
-            process.env.NEXT_PUBLIC_BASE_URL
-          }
-        />
       </Head>
       <main>
         <Hero

@@ -21,8 +21,20 @@ export default function Servicii({ service, contactInfo }: Props) {
     <>
       <Head>
         <title>{service.attributes.title}</title>
+        {/* HTML Meta Tags */}
         <meta
           name="description"
+          content={
+            service.attributes.seo[0]?.metaDescription || "Panorui solare"
+          }
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Facebook Meta Tags */}
+        <meta
+          name="og:title"
           content={
             service.attributes.seo[0]?.metaDescription || "Panorui solare"
           }
@@ -44,13 +56,6 @@ export default function Servicii({ service, contactInfo }: Props) {
           name="keywords"
           content={service.attributes.seo[0]?.keywords || "Panouri Solare"}
         />
-        <meta
-          name="og:title"
-          content={
-            service.attributes.seo[0]?.metaDescription || "Panorui solare"
-          }
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Banner text={service.attributes.title} />
       <div className="bg-[#F5F3ED] py-20">
