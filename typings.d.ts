@@ -417,6 +417,7 @@ export interface SEO {
   data: {
     attributes: {
       seo: {
+        keywords: string;
         metaTitle: string;
         metaDescription: string;
         canonicalURL: string;
