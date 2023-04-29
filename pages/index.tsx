@@ -106,21 +106,21 @@ export default function Home({
           }
         />
         <meta
-          name="og:description"
+          property="og:description"
           content={
             seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         {seo.data?.attributes.seo?.metaImage && (
           <meta
-            name="og:image"
+            property="og:image"
             content={seo.data?.attributes.seo?.metaImage.data?.attributes.url}
           />
         )}
         <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
         <meta property="og:type" content="website" />
         <meta
-          name="og:title"
+          property="og:title"
           content={
             seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }

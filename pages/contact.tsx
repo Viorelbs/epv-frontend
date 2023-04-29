@@ -22,24 +22,30 @@ export default function Contact({ contactInfo, contactSeo }: Props) {
           }
         />
         <meta
-          name="og:description"
+          property="og:description"
           content={
             contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         {contactSeo.data?.attributes.seo?.metaImage && (
           <meta
-            name="og:image"
+            property="og:image"
             content={
               contactSeo.data?.attributes.seo?.metaImage.data?.attributes.url
             }
           />
         )}
         <meta
-          name="og:title"
+          property="og:title"
           content={
             contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
+        <meta
+          name="keywords"
+          content={contactSeo.data.attributes.seo?.keywords || "Panouri Solare"}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

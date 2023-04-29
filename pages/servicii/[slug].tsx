@@ -39,6 +39,11 @@ export default function Servicii({ service, contactInfo }: Props) {
             content={service.attributes.seo[0]?.metaImage.data.attributes.url}
           />
         )}
+
+        <meta
+          name="keywords"
+          content={service.attributes.seo[0]?.keywords || "Panouri Solare"}
+        />
         <meta
           name="og:title"
           content={

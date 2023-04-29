@@ -143,7 +143,7 @@ export default function ProductPage({ product, productsCards }: Props) {
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
         <meta
-          name="og:description"
+          property="og:description"
           content={
             product.attributes.seo[0]?.metaDescription || "Panorui solare"
           }
@@ -155,13 +155,18 @@ export default function ProductPage({ product, productsCards }: Props) {
 
         {product.attributes.seo[0]?.metaImage && (
           <meta
-            name="og:image"
+            property="og:image"
             content={product.attributes.seo[0]?.metaImage.data.attributes.url}
           />
         )}
 
         <meta
-          name="og:title"
+          name="keywords"
+          content={product.attributes.seo[0]?.keywords || "Panouri Solare"}
+        />
+
+        <meta
+          property="og:title"
           content={
             product.attributes.seo[0]?.metaDescription || "Panorui solare"
           }

@@ -52,21 +52,28 @@ export default function About({
           }
         />
         <meta
-          name="og:description"
+          name="keywords"
+          content={sectionOne.data.attributes.seo?.keywords || "Panouri Solare"}
+        />
+        <meta
+          property="og:description"
           content={
             sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
         {sectionOne.data?.attributes.seo?.metaImage && (
           <meta
-            name="og:image"
+            property="og:image"
             content={
               sectionOne.data.attributes.seo?.metaImage.data?.attributes.url
             }
           />
         )}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
+
         <meta
-          name="og:title"
+          property="og:title"
           content={
             sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
