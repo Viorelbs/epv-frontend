@@ -11,6 +11,7 @@ interface Props {
   contactSeo: SEO;
 }
 export default function Contact({ contactInfo, contactSeo }: Props) {
+  console.log(contactSeo);
   return (
     <>
       <Head>
@@ -45,7 +46,9 @@ export default function Contact({ contactInfo, contactSeo }: Props) {
         <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
         <meta
           name="keywords"
-          content={contactSeo.data.attributes.seo?.keywords || "Panouri Solare"}
+          content={
+            contactSeo.data?.attributes.seo?.keywords || "Panouri Solare"
+          }
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
