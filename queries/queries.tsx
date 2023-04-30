@@ -20,8 +20,6 @@ export const HERO_QUERY = gql`
   }
 `;
 
-// query ProductsCards($name: String!) {
-// produses(filters: { category: { NumeCategorie: { eq: $name } } }) {
 export const PRODUCTS_CARDS_QUERY = gql`
   query ProductsCards(
     $pageIdx: Int

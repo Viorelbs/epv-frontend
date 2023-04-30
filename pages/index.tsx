@@ -206,7 +206,7 @@ export default function Home({
     </>
   );
 }
-export const getServerSideProps = async (context: any) => {
+export const getStaticProps = async (context: any) => {
   const { query } = context;
 
   const [
@@ -228,20 +228,20 @@ export const getServerSideProps = async (context: any) => {
       query: PRODUCTS_CARDS_QUERY,
       variables: {
         catId:
-          query.cat?.length === 0
+          query?.cat?.length === 0
             ? undefined
-            : query.cat?.split(",").map(Number) || undefined,
-        pageIdx: Number(query.page) || 1,
+            : query?.cat?.split(",").map(Number) || undefined,
+        pageIdx: Number(query?.page) || 1,
         size: 8,
-        sort: query.sort || "createdAt:desc",
+        sort: query?.sort || "createdAt:desc",
         brandId:
-          query?.cat?.includes(2) || query.brand?.length === 0
+          query?.cat?.includes(2) || query?.brand?.length === 0
             ? undefined
-            : query.brand?.split(",").map(Number) || undefined,
+            : query?.brand?.split(",").map(Number) || undefined,
         putereId:
-          query?.cat?.includes(2) || query.powers?.length === 0
+          query?.cat?.includes(2) || query?.powers?.length === 0
             ? undefined
-            : query.powers?.split(",").map(Number) || undefined,
+            : query?.powers?.split(",").map(Number) || undefined,
       },
     }),
     client.query({

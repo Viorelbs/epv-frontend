@@ -52,33 +52,33 @@ export default function Filters({ categories, brands, powers }: Props) {
     setPowersList((router.query.powers as any)?.split(",") ?? []);
   }, [router.query.brand, router.query.powers]);
 
-  const handlePowerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target;
+  // const handlePowerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { checked } = event.target;
 
-    if (checked) {
-      const newPowers = [...powersList, event.target.value] as never[];
-      setPowersList(newPowers);
-      const queryParams = new URLSearchParams(
-        router.query as Record<string, string>
-      );
-      queryParams.set("powers", newPowers.join(","));
-      router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
-        scroll: false,
-      });
-    } else {
-      const newPowers = powersList.filter(
-        (filter) => filter !== event.target.value
-      );
-      setPowersList(newPowers);
-      const queryParams = new URLSearchParams(
-        router.query as Record<string, string>
-      );
-      queryParams.set("powers", newPowers.join(","));
-      router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
-        scroll: false,
-      });
-    }
-  };
+  //   if (checked) {
+  //     const newPowers = [...powersList, event.target.value] as never[];
+  //     setPowersList(newPowers);
+  //     const queryParams = new URLSearchParams(
+  //       router.query as Record<string, string>
+  //     );
+  //     queryParams.set("powers", newPowers.join(","));
+  //     router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
+  //       scroll: false,
+  //     });
+  //   } else {
+  //     const newPowers = powersList.filter(
+  //       (filter) => filter !== event.target.value
+  //     );
+  //     setPowersList(newPowers);
+  //     const queryParams = new URLSearchParams(
+  //       router.query as Record<string, string>
+  //     );
+  //     queryParams.set("powers", newPowers.join(","));
+  //     router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
+  //       scroll: false,
+  //     });
+  //   }
+  // };
 
   const handleBrandChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = event.target;
@@ -127,6 +127,7 @@ export default function Filters({ categories, brands, powers }: Props) {
             <input
               type="checkbox"
               value={cat.id}
+              checked={router.query.cat?.includes(cat.id)}
               className="checkbox"
               onChange={handleFilterChange}
               id={cat.id}
