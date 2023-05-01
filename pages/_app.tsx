@@ -28,10 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Facebook Meta Tags */}
       <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:title"
-        content={pageProps?.ogTitle || "Panorui solare"}
-      />
+      <meta property="og:title" content={"Panorui solare"} />
       <meta property="og:description" content={"Panorui solare"} />
       <meta property="og:locale" content="ro-RO" />
 

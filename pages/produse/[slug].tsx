@@ -24,7 +24,6 @@ import Head from "next/head";
 import { FiShoppingBag } from "react-icons/fi";
 import useWidth from "@/hooks/useWidth";
 import { Link } from "react-bootstrap-icons";
-import { NextPageContext } from "next";
 
 interface Props {
   product: Product;
@@ -165,8 +164,10 @@ export default function ProductPage({ product, productsCards }: Props) {
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/${product.attributes.slug}`}
         />
+        <meta property="og:locale" content="ro-RO" />
         <meta property="og:type" content="website" />
-
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
         <meta
           property="og:description"
           content={
@@ -366,36 +367,3 @@ export async function getStaticProps({ params }: any) {
     },
   };
 }
-
-{
-  /* <meta
-property="og:title"
-content={
-  product.attributes.seo[0]?.metaDescription || "Panorui solare"
-}
-/>
-<meta
-property="og:url"
-content={`${process.env.NEXT_PUBLIC_BASE_URL}/${product.attributes.slug}`}
-/>
-<meta property="og:type" content="website" />
-
-<meta
-property="og:description"
-content={
-  product.attributes.seo[0]?.metaDescription || "Panorui solare"
-}
-/>
-{product.attributes.seo[0]?.metaImage && (
-<meta
-  property="og:image"
-  content={product.attributes.seo[0]?.metaImage.data.attributes.url}
-/>
-)} */
-}
-
-ProductPage.getInitialProps = async (product: Product) => {
-  return {
-    ogTitle: product.attributes.seo[0]?.metaTitle,
-  };
-};
