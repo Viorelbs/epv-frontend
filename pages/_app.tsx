@@ -24,19 +24,38 @@ const persistor = persistStore(store);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <ApolloProvider client={client}>
-          <StrapiApolloProvider>
-            <WidthProvider>
-              <Layout>
-                <Component {...pageProps} />
-                <Analytics />
-              </Layout>
-            </WidthProvider>
-          </StrapiApolloProvider>
-        </ApolloProvider>
-      </PersistGate>
-    </Provider>
+    <>
+      {/* Facebook Meta Tags */}
+      <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:title"
+        content={pageProps?.ogTitle || "Panorui solare"}
+      />
+      <meta property="og:description" content={"Panorui solare"} />
+      <meta property="og:locale" content="ro-RO" />
+
+      {/* <meta
+            property="og:image"
+            content={product.attributes.seo[0]?.metaImage.data.attributes.url}
+          />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" /> */}
+
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <ApolloProvider client={client}>
+            <StrapiApolloProvider>
+              <WidthProvider>
+                <Layout>
+                  <Component {...pageProps} />
+                  <Analytics />
+                </Layout>
+              </WidthProvider>
+            </StrapiApolloProvider>
+          </ApolloProvider>
+        </PersistGate>
+      </Provider>
+    </>
   );
 }
