@@ -37,6 +37,7 @@ export default function Produse({
   powers,
   seo,
 }: Props) {
+  console.log(seo.data?.attributes.seo);
   return (
     <>
       <Head>
@@ -48,30 +49,9 @@ export default function Produse({
           }
         />
         <meta
-          name="description"
-          content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
+          name="keywords"
+          content={seo.data?.attributes.seo?.keywords || "Panouri Solare"}
         />
-        <meta
-          name="og:description"
-          content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        {seo.data?.attributes.seo?.metaImage && (
-          <meta
-            name="og:image"
-            content={seo.data?.attributes.seo?.metaImage.data?.attributes.url}
-          />
-        )}
-        <meta
-          name="og:title"
-          content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
         <Banner text="Produse" />
@@ -136,6 +116,10 @@ export const getStaticProps = async (context: any) => {
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,
       seo: seo.data.productPageSeo,
+      ogTitle: seo.data.productPageSeo.data.attributes.seo?.metaTitle || null,
+      ogDescription:
+        seo.data.productPageSeo.data.attributes.seo?.metaDescription || null,
+      ogImage: seo.data.productPageSeo?.data.attributes.seo?.metaImage || null,
     },
   };
 };

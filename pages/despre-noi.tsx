@@ -55,29 +55,7 @@ export default function About({
           name="keywords"
           content={sectionOne.data.attributes.seo?.keywords || "Panouri Solare"}
         />
-        <meta
-          property="og:description"
-          content={
-            sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        {sectionOne.data?.attributes.seo?.metaImage && (
-          <meta
-            property="og:image"
-            content={
-              sectionOne.data.attributes.seo?.metaImage.data?.attributes.url
-            }
-          />
-        )}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
 
-        <meta
-          property="og:title"
-          content={
-            sectionOne.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className="space-y-20 mb-20">
@@ -140,6 +118,10 @@ export async function getStaticProps() {
       sectionThree: sectionThree.data.aboutSThree,
       sectionFour: sectionFour.data.aboutSFour,
       questions: questions.data.intrebaris,
+      ogTitle: sectionOne.data.aboutSOne.data.attributes.seo.metaTitle || null,
+      ogDescription:
+        sectionOne.data.aboutSOne.data.attributes.seo.metaDescription || null,
+      ogImage: sectionOne.data.aboutSOne.metaImage || null,
     },
   };
 }

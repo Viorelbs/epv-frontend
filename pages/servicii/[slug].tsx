@@ -131,6 +131,13 @@ export const getStaticProps = async ({ params }: any) => {
     props: {
       service: serviceData.data.serviciis.data[0],
       contactInfo: contactInfo.data.contactInfo.data,
+      ogTitle:
+        serviceData.data.serviciis.data[0].attributes.seo[0]?.metaTitle || null,
+      ogDescription:
+        serviceData.data.serviciis.data[0].attributes.seo[0]?.metaDescription ||
+        null,
+      ogImage:
+        serviceData.data.serviciis.data[0].attributes.seo[0]?.metaImage || null,
     },
   };
 };

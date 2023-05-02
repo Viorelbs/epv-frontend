@@ -23,34 +23,11 @@ export default function Contact({ contactInfo, contactSeo }: Props) {
           }
         />
         <meta
-          property="og:description"
-          content={
-            contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        {contactSeo.data?.attributes.seo?.metaImage && (
-          <meta
-            property="og:image"
-            content={
-              contactSeo.data?.attributes.seo?.metaImage.data?.attributes.url
-            }
-          />
-        )}
-        <meta
-          property="og:title"
-          content={
-            contactSeo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
-        <meta
           name="keywords"
           content={
             contactSeo.data?.attributes.seo?.keywords || "Panouri Solare"
           }
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
         <Banner text="Contact" />
@@ -94,6 +71,9 @@ export const getStaticProps = async () => {
     props: {
       contactInfo: contactInfo.data.contactInfo.data,
       contactSeo: contactSeo.data.contactSeo,
+      ogTitle: contactSeo.data?.attributes?.seo?.metaTitle || null,
+      ogDescription: contactSeo.data?.attributes?.seo?.metaDescription || null,
+      ogImage: contactSeo.data?.attributes?.seo?.metaImage || null,
     },
   };
 };

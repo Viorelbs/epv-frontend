@@ -80,7 +80,6 @@ export default function Home({
   const [isMoved, setIsMoved] = useState(false);
   const { windowWidth } = useWidth();
 
-  console.log(seo);
   const handleClick = (direction: string) => {
     setIsMoved(true);
 
@@ -94,7 +93,6 @@ export default function Home({
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
-
   return (
     <>
       <Head>
@@ -106,33 +104,11 @@ export default function Home({
             seo.data?.attributes.seo?.metaDescription || "Panorui solare"
           }
         />
-        <meta property="og:site_name" content="EPV Infinity" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta property="og:locale" content="ro-RO" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content={seo.data?.attributes.seo?.keywords || "Panouri Solare"}
+        />
 
-        {/* Facebook Meta Tags */}
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        <meta
-          property="og:description"
-          content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
-          }
-        />
-        {seo.data?.attributes.seo?.metaImage && (
-          <meta
-            property="og:image"
-            content={seo.data?.attributes.seo?.metaImage.data?.attributes.url}
-          />
-        )}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
@@ -282,6 +258,9 @@ export const getStaticProps = async (context: any) => {
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,
       seo: seo.data.homepageSeo,
+      ogTitle: seo.data.homepageSeo.data.attributes.seo?.metaTitle,
+      ogDescription: seo.data.homepageSeo.data.attributes.seo?.metaDescription,
+      ogImage: seo.data.homepageSeo.data.attributes.seo?.metaImage,
     },
   };
 };

@@ -134,7 +134,6 @@ export default function ProductPage({ product, productsCards }: Props) {
     <>
       <Head>
         <title>{product.attributes.Nume}</title>
-        {/* HTML Meta Tags */}
         <meta
           name="description"
           content={
@@ -145,41 +144,10 @@ export default function ProductPage({ product, productsCards }: Props) {
           name="keywords"
           content={product.attributes.seo[0]?.keywords || "Panouri Solare"}
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="mobile-web-app-capable" content="yes" />
         <link
           rel="canonical"
           href={`${process.env.NEXT_PUBLIC_BASE_URL}/${product.attributes.seo[0]?.canonicalURL}`}
         />
-
-        {/* Facebook Meta Tags */}
-        <meta
-          property="og:title"
-          content={
-            product.attributes.seo[0]?.metaDescription || "Panorui solare"
-          }
-        />
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/${product.attributes.slug}`}
-        />
-        <meta property="og:locale" content="ro-RO" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="300" />
-        <meta
-          property="og:description"
-          content={
-            product.attributes.seo[0]?.metaDescription || "Panorui solare"
-          }
-        />
-        {product.attributes.seo[0]?.metaImage && (
-          <meta
-            property="og:image"
-            content={product.attributes.seo[0]?.metaImage.data.attributes.url}
-          />
-        )}
       </Head>
 
       <main className="py-24 lg:py-32 ">
@@ -364,6 +332,10 @@ export async function getStaticProps({ params }: any) {
     props: {
       product: data.data.produses.data[0],
       productsCards: randomSuggestions.slice(0, 4),
+      ogTitle: data.data.produses.data[0].attributes.seo[0]?.metaTitle || null,
+      ogDescription:
+        data.data.produses.data[0].attributes.seo[0]?.metaDescription || null,
+      ogImage: data.data.produses.data[0].attributes.seo[0].metaImage || null,
     },
   };
 }
