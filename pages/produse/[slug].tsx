@@ -335,7 +335,7 @@ export async function getStaticProps({ params }: any) {
       ogTitle: data.data.produses.data[0].attributes.seo[0]?.metaTitle || null,
       ogDescription:
         data.data.produses.data[0].attributes.seo[0]?.metaDescription || null,
-      ogImage: data.data.produses.data[0].attributes.seo[0].metaImage || null,
+      ogImage: data.data.produses.data[0].attributes.seo[0]?.metaImage || null,
     },
   };
 }
