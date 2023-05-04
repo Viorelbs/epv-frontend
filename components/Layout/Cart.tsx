@@ -13,7 +13,7 @@ import {
 } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
 import { setCart } from "@/redux/cartOpen";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js/pure";
 import { makeRequest } from "@/lib/makeReuest";
 import Loader from "../Common/Loader";
 interface Props {
