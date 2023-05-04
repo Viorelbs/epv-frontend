@@ -41,9 +41,6 @@ export default function Cart(props: Props) {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-  const stripePromise = loadStripe(
-    process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
-  );
 
   useEffect(() => {
     if (cartState === true) {
@@ -86,6 +83,10 @@ export default function Cart(props: Props) {
 
   // Handle Payment
   const handlePayment = async () => {
+    const stripePromise = loadStripe(
+      process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
+    );
+
     try {
       setLoading(true);
       const stripe = await stripePromise;
