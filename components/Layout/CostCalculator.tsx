@@ -90,7 +90,10 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
             >
               {inputRange} Lei / Luna
             </label>
-            <Tooltip content={TooltipText} className="min-w-[280px]">
+            <Tooltip
+              content={TooltipText}
+              className="min-w-[280px] max-w-[80vw] lg:max-w-[600px]"
+            >
               <Button className="p-0 h-fit text-black bg-transparent !shadow-none outline-none  ">
                 <AiFillExclamationCircle className="w-6 h-6" />
               </Button>
