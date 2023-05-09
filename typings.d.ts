@@ -433,3 +433,10 @@ export interface SEO {
     };
   };
 }
+
+export interface CostDataType {
+  attributes: {
+    PretKwt: number;
+    TimpRandamentPanouZi: number;
+  };
+}

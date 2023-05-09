@@ -764,3 +764,16 @@ export const QUERY_RETUR = gql`
     }
   }
 `;
+
+export const QUERY_CALC = gql`
+  query {
+    costCalculator {
+      data {
+        attributes {
+          TimpRandamentPanouZi
+          PretKwt
+        }
+      }
+    }
+  }
+`;

@@ -7,6 +7,7 @@ import Testimonial from "@/components/Layout/Testimonials";
 import {
   PRODUCTS_CARDS_QUERY,
   QUERY_BRANDS,
+  QUERY_CALC,
   QUERY_CATEGORIES,
   QUERY_HERO,
   QUERY_HOME_SEO,
@@ -19,6 +20,7 @@ import {
 import {
   BrandsType,
   CategoryType,
+  CostDataType,
   HeroType,
   PartenersTypes,
   PowersType,
@@ -63,7 +65,9 @@ interface Props {
     data: PowersType[];
   };
   seo: SEO;
+  calcData: CostDataType;
 }
+
 export default function Home({
   hero,
   hpSection,
@@ -75,6 +79,7 @@ export default function Home({
   brands,
   powers,
   seo,
+  calcData,
 }: Props) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
@@ -93,6 +98,7 @@ export default function Home({
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
+
   return (
     <>
       <Head>
@@ -117,7 +123,8 @@ export default function Home({
           title={hero.data.attributes.titlu}
           description={hero.data.attributes.descriere}
         />
-        <CostCalculator />
+
+        <CostCalculator data={calcData} />
 
         <ProductsGrid
           products={productCard}
@@ -196,6 +203,7 @@ export const getStaticProps = async (context: any) => {
     reviews,
     questions,
     seo,
+    calcData,
   ] = await Promise.all([
     client.query({
       query: QUERY_HERO,
@@ -244,6 +252,9 @@ export const getStaticProps = async (context: any) => {
     client.query({
       query: QUERY_HOME_SEO,
     }),
+    client.query({
+      query: QUERY_CALC,
+    }),
   ]);
 
   return {
@@ -261,6 +272,7 @@ export const getStaticProps = async (context: any) => {
       ogTitle: seo.data.homepageSeo.data.attributes.seo?.metaTitle,
       ogDescription: seo.data.homepageSeo.data.attributes.seo?.metaDescription,
       ogImage: seo.data.homepageSeo.data.attributes.seo?.metaImage,
+      calcData: calcData.data.costCalculator.data,
     },
   };
 };
