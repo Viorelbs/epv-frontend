@@ -6,7 +6,7 @@ import {
 } from "@/queries/queries";
 import { ContactInfoType, ServiceType } from "@/typings";
 import Image from "next/image";
-import { client, URL } from "../_app";
+import { client } from "../_app";
 import parse from "html-react-parser";
 import ContactForm from "@/components/Layout/ContactForm";
 import ContactInfo from "@/components/Layout/ContactInfo";
