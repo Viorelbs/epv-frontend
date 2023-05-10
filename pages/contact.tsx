@@ -39,9 +39,8 @@ export default function Contact({ contactInfo, contactSeo }: Props) {
                 <br /> Nu ezita!
               </h2>
               <p className="max-w-xl !mb-6 md:!mb-16 font-light">
-                Mauris eu nisi eget nisi imperdiet vestibulum. Nunc sodales
-                vehicula risus. Suspendisse id mauris sodales, blandit tortor
-                eu, sodales justo.
+                Pentru orice întrebare sau nelămurire, suntem aici să te ajutăm.
+                Trimite-ne un mesaj și vom reveni cât mai curând posibil!
               </p>
               <ContactInfo contactInfo={contactInfo} />
             </div>
