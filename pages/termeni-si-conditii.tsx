@@ -22,5 +22,6 @@ export async function getStaticProps() {
     props: {
       data: terms.data.termeniSiConditii.data.attributes.Termeni,
     },
+    revalidate: 1000,
   };
 }

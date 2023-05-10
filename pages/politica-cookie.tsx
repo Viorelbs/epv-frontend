@@ -22,5 +22,6 @@ export async function getStaticProps() {
     props: {
       data: terms.data.politicaCookie.data.attributes.Politica,
     },
+    revalidate: 1000,
   };
 }

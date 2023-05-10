@@ -20,6 +20,7 @@ export default function Filters({ categories, brands, powers }: Props) {
   const [powersList, setPowersList] = useState([]);
   const router = useRouter();
 
+  console.log(router);
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = event.target;
     if (checked) {

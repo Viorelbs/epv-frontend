@@ -22,5 +22,6 @@ export async function getStaticProps() {
     props: {
       data: terms.data.politicaRetur.data.attributes.Politica,
     },
+    revalidate: 1000,
   };
 }

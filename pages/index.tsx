@@ -274,5 +274,6 @@ export const getStaticProps = async (context: any) => {
       ogImage: seo.data.homepageSeo.data.attributes.seo?.metaImage,
       calcData: calcData.data.costCalculator.data,
     },
+    revalidate: 1000,
   };
 };

@@ -21,6 +21,7 @@ import {
 } from "@/typings";
 import { client } from "./_app";
 import Head from "next/head";
+import { setRevalidateHeaders } from "next/dist/server/send-payload";
 
 interface Props {
   sectionOne: AboutSectionOneType;
@@ -123,5 +124,6 @@ export async function getStaticProps() {
         sectionOne.data.aboutSOne.data.attributes.seo.metaDescription || null,
       ogImage: sectionOne.data.aboutSOne.metaImage || null,
     },
+    revalidate: 1000,
   };
 }

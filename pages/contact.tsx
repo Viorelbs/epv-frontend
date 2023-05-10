@@ -75,5 +75,6 @@ export const getStaticProps = async () => {
       ogDescription: contactSeo.data?.attributes?.seo?.metaDescription || null,
       ogImage: contactSeo.data?.attributes?.seo?.metaImage || null,
     },
+    revalidate: 1000,
   };
 };
