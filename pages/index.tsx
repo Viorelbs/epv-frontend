@@ -258,7 +258,7 @@ export const getStaticProps = async (context: any) => {
   ]);
 
   return {
-    revalidate: 1000,
+    revalidate: 120,
     props: {
       hero: hero.data.hero,
       hpSection: hpSection.data.simpleSectionHome,

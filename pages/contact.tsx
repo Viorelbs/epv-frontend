@@ -68,7 +68,7 @@ export const getStaticProps = async () => {
   ]);
 
   return {
-    revalidate: 1000,
+    revalidate: 120,
     props: {
       contactInfo: contactInfo.data.contactInfo.data,
       contactSeo: contactSeo.data.contactSeo,

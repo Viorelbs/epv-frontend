@@ -113,7 +113,7 @@ export async function getStaticProps() {
     ]);
 
   return {
-    revalidate: 1000,
+    revalidate: 120,
     props: {
       sectionOne: sectionOne.data.aboutSOne,
       sectionTwo: sectionTwo.data.aboutSTwo,
