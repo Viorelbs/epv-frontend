@@ -37,14 +37,14 @@ export default function AboutSectionOne({
       </div>
       <div className="flex mb-8">
         <Image
-          className="w-full object-cover rounded-xl flex-[2]"
+          className="w-full object-cover rounded-xl flex-[2] max-w-[50vw]"
           src={imageOne.data.attributes.url}
           width={150}
           height={150}
           alt="image two"
         />
         <Image
-          className="w-full  mt-auto relative right-[10%] top-[10%] object-cover rounded-xl flex-1"
+          className="w-full  mt-auto relative right-[10%] top-[10%] object-cover rounded-xl flex-1 max-w-[45vw]"
           src={imageTwo.data.attributes.url}
           alt="Panouri Solare Vile"
           width={150}
