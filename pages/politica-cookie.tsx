@@ -19,9 +19,9 @@ export async function getStaticProps() {
     query: QUERY_POLITICA,
   });
   return {
+    revalidate: 1000,
     props: {
       data: terms.data.politicaCookie.data.attributes.Politica,
     },
-    revalidate: 1000,
   };
 }

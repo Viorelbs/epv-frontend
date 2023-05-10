@@ -113,6 +113,7 @@ export async function getStaticProps() {
     ]);
 
   return {
+    revalidate: 1000,
     props: {
       sectionOne: sectionOne.data.aboutSOne,
       sectionTwo: sectionTwo.data.aboutSTwo,
@@ -124,6 +125,5 @@ export async function getStaticProps() {
         sectionOne.data.aboutSOne.data.attributes.seo.metaDescription || null,
       ogImage: sectionOne.data.aboutSOne.metaImage || null,
     },
-    revalidate: 1000,
   };
 }

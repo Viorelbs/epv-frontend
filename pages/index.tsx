@@ -258,6 +258,7 @@ export const getStaticProps = async (context: any) => {
   ]);
 
   return {
+    revalidate: 1000,
     props: {
       hero: hero.data.hero,
       hpSection: hpSection.data.simpleSectionHome,
@@ -274,6 +275,5 @@ export const getStaticProps = async (context: any) => {
       ogImage: seo.data.homepageSeo.data.attributes.seo?.metaImage,
       calcData: calcData.data.costCalculator.data,
     },
-    revalidate: 1000,
   };
 };

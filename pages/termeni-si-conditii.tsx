@@ -19,9 +19,9 @@ export async function getStaticProps() {
     query: QUERY_TERMENI,
   });
   return {
+    revalidate: 1000,
     props: {
       data: terms.data.termeniSiConditii.data.attributes.Termeni,
     },
-    revalidate: 1000,
   };
 }

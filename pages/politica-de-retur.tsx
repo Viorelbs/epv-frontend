@@ -19,9 +19,9 @@ export async function getStaticProps() {
     query: QUERY_RETUR,
   });
   return {
+    revalidate: 1000,
     props: {
       data: terms.data.politicaRetur.data.attributes.Politica,
     },
-    revalidate: 1000,
   };
 }

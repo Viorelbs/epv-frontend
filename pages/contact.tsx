@@ -68,6 +68,7 @@ export const getStaticProps = async () => {
   ]);
 
   return {
+    revalidate: 1000,
     props: {
       contactInfo: contactInfo.data.contactInfo.data,
       contactSeo: contactSeo.data.contactSeo,
@@ -75,6 +76,5 @@ export const getStaticProps = async () => {
       ogDescription: contactSeo.data?.attributes?.seo?.metaDescription || null,
       ogImage: contactSeo.data?.attributes?.seo?.metaImage || null,
     },
-    revalidate: 1000,
   };
 };
