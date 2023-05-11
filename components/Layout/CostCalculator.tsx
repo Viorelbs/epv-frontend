@@ -114,13 +114,13 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
         <div className="flex gap-4 md:gap-10 mt-10 w-full flex-wrap md:flex-nowrap">
           <div className="bg-white p-4 rounded-xl w-full">
             <h4 className="flex gap-1 items-center">Economisire intr-un an </h4>
-            <span className="text-[22px] md:text-[30px] font-semibold">
+            <span className=" text-[#057647] text-[22px] md:text-[30px] font-semibold">
               {economyPerYear.toLocaleString("RO")} Lei
             </span>
           </div>
           <div className="bg-white p-4 rounded-xl w-full">
             <h4>Cost estimativ panouri</h4>
-            <span className="text-[22px] md:text-[30px] font-semibold">
+            <span className=" text-[#057647] text-[22px] md:text-[30px] font-semibold">
               {(instCalcul < 3 ? 3 * 6000 : instCalcul * 6000).toLocaleString(
                 "RO"
               )}{" "}
@@ -129,7 +129,7 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
           </div>
           <div className="bg-white p-4 rounded-xl w-full">
             <h4>Amortizare in</h4>
-            <span className="text-[22px] md:text-[30px] font-semibold">
+            <span className="text-[#057647] text-[22px] md:text-[30px] font-semibold">
               {amortizare} ani
             </span>
           </div>
