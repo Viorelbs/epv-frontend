@@ -29,7 +29,7 @@ export default function Testimonial({
         />
         <div>
           <h4 className="text-sm">{name}</h4>
-          <span className="text-sm text-gray-600">{date}</span>
+          <span className="text-sm text-gray-700">{date}</span>
         </div>
         <Image
           className="w-[20px] ml-auto h-[20px] object-contain"
@@ -38,7 +38,7 @@ export default function Testimonial({
         />
       </div>
       <Rating rating={rating / 2} />
-      <div className="mt-2 text-gray-600">{HTMLReactParser(content)}</div>
+      <div className="mt-2 text-gray-800">{HTMLReactParser(content)}</div>
     </div>
   );
 }

@@ -21,6 +21,7 @@ export default function Hero({ bgVideo, title, description }: Props) {
         loop
       >
         <source src={bgVideo as any} />
+        <track kind="captions" label="English" srcLang="en" default />
       </video>
       <div className=" container mx-auto space-y-[5vh] sm:space-y-[10vh] py-24 px-4">
         <div className="text-white sm:max-w-xl lg:max-w-[700px] ">

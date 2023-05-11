@@ -60,9 +60,12 @@ export default function Header() {
         <Link href="/produse">Produse</Link>
         <Menu>
           <MenuHandler>
-            <span className="hover:text-[#f7cd1f] cursor-pointer">
+            <button
+              type="button"
+              className="hover:text-[#f7cd1f] cursor-pointer"
+            >
               Servicii
-            </span>
+            </button>
           </MenuHandler>
           {data && (
             <MenuList>

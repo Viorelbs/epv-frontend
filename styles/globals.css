@@ -108,7 +108,7 @@ body {
     @apply font-medium text-sm md:text-lg text-[#0DC97A];
   }
   .reduced-price {
-    @apply line-through text-sm md:text-sm font-light text-gray-500;
+    @apply line-through text-sm md:text-sm font-light text-gray-800;
   }
   .qty-btn {
     @apply bg-[#D9D9D9]/40 p-2 rounded-[100%] w-8 h-8 cursor-pointer hover:bg-[#F7CD1F] hover:text-black;
