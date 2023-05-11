@@ -86,7 +86,7 @@ export default function Header() {
       </nav>
       <div className="flex items-center gap-6">
         <IndustrialForm />
-        <Link href="/produse-favorite">
+        <Link href="/produse-favorite" aria-label="Vezi produse favorite">
           <RiHeartsLine
             className={`w-7 h-7 hover:text-[#F7CD1F] cursor-pointer ${
               favProducts.products.length > 0 ? "" : "text-gray-400"

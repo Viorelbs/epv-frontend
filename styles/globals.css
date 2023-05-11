@@ -105,7 +105,7 @@ body {
     @apply text-gray-300 hover:text-[#f7cd1f] text-sm md:text-base;
   }
   .price {
-    @apply font-medium text-sm md:text-lg text-[#08a161];
+    @apply font-medium text-sm md:text-lg text-[#057647];
   }
   .reduced-price {
     @apply line-through text-sm md:text-sm font-light text-gray-800;

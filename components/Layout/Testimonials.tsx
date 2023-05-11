@@ -28,7 +28,7 @@ export default function Testimonial({
           alt="image two"
         />
         <div>
-          <h4 className="text-sm">{name}</h4>
+          <h5 className="text-sm">{name}</h5>
           <span className="text-sm text-gray-700">{date}</span>
         </div>
         <Image
