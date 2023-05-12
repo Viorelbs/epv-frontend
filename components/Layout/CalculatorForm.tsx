@@ -53,7 +53,6 @@ export default function CalculatorForm({
     setOpen(true);
   };
 
-  console.log(values);
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) =>

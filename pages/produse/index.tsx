@@ -37,7 +37,6 @@ export default function Produse({
   powers,
   seo,
 }: Props) {
-  console.log(seo.data?.attributes.seo);
   return (
     <>
       <Head>

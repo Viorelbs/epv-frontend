@@ -11,7 +11,6 @@ interface Props {
   contactSeo: SEO;
 }
 export default function Contact({ contactInfo, contactSeo }: Props) {
-  console.log(contactSeo);
   return (
     <>
       <Head>
