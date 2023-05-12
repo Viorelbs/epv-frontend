@@ -28,18 +28,24 @@ export default function Hero({ bgVideo, title, description }: Props) {
           <h1 className=" font-bold">{title}</h1>
           <p className="font-light  leading-8 ">{description}</p>
           <div className="flex gap-5 mt-10 flex-col sm:flex-row">
-            <button
+            {/* <button
               className="btn-primary"
               onClick={() => router.push("/produse")}
             >
               Gama Produse
-            </button>
+            </button> */}
             <button
-              className="btn-secondary"
+              className="btn-primary"
               onClick={() => router.push("/servicii/instalare-panouri")}
             >
               Instalare Panouri
             </button>
+            {/* <button
+              className="btn-secondary"
+              onClick={() => router.push("/servicii/instalare-panouri")}
+            >
+              Instalare Panouri
+            </button> */}
           </div>
         </div>
         <div className="text-white flex gap-[5vw] flex-col sm:flex-row">

@@ -126,20 +126,13 @@ export default function Home({
 
         <CostCalculator data={calcData} />
 
-        <ProductsGrid
+        {/* <ProductsGrid
           products={productCard}
           filters={true}
           categories={categories}
           brands={brands}
           powers={powers}
-        />
-        <SimpleSection
-          title={hpSection.data.attributes.titlu}
-          description={hpSection.data.attributes.Descriere}
-          bigImage={hpSection.data.attributes.ImagineMare}
-          smallImage={hpSection.data.attributes.ImagineMica}
-          partenersList={parteners.data.attributes.parteneri.data}
-        />
+        /> */}
         <div className="py-24 lg:py-32">
           <div className="container mx-auto">
             <h2 className="text-center mb-8">
@@ -184,6 +177,14 @@ export default function Home({
             </Link>
           </div>
         </div>
+        <SimpleSection
+          title={hpSection.data.attributes.titlu}
+          description={hpSection.data.attributes.Descriere}
+          bigImage={hpSection.data.attributes.ImagineMare}
+          smallImage={hpSection.data.attributes.ImagineMica}
+          partenersList={parteners.data.attributes.parteneri.data}
+        />
+
         <Questions questions={questions.data} />
       </main>
     </>

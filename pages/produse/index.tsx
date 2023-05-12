@@ -16,6 +16,7 @@ import {
 } from "@/typings";
 import { client } from "../_app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 interface Props {
   productCard: { data: ProdusCardType[]; meta: {} };
@@ -30,6 +31,7 @@ interface Props {
   };
   seo: SEO;
 }
+
 export default function Produse({
   productCard,
   categories,
@@ -37,6 +39,7 @@ export default function Produse({
   powers,
   seo,
 }: Props) {
+  const router = useRouter();
   return (
     <>
       <Head>
