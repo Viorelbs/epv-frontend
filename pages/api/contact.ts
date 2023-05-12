@@ -44,7 +44,7 @@ const CONTACT_MESSAGE_FIELDS_CALCULATOR: ContactMessageFields = {
 };
 
 const generateEmailContat = (data: Data) => {
-  const setDataFields = (key: string) => {
+  const setDataFields = (key: any) => {
     let dataFields = CONTACT_MESSAGE_FIELDS[key];
 
     if (data.subject === "Montaje Industriale") {
