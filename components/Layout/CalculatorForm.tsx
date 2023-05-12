@@ -3,6 +3,7 @@ import Modal from "@mui/material/Modal";
 import Loader from "../Common/Loader";
 import sendContactForm from "@/lib/api";
 import { Chip } from "@material-tailwind/react";
+import { AiOutlineClose } from "react-icons/ai";
 
 type FormValues = {
   name: string;
@@ -104,10 +105,16 @@ export default function CalculatorForm({
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-5 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[95vh] h-full"
+          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-5 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[90vh] h-full"
         >
           <div>
-            <h4 className="mb-2">Date Calculator</h4>
+            <div className="flex justify-between">
+              <h4 className="mb-2">Date Calculator</h4>
+              <AiOutlineClose
+                onClick={handleClose}
+                className="w-5 h-5 cursor-pointer hover:text-red-500"
+              />
+            </div>
             <div className="flex gap-3 flex-wrap">
               <Chip
                 color="amber"
@@ -179,7 +186,7 @@ export default function CalculatorForm({
             <label className="font-medium">Locatie</label>
             <input
               placeholder="Str. Zorilor 7A, Cluj-Napoca"
-              className="input"
+              className="input "
               type="text"
               name="locatie"
               value={values.locatie}

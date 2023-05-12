@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Loader from "../Common/Loader";
 import sendContactForm from "@/lib/api";
+import { AiOutlineClose } from "react-icons/ai";
 
 type FormValues = {
   name: string;
@@ -89,8 +90,15 @@ export default function IndustrialForm({ MenuOpen }: Props) {
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-8 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[90vh] h-full"
+          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-6 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[90vh] h-full"
         >
+          <div className="flex justify-between">
+            <h3>Montaje Industriale</h3>
+            <AiOutlineClose
+              onClick={handleClose}
+              className="w-5 h-5 cursor-pointer hover:text-red-500"
+            />
+          </div>
           <div className="flex gap-4 flex-wrap">
             <div className="flex flex-col gap-1 grow">
               <label className="font-medium">Nume Societate</label>
