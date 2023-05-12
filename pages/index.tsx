@@ -185,7 +185,9 @@ export default function Home({
           partenersList={parteners.data.attributes.parteneri.data}
         />
 
-        <Questions questions={questions.data} />
+        <div className="mt-20 ">
+          <Questions questions={questions.data} />
+        </div>
       </main>
     </>
   );
