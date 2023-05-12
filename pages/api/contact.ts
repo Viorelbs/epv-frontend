@@ -46,11 +46,12 @@ const CONTACT_MESSAGE_FIELDS_CALCULATOR: ContactMessageFields = {
 const generateEmailContat = (data: Data) => {
   const setDataFields = (key: string) => {
     let dataFields = CONTACT_MESSAGE_FIELDS[key];
+
     if (data.subject === "Montaje Industriale") {
-      return CONTACT_MESSAGE_FIELDS_MONTAJE[key];
+      dataFields = CONTACT_MESSAGE_FIELDS_MONTAJE[key];
     }
     if (data.subject === "Cost Calculator") {
-      return CONTACT_MESSAGE_FIELDS_CALCULATOR[key];
+      dataFields = CONTACT_MESSAGE_FIELDS_CALCULATOR[key];
     }
     return dataFields;
   };
