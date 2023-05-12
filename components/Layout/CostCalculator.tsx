@@ -3,6 +3,7 @@ import { Button, Tooltip } from "@material-tailwind/react";
 import Link from "next/link";
 import { useState } from "react";
 import { AiFillExclamationCircle } from "react-icons/ai";
+import CalculatorForm from "./CalculatorForm";
 
 export default function CostCalculator({ data }: { data: CostDataType }) {
   const [inputRange, setInputRange] = useState<number>(500);
@@ -45,25 +46,22 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
   // Calcul productie instalatie pe luna
   const producedKwt = instCalcul * monthlyPowerBasedOnDays;
 
-  // Kilowati ramasi
-  // const priceRemainingKwtYear = (producedKwt - kwtProd) * 0.8 * 12;
-
   // Calcul instalatie electrica
   const panelsPrice = instCalcul * 6000;
 
   // Pret total + economisire ca prosumator
-  // const totalEconomyPrice = economyPerYear + priceRemainingKwtYear;
   const totalEconomyPrice = economyPerYear;
 
   // Amortizare
   const amortizare = (panelsPrice / totalEconomyPrice).toFixed(2);
-  // console.log(panelsPrice, totalEconomyPrice, priceRemainingKwtYear);
 
   // Text tooltip
   const TooltipText = (
-    <p className="text-base text-white ">
-      Menționăm că acest calcul este o estimare aproximativă care se axează doar
-      pe panourile solare și se bazează pe următoarele date:
+    <>
+      <p className="text-base text-white ">
+        Menționăm că acest calcul este o estimare aproximativă care se axează
+        doar pe panourile solare și se bazează pe următoarele date:
+      </p>
       <ul className="mt-1">
         <li className="text-gray-300">
           Cost Kilowat - <span className="text-white"> {kwtPrice} lei</span>
@@ -73,7 +71,7 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
           <span className="text-white">{dailyPowerCollection} ore/zi</span>
         </li>
       </ul>
-    </p>
+    </>
   );
   return (
     <div className="py-14 md:py-24 lg:py-32 px-4 bg-[#F5F3ED] flex flex-col items-center">
@@ -136,9 +134,12 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
         </div>
       </div>
       <div className="mt-10 flex flex-col gap-4 items-center">
-        <Link href="/contact">
-          <button className="btn-primary">Cere Oferta</button>
-        </Link>
+        <CalculatorForm
+          monthlyCost={inputRange}
+          economy={economyPerYear}
+          panelsPrice={instCalcul < 3 ? 3 * 6000 : instCalcul * 6000}
+          priceCoverage={amortizare}
+        />
       </div>
     </div>
   );

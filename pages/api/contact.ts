@@ -30,24 +30,41 @@ const CONTACT_MESSAGE_FIELDS_MONTAJE: ContactMessageFields = {
   kilowati: "Kilowati",
   locatie: "Adresă",
 };
+const CONTACT_MESSAGE_FIELDS_CALCULATOR: ContactMessageFields = {
+  name: "Nume Client",
+  email: "Email Client",
+  phone: "Numar Telefon",
+  subject: "Subiect",
+  message: "Mesaj",
+  locatie: "Adresă",
+  monthlyCost: "Cost Lunar",
+  economy: "Economisire intr-un an",
+  panelsPrice: "Cost Estimativ Panouri",
+  priceCoverage: "Amortizare in",
+};
 
 const generateEmailContat = (data: Data) => {
+  const setDataFields = (key: string) => {
+    let dataFields = CONTACT_MESSAGE_FIELDS[key];
+    if (data.subject === "Montaje Industriale") {
+      return CONTACT_MESSAGE_FIELDS_MONTAJE[key];
+    }
+    if (data.subject === "Cost Calculator") {
+      return CONTACT_MESSAGE_FIELDS_CALCULATOR[key];
+    }
+    return dataFields;
+  };
+
   const stringData = Object.entries(data).reduce((str, [key, val]) => {
-    return (str += `${
-      data.subject === "Montaje Industriale"
-        ? CONTACT_MESSAGE_FIELDS_MONTAJE[key]
-        : CONTACT_MESSAGE_FIELDS[key]
-    } : \n${val}} \n \n`);
+    return (str += `${setDataFields(key)} : \n${val}} \n \n`);
   }, "");
 
   const htmlData = Object.entries(data).reduce(
     (str, [key, val]) =>
       (str += `<h1 
-    class="form-heading" align="left">${
-      data.subject === "Montaje Industriale"
-        ? CONTACT_MESSAGE_FIELDS_MONTAJE[key]
-        : CONTACT_MESSAGE_FIELDS[key]
-    }</h1><p class="form-answer" align="left">${val}</p>`),
+    class="form-heading" align="left">${setDataFields(
+      key
+    )}</h1><p class="form-answer" align="left">${val}</p>`),
     ""
   );
 
