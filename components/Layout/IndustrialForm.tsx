@@ -89,7 +89,7 @@ export default function IndustrialForm({ MenuOpen }: Props) {
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-8 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[95vh] h-full"
+          className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-8 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[90vh] h-full"
         >
           <div className="flex gap-4 flex-wrap">
             <div className="flex flex-col gap-1 grow">
@@ -148,7 +148,7 @@ export default function IndustrialForm({ MenuOpen }: Props) {
           <div className="flex flex-col gap-1 grow">
             <label className="font-medium">Locatie</label>
             <input
-              placeholder="Str. Zorilor 7A, Cluj-Napoca, 400476, Cluj, România."
+              placeholder="Str. Zorilor 7A, Cluj-Napoca"
               className="input"
               type="text"
               name="locatie"

@@ -178,7 +178,7 @@ export default function CalculatorForm({
           <div className="flex flex-col gap-1 grow">
             <label className="font-medium">Locatie</label>
             <input
-              placeholder="Str. Zorilor 7A, Cluj-Napoca, 400476, Cluj, România."
+              placeholder="Str. Zorilor 7A, Cluj-Napoca"
               className="input"
               type="text"
               name="locatie"
