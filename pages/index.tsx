@@ -143,7 +143,7 @@ export default function Home({
                 ref={rowRef}
                 className="flex items-center scrollbar-hide space-x-3 overflow-x-scroll md:space-x-5 md:p-2 px-4"
               >
-                {reviews.data.map((review) => (
+                {/* {reviews.data.map((review) => (
                   <Testimonial
                     key={review.id}
                     name={review.attributes.NumeClient}
@@ -152,7 +152,7 @@ export default function Home({
                     date={review.attributes.DataRecenzie}
                     content={review.attributes.DescriereRecenzie}
                   />
-                ))}
+                ))} */}
               </div>
 
               {windowWidth > 767 ? (
