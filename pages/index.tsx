@@ -176,6 +176,9 @@ export default function Home({
               Vezi toate recenziile
             </Link>
           </div>
+        </div> */}
+        <div className="mt-20 ">
+          <Questions questions={questions.data} />
         </div>
         <SimpleSection
           title={hpSection.data.attributes.titlu}
