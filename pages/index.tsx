@@ -176,7 +176,7 @@ export default function Home({
               Vezi toate recenziile
             </Link>
           </div>
-        </div> */}
+        </div>
         <SimpleSection
           title={hpSection.data.attributes.titlu}
           description={hpSection.data.attributes.Descriere}
@@ -184,10 +184,6 @@ export default function Home({
           smallImage={hpSection.data.attributes.ImagineMica}
           partenersList={parteners.data.attributes.parteneri.data}
         />
-
-        <div className="mt-20 ">
-          <Questions questions={questions.data} />
-        </div>
       </main>
     </>
   );
