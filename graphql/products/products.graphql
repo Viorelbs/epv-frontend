@@ -1,0 +1,18 @@
+query ProductsCards {
+  produses {
+    data {
+      attributes {
+        Nume
+        Pret
+        PretVechi
+        PozeProdus {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
