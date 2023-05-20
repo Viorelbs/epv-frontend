@@ -133,7 +133,7 @@ export default function Home({
           brands={brands}
           powers={powers}
         /> */}
-        <div className="py-24 lg:py-32">
+        {/* <div className="py-24 lg:py-32">
           <div className="container mx-auto">
             <h2 className="text-center mb-8">
               Clienții ne recomandă cu încredere
@@ -143,7 +143,7 @@ export default function Home({
                 ref={rowRef}
                 className="flex items-center scrollbar-hide space-x-3 overflow-x-scroll md:space-x-5 md:p-2 px-4"
               >
-                {/* {reviews.data.map((review) => (
+                {reviews.data.map((review) => (
                   <Testimonial
                     key={review.id}
                     name={review.attributes.NumeClient}
@@ -152,7 +152,7 @@ export default function Home({
                     date={review.attributes.DataRecenzie}
                     content={review.attributes.DescriereRecenzie}
                   />
-                ))} */}
+                ))}
               </div>
 
               {windowWidth > 767 ? (
@@ -176,7 +176,7 @@ export default function Home({
               Vezi toate recenziile
             </Link>
           </div>
-        </div>
+        </div> */}
         <SimpleSection
           title={hpSection.data.attributes.titlu}
           description={hpSection.data.attributes.Descriere}

@@ -14,8 +14,8 @@ import {
 import { useDispatch } from "react-redux";
 import { setCart } from "@/redux/cartOpen";
 import { loadStripe } from "@stripe/stripe-js/pure";
-import { makeRequest } from "@/lib/makeReuest";
 import Loader from "../Common/Loader";
+import { makeRequest } from "@/lib/makeRequest";
 interface Props {
   window?: () => Window;
   scroll: boolean;
