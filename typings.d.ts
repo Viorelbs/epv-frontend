@@ -440,3 +440,34 @@ export interface CostDataType {
     TimpRandamentPanouZi: number;
   };
 }
+
+export type FormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  locatie: string;
+  monthlyCost: number;
+  economy: string;
+  panelsPrice: number;
+  priceCoverage: string;
+};
+
+export default interface CalculatorProps {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  setConfirmOpen: Dispatch<SetStateAction<boolean>>;
+  handleClose: () => void;
+  monthlyCost: number;
+  economy: number;
+  panelsPrice: number;
+  priceCoverage: string;
+  setState: Dispatch<
+    SetStateAction<{ isLoading: boolean; error: string; values: FormValues }>
+  >;
+  values: FormValues;
+  initState: { isLoading: boolean; error: string; values: FormValues };
+  handleSubmit: FormEventHandler<HTMLFormElement>;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  isLoading: boolean;
+}
