@@ -1,22 +1,25 @@
-import React from "react";
-import { Chip } from "@material-tailwind/react";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { ChangeEventHandler, FormEventHandler } from "react";
 import Modal from "@mui/material/Modal";
-import CalculatorProps from "@/typings";
+import { AiOutlineClose } from "react-icons/ai";
+import { IndustrialFormValues } from "@/typings";
 import Loader from "../Common/Loader";
 
-export default function CalculatorFormModal({
+interface Props {
+  open: boolean;
+  values: IndustrialFormValues;
+  handleClose: () => void;
+  handleSubmit: FormEventHandler<HTMLFormElement>;
+  handleChange: ChangeEventHandler<HTMLInputElement> | any;
+  isLoading: boolean;
+}
+export default function IndustrialFormModal({
   open,
   handleClose,
-  monthlyCost,
-  economy,
-  panelsPrice,
-  priceCoverage,
   values,
-  handleSubmit,
   handleChange,
+  handleSubmit,
   isLoading,
-}: CalculatorProps) {
+}: Props) {
   return isLoading ? (
     <div className="min-h-screen min-w-screen grid z-50 place-content-center fixed left-0 right-0 bottom-0 top-0 bg-[#ffffff90]">
       <Loader size={10} />
@@ -30,46 +33,20 @@ export default function CalculatorFormModal({
     >
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-5 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[90vh] h-full"
+        className="flex flex-col bg-white top-0 bottom-0 left-0 max-w-[90vw] right-0 m-auto md:h-fit absolute gap-6 lg:max-w-4xl border p-5 rounded-md overflow-auto  scrollbar-hide md:scrollbar-default max-h-[90vh] h-full"
       >
-        <div>
-          <div className="flex justify-between">
-            <h4 className="mb-2">Date Calculator</h4>
-            <AiOutlineClose
-              onClick={handleClose}
-              className="w-5 h-5 cursor-pointer hover:text-red-500"
-            />
-          </div>
-          <div className="flex gap-3 flex-wrap">
-            <Chip
-              color="amber"
-              className="normal-case"
-              value={`Cost Lunar: ${monthlyCost} Lei`}
-            />
-            <Chip
-              color="amber"
-              value={`Economisire intr-un an :${economy.toLocaleString(
-                "RO"
-              )} Lei`}
-              className="normal-case"
-            />
-            <Chip
-              color="amber"
-              value={`Cost Estimativ Panouri: ${panelsPrice} Lei`}
-              className="normal-case"
-            />
-            <Chip
-              color="amber"
-              value={`Amortizare in: ${priceCoverage} ani`}
-              className="normal-case"
-            />
-          </div>
+        <div className="flex justify-between">
+          <h3>Montaje Industriale</h3>
+          <AiOutlineClose
+            onClick={handleClose}
+            className="w-5 h-5 cursor-pointer hover:text-red-500"
+          />
         </div>
         <div className="flex gap-4 flex-wrap">
           <div className="flex flex-col gap-1 grow">
-            <label className="font-medium">Nume</label>
+            <label className="font-medium">Nume Societate</label>
             <input
-              placeholder="Ion Alexandru"
+              placeholder="Societatea SRL"
               className="input"
               type="text"
               name="name"
@@ -105,13 +82,25 @@ export default function CalculatorFormModal({
               onChange={handleChange}
             />
           </div>
+          <div className="flex flex-col gap-1 grow">
+            <label className="font-medium">Estimare kilowati</label>
+            <input
+              placeholder="10"
+              className="input"
+              type="number"
+              name="kilowati"
+              value={values.kilowati}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
 
         <div className="flex flex-col gap-1 grow">
           <label className="font-medium">Locatie</label>
           <input
             placeholder="Str. Zorilor 7A, Cluj-Napoca"
-            className="input "
+            className="input"
             type="text"
             name="locatie"
             value={values.locatie}
@@ -147,7 +136,6 @@ export default function CalculatorFormModal({
             solicitare.*
           </label>
         </div>
-
         <button type="submit" className="btn-primary w-fit">
           Trimite Solicitare{" "}
         </button>

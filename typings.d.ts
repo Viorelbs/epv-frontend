@@ -455,19 +455,23 @@ export type FormValues = {
 
 export default interface CalculatorProps {
   open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  setConfirmOpen: Dispatch<SetStateAction<boolean>>;
   handleClose: () => void;
   monthlyCost: number;
   economy: number;
   panelsPrice: number;
   priceCoverage: string;
-  setState: Dispatch<
-    SetStateAction<{ isLoading: boolean; error: string; values: FormValues }>
-  >;
   values: FormValues;
   initState: { isLoading: boolean; error: string; values: FormValues };
   handleSubmit: FormEventHandler<HTMLFormElement>;
   handleChange: ChangeEventHandler<HTMLInputElement>;
   isLoading: boolean;
 }
+
+export type IndustrialFormValues = {
+  name: string;
+  email: string;
+  kilowati: number;
+  message: string;
+  phone: string;
+  locatie: string;
+};

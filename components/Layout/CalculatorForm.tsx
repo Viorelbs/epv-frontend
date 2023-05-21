@@ -88,15 +88,12 @@ export default function CalculatorForm({
       {open ? (
         <DynamicModalForm
           open={open}
-          setOpen={setOpen}
-          setConfirmOpen={setConfirmOpen}
           handleClose={handleClose}
           monthlyCost={monthlyCost}
           economy={economy}
           panelsPrice={panelsPrice}
           initState={initState}
           priceCoverage={priceCoverage}
-          setState={setState}
           values={values}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
