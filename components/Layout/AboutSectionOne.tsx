@@ -42,6 +42,7 @@ export default function AboutSectionOne({
           width={150}
           height={150}
           alt="image two"
+          priority
         />
         <Image
           className="w-full  mt-auto relative right-[10%] top-[10%] object-cover rounded-xl flex-1 max-w-[45vw]"
@@ -49,6 +50,7 @@ export default function AboutSectionOne({
           alt="Panouri Solare Vile"
           width={150}
           height={150}
+          priority
         />
       </div>
     </div>

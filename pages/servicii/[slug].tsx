@@ -68,6 +68,7 @@ export default function Servicii({ service, contactInfo }: Props) {
                 alt="imagine servicii panouri solare"
                 width={800}
                 height={800}
+                priority
               />
             </div>
             <div className="mt-14 font-light parsed-text">

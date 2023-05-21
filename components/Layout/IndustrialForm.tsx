@@ -7,9 +7,11 @@ import { IndustrialFormValues } from "@/typings";
 // Importing dynamic modals
 const DynamicConfirmModal = dynamic(() => import("./DynamicConfirmModal"), {
   loading: () => <Loader size={6} />,
+  ssr: false,
 });
 const DynamicIndustrialForm = dynamic(() => import("./IndustrialFormModal"), {
   loading: () => <Loader size={6} />,
+  ssr: false,
 });
 
 const initValues: IndustrialFormValues = {

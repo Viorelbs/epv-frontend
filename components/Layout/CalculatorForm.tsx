@@ -7,10 +7,12 @@ import { FormValues } from "@/typings";
 // importing dynamic modals
 const DynamicModalForm = dynamic(() => import("./CalculatorFormModal"), {
   loading: () => <Loader size={6} />,
+  ssr: false,
 });
 
 const DynamicConfirmMessage = dynamic(() => import("./DynamicConfirmModal"), {
   loading: () => <Loader size={6} />,
+  ssr: false,
 });
 
 interface Props {
