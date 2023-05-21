@@ -21,7 +21,6 @@ import {
 } from "@/typings";
 import { client } from "./_app";
 import Head from "next/head";
-import { setRevalidateHeaders } from "next/dist/server/send-payload";
 
 interface Props {
   sectionOne: AboutSectionOneType;

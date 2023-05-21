@@ -1,7 +1,7 @@
 import { Input, Textarea } from "@material-tailwind/react";
 import { BsSend } from "react-icons/bs";
 import sendContactForm from "../../lib/api";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import Modal from "@mui/material/Modal";
 import Loader from "../Common/Loader";

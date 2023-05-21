@@ -1,6 +1,6 @@
 import { RootState } from "@/redux/store";
 import { SwipeableDrawer } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiBasket } from "react-icons/bi";
 import { useSelector } from "react-redux";
@@ -58,21 +58,30 @@ export default function Cart(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   // Total cart sum
-  const totalSum = products.reduce(
-    (acc: number, product: { price: number; qty: number }) =>
-      acc + product.price * product.qty,
-    0
-  );
-  const totalSumOldPrice = products.reduce(
-    (acc: number, product: { oldPrice: number; qty: number }) =>
-      acc + product.oldPrice * product.qty,
-    0
-  );
+  const totalSum = useMemo(() => {
+    return products.reduce(
+      (acc: number, product: { price: number; qty: number }) =>
+        acc + product.price * product.qty,
+      0
+    );
+  }, [products]);
 
-  const cartLength = products.reduce(
-    (acc: number, product: { qty: number }) => acc + product.qty,
-    0
-  );
+  // Old price sum
+  const totalSumOldPrice = useMemo(() => {
+    return products.reduce(
+      (acc: number, product: { oldPrice: number; qty: number }) =>
+        acc + product.oldPrice * product.qty,
+      0
+    );
+  }, [products]);
+
+  // Cart Length
+  const cartLength = useMemo(() => {
+    return products.reduce(
+      (acc: number, product: { qty: number }) => acc + product.qty,
+      0
+    );
+  }, [products]);
 
   // Closing modal when no products
   useEffect(() => {

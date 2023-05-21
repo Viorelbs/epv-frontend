@@ -1,7 +1,7 @@
 import { CostDataType } from "@/typings";
 import { Button, Tooltip } from "@material-tailwind/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import CalculatorForm from "./CalculatorForm";
 
@@ -13,7 +13,7 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
   };
 
   // Economy per year
-  const economyPerYear = inputRange * 12;
+  const economyPerYear = useMemo(() => inputRange * 12, [inputRange]);
 
   let ctaText =
     "Afla in cat timp iti amortizezi investitia in functie de costul facturii lunare";
@@ -41,7 +41,10 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
   const monthlyPowerBasedOnDays = dailyPowerCollection * 30;
 
   // Calcul Instalatie
-  const instCalcul = Math.ceil(kwtProd / monthlyPowerBasedOnDays);
+  const instCalcul = useMemo(
+    () => Math.ceil(kwtProd / monthlyPowerBasedOnDays),
+    [kwtProd, monthlyPowerBasedOnDays]
+  );
 
   // Calcul productie instalatie pe luna
   const producedKwt = instCalcul * monthlyPowerBasedOnDays;
@@ -53,7 +56,10 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
   const totalEconomyPrice = economyPerYear;
 
   // Amortizare
-  const amortizare = (panelsPrice / totalEconomyPrice).toFixed(2);
+  const amortizare = useMemo(
+    () => (panelsPrice / totalEconomyPrice).toFixed(2),
+    [panelsPrice, totalEconomyPrice]
+  );
 
   // Text tooltip
   const TooltipText = (

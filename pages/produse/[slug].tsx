@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ImageSimple, Product, ProdusCardType } from "@/typings";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { client, URL } from "../_app";
@@ -23,7 +23,6 @@ import HTMLReactParser from "html-react-parser";
 import Head from "next/head";
 import { FiShoppingBag } from "react-icons/fi";
 import useWidth from "@/hooks/useWidth";
-import { Link } from "react-bootstrap-icons";
 
 interface Props {
   product: Product;
@@ -62,11 +61,20 @@ export default function ProductPage({ product, productsCards }: Props) {
     0
   );
   const ratingLength = product.attributes.review_produses.data.length;
-  const averageRating = sumRatings / ratingLength;
+  const averageRating = useMemo(
+    () => sumRatings / ratingLength,
+    [sumRatings, ratingLength]
+  );
 
+  // Setting current image
+  const memoizedCurrentImage = useMemo(
+    () => product.attributes.PozeProdus.data[0].attributes.url,
+    [product.attributes.PozeProdus.data]
+  );
   useEffect(() => {
-    setCurrentImage(product.attributes.PozeProdus.data[0].attributes.url);
-  }, []);
+    setCurrentImage(memoizedCurrentImage);
+  }, [memoizedCurrentImage]);
+
   useEffect(() => {
     const prod = favProducts.products.filter(
       (item: ProdusCardType) => item.id === product.id
