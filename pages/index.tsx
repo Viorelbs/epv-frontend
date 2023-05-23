@@ -115,7 +115,7 @@ export default function Home({
           content={seo.data?.attributes.seo?.keywords || "Panouri Solare"}
         />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
       <main>
         <Hero
