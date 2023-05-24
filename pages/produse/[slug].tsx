@@ -338,6 +338,7 @@ export async function getStaticProps({ params }: any) {
 
   return {
     props: {
+      revalidate: 10, // In seconds
       product: data.data.produses.data[0],
       productsCards: randomSuggestions.slice(0, 4),
       ogTitle: data.data.produses.data[0].attributes.seo[0]?.metaTitle || null,

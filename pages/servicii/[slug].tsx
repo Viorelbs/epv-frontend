@@ -129,6 +129,7 @@ export const getStaticProps = async ({ params }: any) => {
   ]);
 
   return {
+    revalidate: 10, // In seconds
     props: {
       service: serviceData.data.serviciis.data[0],
       contactInfo: contactInfo.data.contactInfo.data,
