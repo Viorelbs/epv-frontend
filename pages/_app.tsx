@@ -20,6 +20,11 @@ export const client: any = new ApolloClient({
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
   },
   cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: "no-cache",
+    },
+  },
 });
 
 const persistor = persistStore(store);
