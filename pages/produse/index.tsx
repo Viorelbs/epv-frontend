@@ -70,9 +70,8 @@ export default function Produse({
   );
 }
 
-export const getStaticProps = async (context: any) => {
-  const { query } = context;
-
+export const getServerSideProps = async ({ query }: any) => {
+  console.log(query);
   const [productsData, categoriesData, brandsData, powerData, seo] =
     await Promise.all([
       client.query({
@@ -92,9 +91,9 @@ export const getStaticProps = async (context: any) => {
             : query?.brand?.split(",").map(Number) || undefined,
           putereId: query?.cat?.includes(2)
             ? undefined
-            : query?.powers?.length === 0
+            : query?.power?.length === 0
             ? undefined
-            : query?.powers?.split(",").map(Number) || undefined,
+            : query?.power?.split(",").map(Number) || undefined,
         },
       }),
       client.query({

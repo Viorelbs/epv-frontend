@@ -475,3 +475,13 @@ export type IndustrialFormValues = {
   phone: string;
   locatie: string;
 };
+
+// export interface BrandInterface {
+//   id: string;
+//   attributes: {
+//     Brand: string;
+//     produses: {
+//       data: {}[];
+//     };
+//   };
+// }
