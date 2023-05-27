@@ -480,6 +480,7 @@ export interface ArticleCardInterface {
   attributes: {
     titlu: string;
     ScurtaDescriere: string;
+    slug: string;
     createdAt: string;
     PozaPrincipalaArticol: {
       data: {
@@ -488,10 +489,76 @@ export interface ArticleCardInterface {
         };
       };
     };
-    categorie_articoles: {
+    categorie_articole: {
       data: {
         attributes: {
           TitluCategorie: string;
+        };
+      };
+    };
+  };
+}
+
+export interface ArticleInterface {
+  titlu: string;
+  slug: string;
+  textUnuArticol: string;
+  textDoiArticol: string;
+  Imagini: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    }[];
+  };
+  PozaPrincipalaArticol: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
+  createdAt: string;
+  categorie_articole: {
+    data: {
+      attributes: {
+        TitluCategorie: string;
+      };
+    };
+  };
+}
+
+export interface ArticleCategoryInterface {
+  categorieArticoles: {
+    data: {
+      attributes: {
+        TitluCategorie: string;
+        slug: string;
+        articoles: {
+          data: any[];
+        };
+      };
+    }[];
+  };
+}
+
+export interface CategoryDataInterface {
+  attributes: {
+    TitluCategorie: string;
+    articoles: {
+      data: {
+        attributes: {
+          titlu: string;
+          ScurtaDescriere: string;
+          PozaPrincipalaArticol: {
+            data: {
+              attributes: {
+                url: string;
+              };
+            };
+          };
+          slug: string;
+          createdAt: string;
         };
       }[];
     };

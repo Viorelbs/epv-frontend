@@ -777,15 +777,50 @@ export const QUERY_CALC = gql`
     }
   }
 `;
-
+export const QUERY_ARTICLE = gql`
+  query ($slug: String) {
+    articoles(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          titlu
+          slug
+          textUnuArticol
+          textDoiArticol
+          Imagini {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          PozaPrincipalaArticol {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          createdAt
+          categorie_articole {
+            data {
+              attributes {
+                TitluCategorie
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 export const QUERY_ARTICLE_CARD = gql`
   query {
     articoles {
       data {
         id
         attributes {
+          slug
           titlu
-          data
           ScurtaDescriere
           createdAt
           PozaPrincipalaArticol {
@@ -796,10 +831,141 @@ export const QUERY_ARTICLE_CARD = gql`
             }
           }
 
-          categorie_articoles {
+          categorie_articole {
             data {
               attributes {
                 TitluCategorie
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+export const QUERY_SIMILAR_ARTICLE_CARD = gql`
+  query ($slug: String!) {
+    articles(filters: { slug: { ne: $slug } }) {
+      data {
+        id
+        attributes {
+          slug
+          titlu
+          ScurtaDescriere
+          createdAt
+          PozaPrincipalaArticol {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          categorie_articole {
+            data {
+              attributes {
+                TitluCategorie
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_ARTICLE_SLUG = gql`
+  query {
+    articoles {
+      data {
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_ARTICLE_CATEGORY = gql`
+  query {
+    categorieArticoles {
+      data {
+        attributes {
+          TitluCategorie
+          slug
+          articoles {
+            data {
+              id
+              attributes {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_CATEGORY_ARTICLE_SLUG = gql`
+  query {
+    categorieArticoles {
+      data {
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_CATEGORY_ARTICLE = gql`
+  query ($slug: String!) {
+    categorieArticoles(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          TitluCategorie
+          articoles {
+            data {
+              attributes {
+                titlu
+                ScurtaDescriere
+                PozaPrincipalaArticol {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+                slug
+                createdAt
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_LAST_ARTICLES = gql`
+  query {
+    articoles(sort: "createdAt:desc") {
+      data {
+        attributes {
+          titlu
+          createdAt
+          slug
+          categorie_articole {
+            data {
+              attributes {
+                TitluCategorie
+              }
+            }
+          }
+          PozaPrincipalaArticol {
+            data {
+              attributes {
+                url
               }
             }
           }
