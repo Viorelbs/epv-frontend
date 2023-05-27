@@ -80,7 +80,7 @@ export default function CostCalculator({ data }: { data: CostDataType }) {
     </>
   );
   return (
-    <div className="py-14 md:py-24 lg:py-32 px-4 bg-[#F5F3ED] flex flex-col items-center">
+    <div className="py-14 md:py-24 lg:py-32 px-4 bg-secondary flex flex-col items-center">
       <div className="max-w-5xl">
         <div className="text-center mb-10">
           <h2 className="mb-3">Ce cost lunar ai cu energia electrica?</h2>

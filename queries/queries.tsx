@@ -777,3 +777,34 @@ export const QUERY_CALC = gql`
     }
   }
 `;
+
+export const QUERY_ARTICLE_CARD = gql`
+  query {
+    articoles {
+      data {
+        id
+        attributes {
+          titlu
+          data
+          ScurtaDescriere
+          createdAt
+          PozaPrincipalaArticol {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+
+          categorie_articoles {
+            data {
+              attributes {
+                TitluCategorie
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

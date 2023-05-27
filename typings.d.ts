@@ -475,13 +475,25 @@ export type IndustrialFormValues = {
   phone: string;
   locatie: string;
 };
-
-// export interface BrandInterface {
-//   id: string;
-//   attributes: {
-//     Brand: string;
-//     produses: {
-//       data: {}[];
-//     };
-//   };
-// }
+export interface ArticleCardInterface {
+  id: string;
+  attributes: {
+    titlu: string;
+    ScurtaDescriere: string;
+    createdAt: string;
+    PozaPrincipalaArticol: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
+    categorie_articoles: {
+      data: {
+        attributes: {
+          TitluCategorie: string;
+        };
+      }[];
+    };
+  };
+}

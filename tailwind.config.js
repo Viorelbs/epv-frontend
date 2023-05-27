@@ -15,6 +15,11 @@ module.exports = withMT({
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
     },
+    colors: {
+      primary: "#F7CD1F",
+      secondary: "#F5F3ED",
+    },
   },
+
   plugins: [require("tailwind-scrollbar-hide")],
 });

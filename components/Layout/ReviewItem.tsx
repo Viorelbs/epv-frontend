@@ -8,6 +8,14 @@ interface Props {
   review: string;
   date: string;
 }
+
+export const timeformat: Intl.DateTimeFormatOptions = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour12: false,
+};
 export default function ReviewItem({
   name,
   email,
@@ -16,14 +24,6 @@ export default function ReviewItem({
   date,
 }: Props) {
   function formatDate(dateString: string) {
-    const timeformat: Intl.DateTimeFormatOptions = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour12: false,
-    };
-
     const date = new Date(dateString);
     return date.toLocaleDateString("ro-RO", timeformat);
   }

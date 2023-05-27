@@ -82,6 +82,7 @@ export default function Header() {
             </MenuList>
           )}
         </Menu>
+        <Link href="/blog"> Blog</Link>
         <Link href="/contact"> Contact</Link>
       </nav>
       <div className="flex items-center gap-6">

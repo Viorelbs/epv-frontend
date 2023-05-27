@@ -71,7 +71,6 @@ export default function Produse({
 }
 
 export const getServerSideProps = async ({ query }: any) => {
-  console.log(query);
   const [productsData, categoriesData, brandsData, powerData, seo] =
     await Promise.all([
       client.query({
