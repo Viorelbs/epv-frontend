@@ -1,16 +1,22 @@
-import { QUERY_ARTICLE, QUERY_ARTICLE_SLUG } from "@/queries/queries";
+import {
+  QUERY_ARTICLE,
+  QUERY_ARTICLE_SLUG,
+  QUERY_SIMILAR_ARTICLE_CARD,
+} from "@/queries/queries";
 import { client } from "../_app";
-import { ArticleInterface } from "@/typings";
+import { ArticleCardInterface, ArticleInterface } from "@/typings";
 import parse from "html-react-parser";
 import Image from "next/image";
 import BannerArticle from "@/components/Layout/BannerArticle";
+import BlogSmallCard from "@/components/Layout/BlogSmallCard";
 
 interface Props {
   article: ArticleInterface;
+  similarArticle: ArticleCardInterface[];
 }
 
-export default function BlogPage({ article }: Props) {
-  console.log(article);
+export default function BlogPage({ article, similarArticle }: Props) {
+  console.log(similarArticle);
   return (
     <div>
       <BannerArticle
@@ -32,6 +38,26 @@ export default function BlogPage({ article }: Props) {
           ))}
         </div>
         <div>{parse(article.textDoiArticol)}</div>
+        <div className="mt-10">
+          <h3 className="text-3xl font-medium">Articole Similare</h3>
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 sm:gap-4 mt-4">
+            {similarArticle.map((article) => (
+              <BlogSmallCard
+                key={article.id}
+                category={
+                  article.attributes.categorie_articole.data.attributes
+                    .TitluCategorie
+                }
+                title={article.attributes.titlu}
+                date={article.attributes.createdAt}
+                image={
+                  article.attributes.PozaPrincipalaArticol.data.attributes.url
+                }
+                slug={article.attributes.slug}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -52,9 +78,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const { slug } = params;
 
-  const [articleData] = await Promise.all([
+  const [articleData, similarArticle] = await Promise.all([
     client.query({
       query: QUERY_ARTICLE,
+      variables: { slug: slug },
+    }),
+    client.query({
+      query: QUERY_SIMILAR_ARTICLE_CARD,
       variables: { slug: slug },
     }),
   ]);
@@ -63,6 +93,7 @@ export async function getStaticProps({ params }: any) {
     revalidate: 10,
     props: {
       article: articleData.data.articoles.data[0].attributes,
+      similarArticle: similarArticle.data.articoles.data,
     },
   };
 }

@@ -7,16 +7,54 @@ import {
   QUERY_ARTICLE_CATEGORY,
   QUERY_LAST_ARTICLES,
 } from "@/queries/queries";
-import { ArticleCardInterface, ArticleCategoryInterface } from "@/typings";
+import {
+  ArticleCardInterface,
+  ArticleCategoryInterface,
+  ArticlePaginationInterface,
+} from "@/typings";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { Pagination } from "@mui/material";
 
 interface Props {
   articles: ArticleCardInterface[];
   lastArticles: ArticleCardInterface[];
   categories: ArticleCategoryInterface;
+  pagination: ArticlePaginationInterface;
 }
 
-export default function Blog({ articles, categories, lastArticles }: Props) {
-  // MUST DO PAGINATION
+export default function Blog({
+  articles,
+  categories,
+  lastArticles,
+  pagination,
+}: Props) {
+  const router = useRouter();
+  const paginationNumber = Math.ceil(pagination.total / 8);
+
+  useEffect(() => {
+    if (paginationNumber < 1) {
+      const queryParams = new URLSearchParams(
+        router.query as Record<string, string>
+      );
+      queryParams.set("page", "1");
+      router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
+        scroll: false,
+      });
+    }
+  }, [paginationNumber, router]);
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const queryParams = new URLSearchParams(
+      router.query as Record<string, string>
+    );
+
+    queryParams.set("page", `${value}`);
+    router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
+      scroll: false,
+    });
+  };
+
   return (
     <main className="bg-secondary">
       <Banner text="Blog" />
@@ -38,6 +76,16 @@ export default function Blog({ articles, categories, lastArticles }: Props) {
               articleDate={article.attributes.createdAt}
             />
           ))}
+          {paginationNumber > 1 && (
+            <Pagination
+              size="large"
+              color="standard"
+              onChange={handleChange}
+              count={Number(paginationNumber)}
+              variant="outlined"
+              shape={"rounded"}
+            ></Pagination>
+          )}
         </div>
         <BlogToolbar
           categoriesData={categories.categorieArticoles.data}
@@ -48,10 +96,14 @@ export default function Blog({ articles, categories, lastArticles }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ query }: any) {
   const [articlesData, categories, lastArticles] = await Promise.all([
     client.query({
       query: QUERY_ARTICLE_CARD,
+      variables: {
+        pageIdx: Number(query?.page) || 1,
+        size: 8,
+      },
     }),
     client.query({
       query: QUERY_ARTICLE_CATEGORY,
@@ -66,6 +118,7 @@ export async function getStaticProps() {
       articles: articlesData.data.articoles.data,
       categories: categories.data,
       lastArticles: lastArticles.data.articoles.data,
+      pagination: articlesData.data.articoles.meta.pagination,
     },
   };
 }

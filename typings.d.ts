@@ -564,3 +564,7 @@ export interface CategoryDataInterface {
     };
   };
 }
+
+export interface ArticlePaginationInterface {
+  total: number;
+}

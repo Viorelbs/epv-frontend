@@ -814,8 +814,13 @@ export const QUERY_ARTICLE = gql`
   }
 `;
 export const QUERY_ARTICLE_CARD = gql`
-  query {
-    articoles {
+  query ($pageIdx: Int, $size: Int) {
+    articoles(pagination: { page: $pageIdx, pageSize: $size }) {
+      meta {
+        pagination {
+          total
+        }
+      }
       data {
         id
         attributes {
@@ -845,13 +850,12 @@ export const QUERY_ARTICLE_CARD = gql`
 `;
 export const QUERY_SIMILAR_ARTICLE_CARD = gql`
   query ($slug: String!) {
-    articles(filters: { slug: { ne: $slug } }) {
+    articoles(filters: { slug: { ne: $slug } }) {
       data {
         id
         attributes {
           slug
           titlu
-          ScurtaDescriere
           createdAt
           PozaPrincipalaArticol {
             data {
