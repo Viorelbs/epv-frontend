@@ -27,8 +27,9 @@ export default function BlogPage({ article, similarArticle }: Props) {
       <div className="py-10 p-4 md:py-20 container mx-auto">
         <div>{parse(article.textUnuArticol)}</div>
         <div className="flex overflow-x-auto gap-4">
-          {article.Imagini.data.map((image) => (
+          {article.Imagini.data.map((image, idx) => (
             <Image
+              key={idx}
               src={image.attributes.url}
               width={400}
               height={400}
@@ -41,7 +42,7 @@ export default function BlogPage({ article, similarArticle }: Props) {
         <div className="mt-10">
           <h3 className="text-3xl font-medium">Articole Similare</h3>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 sm:gap-4 mt-4">
-            {similarArticle.map((article) => (
+            {similarArticle.map((article, idx) => (
               <BlogSmallCard
                 key={article.id}
                 category={
