@@ -19,13 +19,13 @@ export default function BannerArticle({ title, imageURL, category }: Props) {
         height={400}
       />
 
-      <div className="container mx-auto">
+      <div className="container mx-auto  px-4 md:px-0">
         <Chip
           value={category}
           color="amber"
-          className="normal-case text-sm md:text-md px-4 md:px-0"
+          className="normal-case text-sm md:text-md"
         />
-        <h1 className=" text-white font-semibold px-4 md:px-0 ">{title}</h1>
+        <h1 className=" text-white font-semibold  ">{title}</h1>
       </div>
     </div>
   );
