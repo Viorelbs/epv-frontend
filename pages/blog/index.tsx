@@ -96,7 +96,7 @@ export default function Blog({
   );
 }
 
-export async function getServerSideProps({ query }: any) {
+export async function getStaticProps({ query }: any) {
   const [articlesData, categories, lastArticles] = await Promise.all([
     client.query({
       query: QUERY_ARTICLE_CARD,
