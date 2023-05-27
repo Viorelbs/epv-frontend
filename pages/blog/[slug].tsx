@@ -16,7 +16,6 @@ interface Props {
 }
 
 export default function BlogPage({ article, similarArticle }: Props) {
-  console.log(similarArticle);
   return (
     <div>
       <BannerArticle

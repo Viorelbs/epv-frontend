@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function BannerArticle({ title, imageURL, category }: Props) {
-  console.log(imageURL);
   return (
     <div className="relative grid place-content-center min-h-[600px] ">
       <Image
@@ -21,7 +20,11 @@ export default function BannerArticle({ title, imageURL, category }: Props) {
       />
 
       <div className="container mx-auto">
-        <Chip value={category} color="amber" className="normal-case text-md" />
+        <Chip
+          value={category}
+          color="amber"
+          className="normal-case text-sm md:text-md px-4 md:px-0"
+        />
         <h1 className=" text-white font-semibold px-4 md:px-0 ">{title}</h1>
       </div>
     </div>
