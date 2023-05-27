@@ -120,6 +120,7 @@ export default function MobileMenu(props: Props) {
               >
                 Produse
               </Link> */}
+
               <Accordion open={openAc} icon={<Icon open={openAc} />}>
                 <AccordionHeader
                   onClick={handleOpen}
@@ -142,6 +143,15 @@ export default function MobileMenu(props: Props) {
                   </AccordionBody>
                 )}
               </Accordion>
+              <Link
+                href="/blog"
+                className="border-b py-3"
+                onClick={() => setOpen(false)}
+              >
+                {" "}
+                Blog
+              </Link>
+
               <Link
                 className="border-b py-3"
                 href="/contact"
