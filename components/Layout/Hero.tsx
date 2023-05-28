@@ -21,7 +21,7 @@ export default function Hero({ bgVideo, title, description }: Props) {
         autoPlay
         loop
       >
-        <source src={bgVideo as any} />
+        <source src={bgVideo as any} type="video/mp4" />
         <track kind="captions" label="English" srcLang="en" default />
       </video>
       <div className=" container mx-auto space-y-[5vh] sm:space-y-[10vh] py-24 px-4">
