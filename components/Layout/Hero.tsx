@@ -1,29 +1,42 @@
-import { URL } from "@/pages/_app";
 import { VideoType } from "@/typings";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { EconomyIcon, Guarantee, PanelIcon } from "../Common/Icons";
-import { Url } from "next/dist/shared/lib/router/router";
+import useWidth from "@/hooks/useWidth";
 
 interface Props {
   bgVideo: VideoType;
   title: string;
   description: string;
+  image: string;
 }
 
-export default function Hero({ bgVideo, title, description }: Props) {
+export default function Hero({ bgVideo, title, description, image }: Props) {
+  const { windowWidth } = useWidth();
   const router = useRouter();
   return (
     <div className="min-h-screen relative min-w-screen md:px-0 flex items-center">
-      <video
-        playsInline
-        className="h-full w-full absolute top-0 left-0 brightness-[40%] -z-[1] object-cover"
-        muted
-        autoPlay
-        loop
-      >
-        <source src={bgVideo as any} type="video/mp4" />
-        <track kind="captions" label="English" srcLang="en" default />
-      </video>
+      {windowWidth > 678 ? (
+        <video
+          playsInline
+          className="h-full w-full absolute top-0 left-0 brightness-[40%] -z-[1] object-cover"
+          muted
+          autoPlay
+          loop
+        >
+          <source src={bgVideo as any} type="video/mp4" />
+          <track kind="captions" label="English" srcLang="en" default />
+        </video>
+      ) : (
+        <Image
+          src={image}
+          alt="panouri solare"
+          width={400}
+          height={400}
+          className="absolute top-0 left-0 brightness-[40%] w-full h-full object-cover -z-[1]"
+        />
+      )}
+
       <div className=" container mx-auto space-y-[5vh] sm:space-y-[10vh] py-24 px-4">
         <div className="text-white sm:max-w-xl lg:max-w-[700px] ">
           <h1 className=" font-bold">{title}</h1>

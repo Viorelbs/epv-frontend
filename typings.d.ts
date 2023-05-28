@@ -6,6 +6,13 @@ export interface HeroType {
     };
     createdAt: string;
     descriere: string;
+    MobileImage: {
+      data: {
+        attributes: {
+          url;
+        };
+      };
+    };
     publishedAt: string;
     titlu: string;
     updatedAt: string;

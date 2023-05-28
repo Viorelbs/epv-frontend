@@ -122,6 +122,7 @@ export default function Home({
           bgVideo={hero.data.attributes.backgroundVideo.data.attributes.url}
           title={hero.data.attributes.titlu}
           description={hero.data.attributes.descriere}
+          image={hero.data.attributes.MobileImage?.data.attributes.url}
         />
 
         <CostCalculator data={calcData} />

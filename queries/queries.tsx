@@ -7,6 +7,7 @@ export const HERO_QUERY = gql`
         attributes {
           titlu
           descriere
+
           backgroundVideo {
             data {
               attributes {
@@ -357,6 +358,13 @@ export const QUERY_HERO = gql`
       data {
         attributes {
           titlu
+          MobileImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
           descriere
           backgroundVideo {
             data {
