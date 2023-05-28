@@ -15,6 +15,7 @@ export default function Hero({ bgVideo, title, description }: Props) {
   return (
     <div className="min-h-screen relative min-w-screen md:px-0 flex items-center">
       <video
+        playsInline
         className="h-full w-full absolute top-0 left-0 brightness-[40%] -z-[1] object-cover"
         muted
         autoPlay
