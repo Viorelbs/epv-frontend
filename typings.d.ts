@@ -526,6 +526,18 @@ export interface ArticleInterface {
       };
     };
   };
+  seo: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string;
+    metaImage: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
+  }[];
 }
 
 export interface ArticleCategoryInterface {

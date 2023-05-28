@@ -16,7 +16,6 @@ import {
 } from "@/typings";
 import { client } from "../_app";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 interface Props {
   productCard: { data: ProdusCardType[]; meta: {} };
@@ -39,7 +38,6 @@ export default function Produse({
   powers,
   seo,
 }: Props) {
-  const router = useRouter();
   return (
     <>
       <Head>
@@ -47,7 +45,7 @@ export default function Produse({
         <meta
           name="description"
           content={
-            seo.data?.attributes.seo?.metaDescription || "Panorui solare"
+            seo.data?.attributes.seo?.metaDescription || "Panouri solare"
           }
         />
         <meta

@@ -782,6 +782,19 @@ export const QUERY_ARTICLE = gql`
     articoles(filters: { slug: { eq: $slug } }) {
       data {
         attributes {
+          seo {
+            metaTitle
+            metaDescription
+            keywords
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+
           titlu
           slug
           textUnuArticol
@@ -970,6 +983,30 @@ export const QUERY_LAST_ARTICLES = gql`
             data {
               attributes {
                 url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_BLOG_PAGE_SEO = gql`
+  query {
+    blogPageSeo {
+      data {
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            canonicalURL
+            metaRobots
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
               }
             }
           }

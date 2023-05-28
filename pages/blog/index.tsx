@@ -5,22 +5,26 @@ import { client } from "../_app";
 import {
   QUERY_ARTICLE_CARD,
   QUERY_ARTICLE_CATEGORY,
+  QUERY_BLOG_PAGE_SEO,
   QUERY_LAST_ARTICLES,
 } from "@/queries/queries";
 import {
   ArticleCardInterface,
   ArticleCategoryInterface,
   ArticlePaginationInterface,
+  SEO,
 } from "@/typings";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Pagination } from "@mui/material";
+import Head from "next/head";
 
 interface Props {
   articles: ArticleCardInterface[];
   lastArticles: ArticleCardInterface[];
   categories: ArticleCategoryInterface;
   pagination: ArticlePaginationInterface;
+  seo: SEO;
 }
 
 export default function Blog({
@@ -28,6 +32,7 @@ export default function Blog({
   categories,
   lastArticles,
   pagination,
+  seo,
 }: Props) {
   const router = useRouter();
   const paginationNumber = Math.ceil(pagination.total / 8);
@@ -56,48 +61,63 @@ export default function Blog({
   };
 
   return (
-    <main className="bg-secondary">
-      <Banner text="Blog" />
-      <div className="py-14 md:py-24 container mx-auto flex flex-col md:grid md:grid-cols-8 gap-8 ">
-        <div className="md:col-start-1 md:col-end-6 xl:col-start-1 xl:col-end-7 space-y-10 px-4 sm:px-0">
-          {articles.map((article) => (
-            <BlogCard
-              key={article.id}
-              slug={article.attributes.slug}
-              title={article.attributes.titlu}
-              description={article.attributes.ScurtaDescriere}
-              image={
-                article.attributes.PozaPrincipalaArticol.data.attributes.url
-              }
-              category={
-                article.attributes.categorie_articole.data.attributes
-                  .TitluCategorie
-              }
-              articleDate={article.attributes.createdAt}
-            />
-          ))}
-          {paginationNumber > 1 && (
-            <Pagination
-              size="large"
-              color="standard"
-              onChange={handleChange}
-              count={Number(paginationNumber)}
-              variant="outlined"
-              shape={"rounded"}
-            ></Pagination>
-          )}
-        </div>
-        <BlogToolbar
-          categoriesData={categories.categorieArticoles.data}
-          lastArticles={lastArticles}
+    <>
+      <Head>
+        <title>{seo.data.attributes.seo.metaTitle || "Panouri solare"}</title>
+        <meta
+          name="description"
+          content={
+            seo.data?.attributes.seo?.metaDescription || "Panouri solare"
+          }
         />
-      </div>
-    </main>
+        <meta
+          name="keywords"
+          content={seo.data?.attributes.seo?.keywords || "Panouri Solare"}
+        />
+      </Head>
+      <main className="bg-secondary">
+        <Banner text="Blog" />
+        <div className="py-14 md:py-24 container mx-auto flex flex-col md:grid md:grid-cols-8 gap-8 ">
+          <div className="md:col-start-1 md:col-end-6 xl:col-start-1 xl:col-end-7 space-y-10 px-4 sm:px-0">
+            {articles.map((article) => (
+              <BlogCard
+                key={article.id}
+                slug={article.attributes.slug}
+                title={article.attributes.titlu}
+                description={article.attributes.ScurtaDescriere}
+                image={
+                  article.attributes.PozaPrincipalaArticol.data.attributes.url
+                }
+                category={
+                  article.attributes.categorie_articole.data.attributes
+                    .TitluCategorie
+                }
+                articleDate={article.attributes.createdAt}
+              />
+            ))}
+            {paginationNumber > 1 && (
+              <Pagination
+                size="large"
+                color="standard"
+                onChange={handleChange}
+                count={Number(paginationNumber)}
+                variant="outlined"
+                shape={"rounded"}
+              ></Pagination>
+            )}
+          </div>
+          <BlogToolbar
+            categoriesData={categories.categorieArticoles.data}
+            lastArticles={lastArticles}
+          />
+        </div>
+      </main>
+    </>
   );
 }
 
 export async function getStaticProps({ query }: any) {
-  const [articlesData, categories, lastArticles] = await Promise.all([
+  const [articlesData, categories, lastArticles, blogSeo] = await Promise.all([
     client.query({
       query: QUERY_ARTICLE_CARD,
       variables: {
@@ -111,6 +131,9 @@ export async function getStaticProps({ query }: any) {
     client.query({
       query: QUERY_LAST_ARTICLES,
     }),
+    client.query({
+      query: QUERY_BLOG_PAGE_SEO,
+    }),
   ]);
 
   return {
@@ -119,6 +142,7 @@ export async function getStaticProps({ query }: any) {
       categories: categories.data,
       lastArticles: lastArticles.data.articoles.data,
       pagination: articlesData.data.articoles.meta.pagination,
+      seo: blogSeo.data.blogPageSeo,
     },
   };
 }
