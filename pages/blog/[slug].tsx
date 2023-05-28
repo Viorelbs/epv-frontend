@@ -20,7 +20,7 @@ export default function BlogPage({ article, similarArticle }: Props) {
   return (
     <>
       <Head>
-        <title>{article.seo[0]?.metaTitle || "Epv Infinity"}</title>
+        <title>{article.titlu}</title>
         <meta
           name="description"
           content={article.seo[0]?.metaDescription || "Panorui solare"}
