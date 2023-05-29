@@ -1,6 +1,6 @@
-/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:3000/",
+  siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
   generateRobotsTxt: true, // (optional)
-  sitemapSize: 8000,
+  exclude: ["/produse/*"],
+  // ...other options
 };
