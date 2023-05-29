@@ -17,6 +17,7 @@ interface Props {
   contactInfo: ContactInfoType;
 }
 export default function Servicii({ service, contactInfo }: Props) {
+  console.log(service);
   return (
     <>
       <Head>
@@ -74,7 +75,7 @@ export default function Servicii({ service, contactInfo }: Props) {
             <div className="mt-14 font-light parsed-text">
               {parse(service.attributes.descriptionOne)}
             </div>
-            <div className="grid grid-cols-2 gap-4 mt-14">
+            <div className="flex gap-4 mt-14">
               <Image
                 className="grow rounded-xl"
                 src={service.attributes.ImageTwo.data.attributes.url}
@@ -92,6 +93,8 @@ export default function Servicii({ service, contactInfo }: Props) {
             </div>
             <div className="mt-14 parsed-text font-light">
               {parse(service.attributes.descriptionTwo)}
+              {service.attributes.descriptionThree &&
+                parse(service.attributes.descriptionThree)}
             </div>
           </div>
           <div className="col-span-3 xl:col-span-2 ">
