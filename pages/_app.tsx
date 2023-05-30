@@ -35,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <meta name="robots" content="index follow " />
         {/* Facebook Meta Tags */}
         <meta
           property="og:url"
