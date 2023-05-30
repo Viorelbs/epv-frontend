@@ -42,6 +42,9 @@ export default function Footer() {
             Produse
           </Link> */}
 
+          <Link className="footer-link" href="/blog">
+            Blog
+          </Link>
           <Link className="footer-link" href="/contact">
             Contact
           </Link>
