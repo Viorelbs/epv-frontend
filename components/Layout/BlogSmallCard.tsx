@@ -32,7 +32,7 @@ export default function BlogSmallCard({
       </div>
       <div className="flex-1 font-medium space-y-1 mt-1 cursor-pointer">
         <h4 className="group-hover:text-orange-600 ">{title}</h4>
-        <div className="flex justify-between flex-wrap gap-1">
+        <div className="flex justify-between flex-col gap-1">
           <span className="text-gray-800 block text-sm font-medium border-t border-gray-500 pt-[5px]">
             {category}
           </span>

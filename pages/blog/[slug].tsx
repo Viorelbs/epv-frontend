@@ -51,8 +51,8 @@ export default function BlogPage({ article, similarArticle }: Props) {
             ))}
           </div>
           <div>{parse(article.textDoiArticol)}</div>
-          <div className="mt-10">
-            <h3 className="text-3xl font-medium">Articole Similare</h3>
+          <div className="mt-10 border-t border-gray-400 pt-10">
+            <h3 className="text-3xl font-bold">Articole Similare</h3>
             <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 sm:gap-4 mt-4">
               {similarArticle.map((article, idx) => (
                 <BlogSmallCard
