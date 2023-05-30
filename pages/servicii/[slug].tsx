@@ -75,7 +75,7 @@ export default function Servicii({ service, contactInfo }: Props) {
             <div className="mt-14 font-light parsed-text">
               {parse(service.attributes.descriptionOne)}
             </div>
-            <div className="flex gap-4 mt-14">
+            <div className="flex gap-4 overflow-x-auto  mt-14">
               <Image
                 className="grow rounded-xl"
                 src={service.attributes.ImageTwo.data.attributes.url}
