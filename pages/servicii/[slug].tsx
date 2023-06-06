@@ -49,7 +49,7 @@ export default function Servicii({ service, contactInfo }: Props) {
         {service.attributes.seo[0]?.metaImage && (
           <meta
             name="og:image"
-            content={service.attributes.seo[0]?.metaImage.data.attributes.url}
+            content={service.attributes.seo[0]?.metaImage.data?.attributes.url}
           />
         )}
 

@@ -974,7 +974,7 @@ export const QUERY_CATEGORY_ARTICLE = gql`
 
 export const QUERY_LAST_ARTICLES = gql`
   query {
-    articoles(sort: "createdAt:desc") {
+    articoles(sort: "createdAt:desc", pagination: { pageSize: 4 }) {
       data {
         attributes {
           titlu
