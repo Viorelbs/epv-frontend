@@ -40,7 +40,7 @@ export default function ProductsSpecs({ desc, spec, id, reviews }: Props) {
       </Accordion>
       <Accordion open={open === 2} animate={customAnimation}>
         <AccordionHeader onClick={() => handleOpen(2)}>
-          Informatii Aditionale
+          Specificații
         </AccordionHeader>
         <AccordionBody>{HTMLReactParser(spec)}</AccordionBody>
       </Accordion>
