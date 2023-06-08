@@ -17,7 +17,6 @@ interface Props {
   contactInfo: ContactInfoType;
 }
 export default function Servicii({ service, contactInfo }: Props) {
-  console.log(service);
   return (
     <>
       <Head>
@@ -59,7 +58,7 @@ export default function Servicii({ service, contactInfo }: Props) {
         />
       </Head>
       <Banner text={service.attributes.title} />
-      <div className="bg-[#F5F3ED] py-20">
+      <div className="bg-[#F5F3ED] py-20 service">
         <div className="container mx-auto grid lg:grid-cols-6 gap-[5vw] px-4">
           <div className="col-span-3 xl:col-span-4">
             <div className="relative pt-[40%]">
