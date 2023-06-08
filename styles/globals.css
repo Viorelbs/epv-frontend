@@ -149,10 +149,14 @@ p {
 .testimonial p {
   font-size: 14px;
 }
+.service h2 {
+  font-size: 40px;
+  font-weight: 400;
+}
 .service h3,
 .service h4 {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 300;
 }
 /* Custom checkbox */
 .checkbox input {
