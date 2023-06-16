@@ -36,11 +36,11 @@ export default function SimpleSection({
               Contacteaza-ne
             </button>
             <Link
-              href="tel:+40 752 013 942"
+              href="tel: +40 723 866 452"
               className="flex gap-2 items-center font-medium justify-center"
             >
               <FiPhoneCall className="p-2 w-10 h-10 bg-white rounded-[100%] " />
-              +40 752 013 942
+              +40 723 866 452
             </Link>
           </div>
         </div>

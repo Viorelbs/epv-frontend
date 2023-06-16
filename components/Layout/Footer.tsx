@@ -23,11 +23,11 @@ export default function Footer() {
             Epv@info.contact
           </Link>
           <Link
-            href="tel:+40 752 013 942"
+            href="tel:+40 723 866 452"
             className="flex gap-2 hover:text-[#F7CD1F] text-sm md:text-md"
           >
             <FiPhoneCall className="w-5 h-5 md:w-6 md:h-6 shrink-0" />
-            +40 752 013 942
+            +40 723 866 452
           </Link>
         </div>
         <div className="flex flex-col gap-4">
