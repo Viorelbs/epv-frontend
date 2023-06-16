@@ -57,7 +57,7 @@ export default function Header() {
         />
         <Link href="/">Acasă</Link>
         <Link href="/despre-noi">Despre Noi</Link>
-        {/* <Link href="/produse">Produse</Link> */}
+        <Link href="/produse">Produse</Link>
         <Menu>
           <MenuHandler>
             <button

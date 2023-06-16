@@ -38,9 +38,9 @@ export default function Footer() {
           <Link className="footer-link" href="/despre-noi">
             Despre Noi
           </Link>
-          {/* <Link className="footer-link" href="/produse">
+          <Link className="footer-link" href="/produse">
             Produse
-          </Link> */}
+          </Link>
 
           <Link className="footer-link" href="/blog">
             Blog

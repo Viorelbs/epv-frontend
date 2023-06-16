@@ -44,10 +44,19 @@ export const PRODUCTS_CARDS_QUERY = gql`
         id
         attributes {
           createdAt
+          brand {
+            data {
+              id
+            }
+          }
+          putere {
+            data {
+              id
+            }
+          }
           slug
           Nume
           Pret
-
           category {
             data {
               attributes {

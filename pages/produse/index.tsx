@@ -58,7 +58,7 @@ export default function Produse({
 
         <ProductsGrid
           products={productCard}
-          filters={true}
+          filters={false}
           categories={categories}
           brands={brands}
           powers={powers}

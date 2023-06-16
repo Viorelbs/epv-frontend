@@ -1,4 +1,10 @@
-import { BrandsType, CategoryType, PowersType } from "@/typings";
+import {
+  BrandsType,
+  CategoryType,
+  PowersType,
+  ProdusCardType,
+} from "@/typings";
+import { checkbox } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 
@@ -12,26 +18,57 @@ interface Props {
   powers: {
     data: PowersType[];
   };
+  products: ProdusCardType[];
 }
 
-export default function Filters({ categories, brands, powers }: Props) {
+export default function Filters({
+  categories,
+  brands,
+  powers,
+  products,
+}: Props) {
+  const [mainFilters, setMainFilters] = useState({});
   const [filters, setFilters] = useState<Record<string, string[] | undefined>>(
     {}
   );
   const router = useRouter();
 
+  // Setting main categs
+  const handleMainCateg = (e: React.MouseEvent<HTMLInputElement>) => {
+    const checkboxValue = e.currentTarget.value;
+    const checkboxName = e.currentTarget.name;
+    setMainFilters({
+      [checkboxName]: checkboxValue,
+    });
+  };
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(
+      router.query as Record<string, string>
+    );
+    Object.entries(mainFilters).forEach((key, value) => {
+      console.log(key, value);
+      queryParams.set(key[0], key[1] as string);
+    });
+    router.push(`${router.pathname}?${queryParams}`, undefined, {
+      scroll: false,
+    });
+  }, [mainFilters]);
+
   // Updating state based on checked inputs
-  const handleChange = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
     const checkboxValue = e.currentTarget.value;
     const checkboxName = e.currentTarget.name;
 
     setFilters((prev) => {
       const existingValues = prev[checkboxName] || [];
 
+      // Remove filter if it's checked
       if (existingValues.includes(checkboxValue)) {
         const updatedValues = existingValues.filter(
           (value: string) => value !== checkboxValue
         );
+
         return {
           ...prev,
           [checkboxName]: updatedValues.length > 0 ? updatedValues : undefined,
@@ -44,7 +81,7 @@ export default function Filters({ categories, brands, powers }: Props) {
         };
       }
     });
-  }, []);
+  };
 
   //Updating Slug based on state
   useEffect(() => {
@@ -66,7 +103,6 @@ export default function Filters({ categories, brands, powers }: Props) {
     const queryParams = new URLSearchParams(
       router.query as Record<string, string>
     );
-
     Object.entries(filters).forEach(([key, values]) => {
       if (values) {
         queryParams.set(key, values.join(","));
@@ -74,7 +110,6 @@ export default function Filters({ categories, brands, powers }: Props) {
         queryParams.delete(key);
       }
     });
-
     router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
       scroll: false,
     });
@@ -91,6 +126,8 @@ export default function Filters({ categories, brands, powers }: Props) {
     });
   };
 
+  console.log(router.query);
+
   return (
     <>
       <span className="mt-4 text-sm font-medium text-gray-900">Afiseaza</span>
@@ -98,12 +135,12 @@ export default function Filters({ categories, brands, powers }: Props) {
         {categories.data.map((cat: CategoryType) => (
           <div key={cat.id} className="checkbox text-[15px]">
             <input
-              type="checkbox"
+              type="radio"
               value={cat.id}
               name="cat"
               checked={router.query.cat?.includes(cat.id)}
               className="checkbox"
-              onClick={handleChange}
+              onClick={handleMainCateg}
               id={cat.id}
             />
             <label htmlFor={cat.id}>
@@ -139,19 +176,14 @@ export default function Filters({ categories, brands, powers }: Props) {
 
             {brands.data.map((brand: any) => {
               return (
-                <div
-                  key={brand.id}
-                  className={`flex items-center mb-2  ${
-                    brand.attributes.produses.data.length === 0 ? "hidden" : ""
-                  }`}
-                >
+                <div key={brand.id} className="flex items-center mb-2">
                   <input
                     id={brand.attributes.Brand}
                     type="checkbox"
                     name="brand"
                     onClick={handleChange}
                     value={brand.id}
-                    checked={router.query.brand?.includes(brand.id)}
+                    checked={router.query.brand?.includes(brand.id) || false}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
                   />
                   <label
@@ -191,7 +223,7 @@ export default function Filters({ categories, brands, powers }: Props) {
                     value={power.id}
                     name="power"
                     onClick={handleChange}
-                    checked={router.query.powers?.includes(power.id)}
+                    checked={router.query.power?.includes(power.id) || false}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
                   />
                   <label

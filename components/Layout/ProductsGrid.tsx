@@ -12,6 +12,10 @@ import ProductCard from "./ProductCard";
 import useWidth from "@/hooks/useWidth";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
+import { client } from "@/pages/_app";
+import Loader from "../Common/Loader";
+import { useQuery } from "@apollo/client";
+import { PRODUCTS_CARDS_QUERY } from "@/queries/queries";
 
 interface Props {
   products: {
@@ -31,11 +35,11 @@ interface Props {
 }
 
 export default function ProductsGrid({
-  products,
   filters,
   categories,
   brands,
   powers,
+  products,
 }: Props) {
   const paginationNumber = Math.ceil(products.meta.pagination.total / 8);
   const router = useRouter();
@@ -43,6 +47,36 @@ export default function ProductsGrid({
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { query } = router;
+
+  const { loading, error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
+    client: client,
+    variables: {
+      catId:
+        query?.cat?.length === 0
+          ? undefined
+          : Array.isArray(query?.cat)
+          ? query?.cat.map(Number)
+          : query?.cat?.split(",").map(Number) || undefined,
+      pageIdx: Number(query?.page) || 1,
+      size: 8,
+      sort: query?.sort || "createdAt:desc",
+      brandId: query?.cat?.includes("2")
+        ? undefined
+        : query?.brand?.length === 0
+        ? undefined
+        : Array.isArray(query?.brand)
+        ? query?.brand.map(Number)
+        : query?.brand?.split(",").map(Number) || undefined,
+      putereId: query?.cat?.includes("2")
+        ? undefined
+        : query?.power?.length === 0
+        ? undefined
+        : Array.isArray(query?.power)
+        ? query?.power.map(Number)
+        : query?.power?.split(",").map(Number) || undefined,
+    },
+  });
 
   useEffect(() => {
     if (paginationNumber < 1) {
@@ -97,24 +131,30 @@ export default function ProductsGrid({
                   onClick={handleClose}
                 />
               </div>
-              <div className="px-4 pb-4 ">
+              {/* <div className="px-4 pb-4 ">
                 <Filters
+                  products={data && data.produses.data}
                   categories={categories}
                   brands={brands}
                   powers={powers}
                 />
-              </div>
+              </div> */}
             </div>
           </Modal>
         </div>
       ) : null}
 
       <div className="flex mt-10 gap-4 ">
-        {windowWidth > 991 ? (
+        {/* {windowWidth > 991 ? (
           <div className="flex-1 box-shadow rounded-[20px] p-5 h-fit">
-            <Filters categories={categories} brands={brands} powers={powers} />
+            <Filters
+              categories={categories}
+              brands={brands}
+              powers={powers}
+              products={data && data.produses.data}
+            />
           </div>
-        ) : null}
+        ) : null} */}
 
         <div className="flex-[5] space-y-8">
           <div
@@ -124,8 +164,10 @@ export default function ProductsGrid({
                 : "grid-cols-2 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             }`}
           >
-            {products.data.length > 0 ? (
-              products.data.map((product) => (
+            {loading ? (
+              <Loader size={6} />
+            ) : (
+              data.produses.data.map((product: ProdusCardType) => (
                 <ProductCard
                   key={product.id}
                   id={product.id}
@@ -137,10 +179,6 @@ export default function ProductsGrid({
                   slug={product.attributes.slug}
                 />
               ))
-            ) : (
-              <span className="col-start-1 col-end-4">
-                Nu există rezultate compatibile cu filtrarea dumneavostră
-              </span>
             )}
           </div>
           {paginationNumber > 1 && (
