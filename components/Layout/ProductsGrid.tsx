@@ -124,13 +124,13 @@ export default function ProductsGrid({
             aria-describedby="modal-modal-description"
           >
             <div className="bg-white  space-y-4 max-h-screen overflow-auto h-full">
-              <div className="flex justify-between p-4 border-b border-gray-400">
+              {/* <div className="flex justify-between p-4 border-b border-gray-400">
                 <span>Filtrează</span>
                 <AiOutlineClose
                   className="float-right inline-block w-5 h-5"
                   onClick={handleClose}
                 />
-              </div>
+              </div> */}
               {/* <div className="px-4 pb-4 ">
                 <Filters
                   products={data && data.produses.data}
