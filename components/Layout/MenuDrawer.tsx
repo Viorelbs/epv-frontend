@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
-import { SwipeableDrawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import Link from "next/link";
 import Icon from "../Common/Icon";
 import {
@@ -33,13 +33,11 @@ export default function MenuDrawer({
   data,
 }: Props) {
   return (
-    <SwipeableDrawer
+    <Drawer
       container={container}
       anchor="left"
       open={open}
       onClose={toggleDrawer(false)}
-      onOpen={toggleDrawer(true)}
-      disableSwipeToOpen={false}
       ModalProps={{
         keepMounted: true,
       }}
@@ -125,6 +123,6 @@ export default function MenuDrawer({
           <IndustrialForm MenuOpen={(arg) => setOpen(arg)} />
         </div>
       </div>
-    </SwipeableDrawer>
+    </Drawer>
   );
 }

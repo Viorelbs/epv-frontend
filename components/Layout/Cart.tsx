@@ -1,5 +1,5 @@
 import { RootState } from "@/redux/store";
-import { SwipeableDrawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiBasket } from "react-icons/bi";
@@ -144,13 +144,11 @@ export default function Cart(props: Props) {
         </span>
       )}
 
-      <SwipeableDrawer
+      <Drawer
         container={container}
         anchor="right"
         open={open}
         onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-        disableSwipeToOpen={false}
         ModalProps={{
           keepMounted: true,
         }}
@@ -206,7 +204,7 @@ export default function Cart(props: Props) {
             Finalizeză Comanda
           </button>
         )}
-      </SwipeableDrawer>
+      </Drawer>
     </>
   );
 }
