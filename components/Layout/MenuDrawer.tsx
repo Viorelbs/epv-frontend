@@ -72,13 +72,13 @@ export default function MenuDrawer({
             >
               Despre Noi
             </Link>
-            {/* <Link
-                className="border-b py-3"
-                href="/produse"
-                onClick={() => setOpen(false)}
-              >
-                Produse
-              </Link> */}
+            <Link
+              className="border-b py-3"
+              href="/produse"
+              onClick={() => setOpen(false)}
+            >
+              Produse
+            </Link>
 
             <Accordion open={openAc} icon={<Icon open={openAc} />}>
               <AccordionHeader
