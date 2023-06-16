@@ -110,13 +110,13 @@ export default function ProductsGrid({
 
       {windowWidth < 991 ? (
         <div className="mt-4">
-          <button
+          {/* <button
             className="btn px-6 border border-gray-400 rounded-md py-1 flex items-center gap-2"
             onClick={handleOpen}
           >
             <BsFilterLeft />
             Filtrează
-          </button>
+          </button> */}
           <Modal
             open={open}
             onClose={handleClose}
