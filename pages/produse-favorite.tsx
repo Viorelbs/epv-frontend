@@ -8,10 +8,10 @@ export default function FavouriteProducts() {
   return (
     <>
       <Banner text="Produse Favorite" />
-      <div className="my-20 container mx-auto">
+      <div className=" my-8 md:my-20 container mx-auto">
         {favProducts.products.length === 0 ? (
           <div className=" min-h-[40vh] ">
-            <p>Inca nu ai niciun produs adaugat la favorite</p>
+            <p className="px-2">Inca nu ai niciun produs adaugat la favorite</p>
           </div>
         ) : (
           <div className=" gap-8 grid grid-cols-2 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 px-4">
