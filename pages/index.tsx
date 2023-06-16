@@ -141,7 +141,7 @@ export default function Home({
           smallImage={hpSection.data.attributes.ImagineMica}
           partenersList={parteners.data.attributes.parteneri.data}
         />
-        {/* <div className="py-24 lg:py-32">
+        <div className="py-24 lg:py-32">
           <div className="container mx-auto">
             <h2 className="text-center mb-8">
               Clienții ne recomandă cu încredere
@@ -178,13 +178,14 @@ export default function Home({
               ) : null}
             </div>
             <Link
-              href="#"
+              target="_blank"
+              href="https://www.google.com/search?cs=1&hl=ro-RO&output=search&q=EPV+Infinity&ludocid=3615229886403576383&gsas=1&client=ms-android-samsung-gs-rev1&lsig=AB86z5Wu49kF4Fy2Oe45aE3Nnhww&kgs=e5cdd1207425f6e7&shndl=-1&shem=ncc&source=sh/x/kp/local/4&bshm=ncc/1"
               className="mt-10 block text-center font-medium underline text-[20px]"
             >
               Vezi toate recenziile
             </Link>
           </div>
-        </div> */}
+        </div>
         <div className="mt-20 ">
           <Questions questions={questions.data} />
         </div>

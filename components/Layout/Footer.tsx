@@ -16,14 +16,14 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <Image src={logo} alt="EPV Infinity Logo" />
           <Link
-            href="#"
+            href="mailto:epv@info.contact"
             className="flex gap-2 mt-8 hover:text-[#F7CD1F] text-sm md:text-md"
           >
             <RxEnvelopeClosed className="w-5 h-5 md:w-6 md:h-6 shrink-0" />
             Epv@info.contact
           </Link>
           <Link
-            href="#"
+            href="tel:+40 752 013 942"
             className="flex gap-2 hover:text-[#F7CD1F] text-sm md:text-md"
           >
             <FiPhoneCall className="w-5 h-5 md:w-6 md:h-6 shrink-0" />
