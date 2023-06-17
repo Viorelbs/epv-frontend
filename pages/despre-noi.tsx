@@ -125,10 +125,10 @@ export async function getStaticProps() {
       sectionThree: sectionThree.data.aboutSThree,
       sectionFour: sectionFour.data.aboutSFour,
       questions: questions.data.intrebaris,
-      ogTitle: sectionOne.data.aboutSOne.data.attributes.seo.metaTitle || null,
+      ogTitle: sectionOne.data.aboutSOne.data.attributes.seo?.metaTitle || null,
       ogDescription:
-        sectionOne.data.aboutSOne.data.attributes.seo.metaDescription || null,
-      ogImage: sectionOne.data.aboutSOne.metaImage || null,
+        sectionOne.data.aboutSOne.data.attributes.seo?.metaDescription || null,
+      ogImage: sectionOne.data.aboutSOne.data.attributes.seo?.metaImage || null,
     },
   };
 }

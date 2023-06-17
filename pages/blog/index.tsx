@@ -13,6 +13,7 @@ import {
   ArticleCardInterface,
   ArticleCategoryInterface,
   ArticlePaginationInterface,
+  MetaImage,
   SEO,
 } from "@/typings";
 import { useRouter } from "next/router";
@@ -26,6 +27,9 @@ interface Props {
   categories: ArticleCategoryInterface;
   pagination: ArticlePaginationInterface;
   seo: SEO;
+  ogImage: MetaImage;
+  ogDescription: string;
+  ogTitle: string;
 }
 
 export default function Blog({
@@ -34,6 +38,9 @@ export default function Blog({
   lastArticles,
   pagination,
   seo,
+  ogImage,
+  ogTitle,
+  ogDescription,
 }: Props) {
   const router = useRouter();
   const paginationNumber = Math.ceil(pagination.total / 8);
@@ -144,6 +151,10 @@ export async function getStaticProps({ query }: any) {
       lastArticles: lastArticles.data.articoles.data,
       pagination: articlesData.data.articoles.meta.pagination,
       seo: blogSeo.data.blogPageSeo,
+      ogTitle: blogSeo.data.blogPageSeo.data.attributes.seo?.metaTitle,
+      ogDescription:
+        blogSeo.data.blogPageSeo.data.attributes.seo?.metaDescription,
+      ogImage: blogSeo.data.blogPageSeo.data.attributes.seo?.metaImage,
     },
   };
 }
