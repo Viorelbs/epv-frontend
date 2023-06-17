@@ -16,6 +16,7 @@ import {
   AboutSectionOneType,
   AboutSectionThreeType,
   AboutSectionTwoType,
+  MetaImage,
   qaSectionType,
   QuestionsType,
 } from "@/typings";
@@ -33,6 +34,9 @@ interface Props {
   questions: {
     data: QuestionsType[];
   };
+  ogImage: MetaImage;
+  ogDescription: string;
+  ogTitle: string;
 }
 export default function About({
   sectionOne,
@@ -40,6 +44,9 @@ export default function About({
   sectionThree,
   sectionFour,
   questions,
+  ogImage,
+  ogTitle,
+  ogDescription,
 }: Props) {
   return (
     <>

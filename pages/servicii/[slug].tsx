@@ -4,7 +4,7 @@ import {
   QUERY_SERVICES,
   QUERY_SERVICES_MENU,
 } from "@/queries/queries";
-import { ContactInfoType, ServiceType } from "@/typings";
+import { ContactInfoType, MetaImage, ServiceType } from "@/typings";
 import Image from "next/image";
 import { client } from "../_app";
 import parse from "html-react-parser";
@@ -15,8 +15,17 @@ import Head from "next/head";
 interface Props {
   service: ServiceType;
   contactInfo: ContactInfoType;
+  ogImage: MetaImage;
+  ogDescription: string;
+  ogTitle: string;
 }
-export default function Servicii({ service, contactInfo }: Props) {
+export default function Servicii({
+  service,
+  contactInfo,
+  ogImage,
+  ogTitle,
+  ogDescription,
+}: Props) {
   return (
     <>
       <Head>

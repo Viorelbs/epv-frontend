@@ -4,7 +4,7 @@ import {
   QUERY_SIMILAR_ARTICLE_CARD,
 } from "@/queries/queries";
 import { client } from "../_app";
-import { ArticleCardInterface, ArticleInterface } from "@/typings";
+import { ArticleCardInterface, ArticleInterface, MetaImage } from "@/typings";
 import parse from "html-react-parser";
 import Image from "next/image";
 import BannerArticle from "@/components/Layout/BannerArticle";
@@ -14,9 +14,18 @@ import Head from "next/head";
 interface Props {
   article: ArticleInterface;
   similarArticle: ArticleCardInterface[];
+  ogImage: MetaImage;
+  ogDescription: string;
+  ogTitle: string;
 }
 
-export default function BlogPage({ article, similarArticle }: Props) {
+export default function BlogPage({
+  article,
+  similarArticle,
+  ogImage,
+  ogTitle,
+  ogDescription,
+}: Props) {
   return (
     <>
       <Head>
@@ -108,6 +117,13 @@ export async function getStaticProps({ params }: any) {
     props: {
       article: articleData.data.articoles.data[0].attributes,
       similarArticle: similarArticle.data.articoles.data,
+      ogTitle:
+        articleData.data.articoles.data[0].attributes.seo[0]?.metaTitle || null,
+      ogDescription:
+        articleData.data.articoles.data[0].attributes.seo[0]?.metaDescription ||
+        null,
+      ogImage:
+        articleData.data.articoles.data[0].attributes.seo[0]?.metaImage || null,
     },
   };
 }

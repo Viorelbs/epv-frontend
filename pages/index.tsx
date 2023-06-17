@@ -22,6 +22,7 @@ import {
   CategoryType,
   CostDataType,
   HeroType,
+  MetaImage,
   PartenersTypes,
   PowersType,
   ProdusCardType,
@@ -66,6 +67,9 @@ interface Props {
   };
   seo: SEO;
   calcData: CostDataType;
+  ogImage: MetaImage;
+  ogDescription: string;
+  ogTitle: string;
 }
 
 export default function Home({
@@ -80,6 +84,9 @@ export default function Home({
   powers,
   seo,
   calcData,
+  ogImage,
+  ogTitle,
+  ogDescription,
 }: Props) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
