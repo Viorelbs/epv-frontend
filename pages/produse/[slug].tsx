@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useEffect, useMemo, useState } from "react";
-import { ImageSimple, Product, ProdusCardType } from "@/typings";
+import { ImageSimple, MetaImage, Product, ProdusCardType } from "@/typings";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { client, URL } from "../_app";
 import ProductsSpecs from "@/components/Layout/ProductsSpecs";
@@ -27,9 +27,18 @@ import useWidth from "@/hooks/useWidth";
 interface Props {
   product: Product;
   productsCards: ProdusCardType[];
+  ogImage: MetaImage;
+  ogDescription: string;
+  ogTitle: string;
 }
 
-export default function ProductPage({ product, productsCards }: Props) {
+export default function ProductPage({
+  product,
+  productsCards,
+  ogImage,
+  ogTitle,
+  ogDescription,
+}: Props) {
   const [qty, setQty] = useState(1);
   const [favourite, setFavourite] = useState(false);
   const dispatch = useDispatch();

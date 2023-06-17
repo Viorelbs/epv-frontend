@@ -10,6 +10,8 @@ import {
 import {
   BrandsType,
   CategoryType,
+  ImageType,
+  MetaImage,
   PowersType,
   ProdusCardType,
   SEO,
@@ -29,14 +31,20 @@ interface Props {
     data: PowersType[];
   };
   seo: SEO;
+  ogDescription: string;
+  ogImage: MetaImage;
+  ogTitle: string;
 }
 
 export default function Produse({
   productCard,
   categories,
+  ogDescription,
+  ogImage,
   brands,
   powers,
   seo,
+  ogTitle,
 }: Props) {
   return (
     <>

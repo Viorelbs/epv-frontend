@@ -547,6 +547,15 @@ export interface ArticleInterface {
   }[];
 }
 
+export interface MetaImage {
+  metaImage: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
+}
 export interface ArticleCategoryInterface {
   categorieArticoles: {
     data: {
