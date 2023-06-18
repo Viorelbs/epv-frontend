@@ -31,7 +31,6 @@ export const client: any = new ApolloClient({
 const persistor = persistStore(store);
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  console.log(pageProps.ogDescription);
   return (
     <>
       <Head>

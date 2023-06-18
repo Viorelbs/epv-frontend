@@ -10,12 +10,14 @@ import {
   Popover,
   PopoverContent,
   PopoverHandler,
+  Tooltip,
 } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
 import { setCart } from "@/redux/cartOpen";
 import { loadStripe } from "@stripe/stripe-js/pure";
 import Loader from "../Common/Loader";
 import { makeRequest } from "@/lib/makeRequest";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 interface Props {
   window?: () => Window;
   scroll: boolean;
@@ -42,6 +44,8 @@ export default function Cart(props: Props) {
     setOpen(newOpen);
   };
 
+  const courierTax = Number(process.env.NEXT_PUBLIC_TAX_VALUE!);
+  const miniumPrice = Number(process.env.NEXT_PUBLIC_MINIUM_PRICE!);
   useEffect(() => {
     if (cartState === true) {
       setOpen(true);
@@ -58,13 +62,16 @@ export default function Cart(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   // Total cart sum
-  const totalSum = useMemo(() => {
+  const totalSumProd = useMemo(() => {
     return products.reduce(
       (acc: number, product: { price: number; qty: number }) =>
         acc + product.price * product.qty,
       0
     );
   }, [products]);
+
+  const totalSum =
+    totalSumProd < miniumPrice ? totalSumProd + courierTax : totalSumProd;
 
   // Old price sum
   const totalSumOldPrice = useMemo(() => {
@@ -153,7 +160,7 @@ export default function Cart(props: Props) {
           keepMounted: true,
         }}
       >
-        <div className=" sm:min-w-[25vw] sm:max-w-xxl w-full  h-full p-4 md:p-8 flex flex-col gap-10">
+        <div className=" sm:min-w-[25vw] sm:max-w-xxl w-full  h-full p-4 md:p-8 flex flex-col gap-10 relative">
           <div className="flex justify-between border-b border-gray-500 pb-2">
             <span>
               <span className="text-xl font-medium mr-1">Coș</span> {cartLength}
@@ -182,7 +189,21 @@ export default function Cart(props: Props) {
           <div className="flex justify-between  ">
             <span className="font-light text-sm md:text-base">Economisiți</span>
             <span className="font-medium text-sm md:text-base text-green-500">
-              {(totalSum - totalSumOldPrice).toFixed(2)} Lei + TVA
+              {(totalSumOldPrice - totalSumProd).toFixed(2)} Lei + TVA
+            </span>
+          </div>
+          <div className="flex justify-between  ">
+            <span className="font-light text-sm md:text-base flex items-center gap-2 cursor-pointer relative group">
+              <span className="absolute bottom-[2rem] bg-white md:whitespace-nowrap border  p-2 rounded-xl opacity-0 group-hover:opacity-100 duration-200">
+                Transport gratuit peste suma de 10.000 lei
+              </span>
+              Taxa transport
+              <AiOutlineExclamationCircle />
+            </span>
+            <span className="font-medium text-sm md:text-base ">
+              {totalSumProd < miniumPrice
+                ? `${courierTax.toFixed(2)} Lei`
+                : "Gratuit"}
             </span>
           </div>
           <div className="flex justify-between">
