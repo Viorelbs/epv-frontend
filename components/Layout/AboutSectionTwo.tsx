@@ -22,7 +22,7 @@ export default function AboutSectionTwo({ title, description, image }: Props) {
           />
         </div>
 
-        <div className="flex-[2] m-auto pb-[70px] -mt-12 lg:mt-0 md:mt-8">
+        <div className="flex-[2] m-auto pb-[70px] -mt-12 lg:mt-8 md:mt-8">
           <h2>{title}</h2>
           <div>{HTMLReactParser(description)}</div>
           <button className="btn-primary mt-8 bg-black text-white">

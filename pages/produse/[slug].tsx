@@ -326,7 +326,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const { slug } = params;
-
   const [data, productsCards] = await Promise.all([
     client.query({
       query: GET_PRODUCT_BY_NAME,
