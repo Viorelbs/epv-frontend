@@ -10,6 +10,7 @@ import {
   QUERY_ABOUT_S_THREE,
   QUERY_ABOUT_S_TWO,
   QUERY_QA,
+  QUERY_WORK_MODE,
 } from "@/queries/queries";
 import {
   AboutSectionFourType,
@@ -19,9 +20,11 @@ import {
   MetaImage,
   qaSectionType,
   QuestionsType,
+  WorkModeInterface,
 } from "@/typings";
 import { client } from "./_app";
 import Head from "next/head";
+import WorkModeSection from "@/components/Layout/WorkModeSection";
 
 interface Props {
   sectionOne: AboutSectionOneType;
@@ -37,6 +40,7 @@ interface Props {
   ogImage: MetaImage;
   ogDescription: string;
   ogTitle: string;
+  workMode: WorkModeInterface;
 }
 export default function About({
   sectionOne,
@@ -47,7 +51,9 @@ export default function About({
   ogImage,
   ogTitle,
   ogDescription,
+  workMode,
 }: Props) {
+  console.log(workMode && workMode);
   return (
     <>
       <Head>
@@ -67,6 +73,21 @@ export default function About({
       </Head>
       <main className="space-y-20 mb-20">
         <Banner text="Despre Noi" />
+        <WorkModeSection
+          title={workMode.data.attributes.titlu}
+          titleIconOne={workMode.data.attributes.titluIconOne}
+          titleIconTwo={workMode.data.attributes.titluIconTwo}
+          titleIconThree={workMode.data.attributes.titluIconThree}
+          titleIconFour={workMode.data.attributes.titluIconFour}
+          textIconOne={workMode.data.attributes.textIconOne}
+          textIconTwo={workMode.data.attributes.textIconTwo}
+          textIconThree={workMode.data.attributes.textIconThree}
+          textIconFour={workMode.data.attributes.textIconFour}
+          iconOneUrl={workMode.data.attributes.iconOne.data.attributes.url}
+          iconTwoUrl={workMode.data.attributes.iconTwo.data.attributes.url}
+          iconThreeUrl={workMode.data.attributes.iconThree.data.attributes.url}
+          iconFourUrl={workMode.data.attributes.iconFour.data.attributes.url}
+        />
         <AboutSectionOne
           title={sectionOne.data.attributes.title}
           description={sectionOne.data.attributes.description}
@@ -98,28 +119,38 @@ export default function About({
 }
 
 export async function getStaticProps() {
-  const [sectionOne, sectionTwo, sectionThree, sectionFour, questions] =
-    await Promise.all([
-      client.query({
-        query: QUERY_ABOUT_S_ONE,
-      }),
-      client.query({
-        query: QUERY_ABOUT_S_TWO,
-      }),
-      client.query({
-        query: QUERY_ABOUT_S_THREE,
-      }),
-      client.query({
-        query: QUERY_ABOUT_S_FOUR,
-      }),
+  const [
+    workMode,
+    sectionOne,
+    sectionTwo,
+    sectionThree,
+    sectionFour,
+    questions,
+  ] = await Promise.all([
+    client.query({
+      query: QUERY_WORK_MODE,
+    }),
+    client.query({
+      query: QUERY_ABOUT_S_ONE,
+    }),
+    client.query({
+      query: QUERY_ABOUT_S_TWO,
+    }),
+    client.query({
+      query: QUERY_ABOUT_S_THREE,
+    }),
+    client.query({
+      query: QUERY_ABOUT_S_FOUR,
+    }),
 
-      client.query({
-        query: QUERY_QA,
-      }),
-    ]);
+    client.query({
+      query: QUERY_QA,
+    }),
+  ]);
 
   return {
     props: {
+      workMode: workMode.data.workModeSection,
       sectionOne: sectionOne.data.aboutSOne,
       sectionTwo: sectionTwo.data.aboutSTwo,
       sectionThree: sectionThree.data.aboutSThree,

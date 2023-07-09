@@ -596,3 +596,47 @@ export interface CategoryDataInterface {
 export interface ArticlePaginationInterface {
   total: number;
 }
+
+export interface WorkModeInterface {
+  data: {
+    attributes: {
+      titlu: string;
+      titluIconOne: string;
+      titluIconTwo: string;
+      titluIconThree: string;
+      titluIconFour: string;
+      textIconOne: string;
+      textIconTwo: string;
+      textIconThree: string;
+      textIconFour: string;
+      iconOne: {
+        data: {
+          attributes: {
+            url: string;
+          };
+        };
+      };
+      iconTwo: {
+        data: {
+          attributes: {
+            url: string;
+          };
+        };
+      };
+      iconThree: {
+        data: {
+          attributes: {
+            url: string;
+          };
+        };
+      };
+      iconFour: {
+        data: {
+          attributes: {
+            url: string;
+          };
+        };
+      };
+    };
+  };
+}

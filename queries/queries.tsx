@@ -1032,3 +1032,54 @@ export const QUERY_BLOG_PAGE_SEO = gql`
     }
   }
 `;
+
+export const QUERY_WORK_MODE = gql`
+  query {
+    workModeSection {
+      data {
+        attributes {
+          titlu
+          titluIconOne
+          titluIconTwo
+          titluIconThree
+          titluIconFour
+          textIconOne
+          textIconTwo
+          textIconThree
+          textIconFour
+          iconOne {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+
+          iconTwo {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+
+          iconThree {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+
+          iconFour {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
