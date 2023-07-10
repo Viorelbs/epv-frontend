@@ -45,7 +45,11 @@ export default function ProductPage({
   const { windowWidth } = useWidth();
   const [currentImage, setCurrentImage] = useState<string>();
   const favProducts = useSelector((state: RootState) => state.favourite);
+  const price = product.attributes.Pret;
+  const oldPrice = product.attributes.PretVechi;
+  const discount = ((price - oldPrice) / oldPrice) * 100;
 
+  const formattedDiscount = Math.abs(discount).toFixed(0) + "%";
   // Add to cart
   const handleCart = () => {
     dispatch(
@@ -180,6 +184,12 @@ export default function ProductPage({
           <div className="flex gap-10 mb-10 flex-col lg:flex-row">
             <div className="flex-1 bg-white rounded-md">
               <div className="relative pt-[70%]  border border-gray-300 mb-4">
+                {product.attributes.PretVechi && (
+                  <span className="absolute top-0 left-0 bg-[#0DC97A] text-white px-5 py-2 rounded-tl-lg rounded-br-lg text-sm md:text-base z-40">
+                    {formattedDiscount}
+                  </span>
+                )}
+
                 {currentImage && (
                   <Image
                     className="absolute top-0 left-0 right-0 bottom-0 m-auto object-contain w-full h-full p-4 md:p-10"
