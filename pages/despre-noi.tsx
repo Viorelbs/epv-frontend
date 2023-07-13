@@ -53,7 +53,6 @@ export default function About({
   ogDescription,
   workMode,
 }: Props) {
-  console.log(workMode && workMode);
   return (
     <>
       <Head>
