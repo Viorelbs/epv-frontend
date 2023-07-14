@@ -59,7 +59,7 @@ export default function ProductsGrid({
           ? query?.cat.map(Number)
           : query?.cat?.split(",").map(Number) || undefined,
       pageIdx: Number(query?.page) || 1,
-      size: 10,
+      size: 15,
       sort: query?.sort || "createdAt:desc",
       brandId: query?.cat?.includes("2")
         ? undefined
@@ -181,7 +181,7 @@ export default function ProductsGrid({
               ))
             )}
           </div>
-          {paginationNumber > 1 && (
+          {/* {paginationNumber > 1 && (
             <Pagination
               size="large"
               color="standard"
@@ -190,7 +190,7 @@ export default function ProductsGrid({
               variant="outlined"
               shape={"rounded"}
             ></Pagination>
-          )}
+          )} */}
         </div>
       </div>
     </div>
