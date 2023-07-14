@@ -167,7 +167,7 @@ export default function ProductPage({
         />
         <link
           rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/${product.attributes.slug}`}
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}/produse/${product.attributes.slug}`}
         />
       </Head>
 
