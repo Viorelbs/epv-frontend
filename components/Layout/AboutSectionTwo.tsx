@@ -1,6 +1,7 @@
 import { URL } from "@/pages/_app";
 import HTMLReactParser from "html-react-parser";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -25,9 +26,11 @@ export default function AboutSectionTwo({ title, description, image }: Props) {
         <div className="flex-[2] m-auto pb-[70px] -mt-12 lg:mt-8 md:mt-8">
           <h2>{title}</h2>
           <div>{HTMLReactParser(description)}</div>
-          <button className="btn-primary mt-8 bg-black text-white">
-            Vezi Servicii
-          </button>
+          <Link href="/produse">
+            <button className="btn-primary mt-8 bg-black text-white">
+              Vezi Produse
+            </button>
+          </Link>
         </div>
       </div>
     </div>
