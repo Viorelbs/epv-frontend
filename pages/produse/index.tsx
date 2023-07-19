@@ -87,7 +87,7 @@ export const getStaticProps = async ({ query }: any) => {
               ? undefined
               : query?.cat?.split(",").map(Number) || undefined,
           pageIdx: Number(query?.page) || 1,
-          size: 8,
+          size: 10,
           sort: query?.sort || "createdAt:desc",
           brandId: query?.cat?.includes(2)
             ? undefined
