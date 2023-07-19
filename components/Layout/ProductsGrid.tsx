@@ -49,35 +49,6 @@ export default function ProductsGrid({
   const handleClose = () => setOpen(false);
   const { query } = router;
 
-  const { loading, error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
-    client: client,
-    variables: {
-      catId:
-        query?.cat?.length === 0
-          ? undefined
-          : Array.isArray(query?.cat)
-          ? query?.cat.map(Number)
-          : query?.cat?.split(",").map(Number) || undefined,
-      pageIdx: Number(query?.page) || 1,
-      size: 15,
-      sort: query?.sort || "createdAt:desc",
-      brandId: query?.cat?.includes("2")
-        ? undefined
-        : query?.brand?.length === 0
-        ? undefined
-        : Array.isArray(query?.brand)
-        ? query?.brand.map(Number)
-        : query?.brand?.split(",").map(Number) || undefined,
-      putereId: query?.cat?.includes("2")
-        ? undefined
-        : query?.power?.length === 0
-        ? undefined
-        : Array.isArray(query?.power)
-        ? query?.power.map(Number)
-        : query?.power?.split(",").map(Number) || undefined,
-    },
-  });
-
   useEffect(() => {
     if (paginationNumber < 1) {
       const queryParams = new URLSearchParams(
@@ -164,23 +135,19 @@ export default function ProductsGrid({
                 : "grid-cols-2 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             }`}
           >
-            {loading ? (
-              <Loader size={6} />
-            ) : (
-              data.produses.data.map((product: ProdusCardType) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  stock={product.attributes.stock}
-                  productName={product.attributes.Nume}
-                  price={product.attributes.Pret}
-                  oldPrice={product.attributes.PretVechi}
-                  productImages={product.attributes.PozeProdus}
-                  rating={product.attributes.review_produses}
-                  slug={product.attributes.slug}
-                />
-              ))
-            )}
+            {products.data.map((product: ProdusCardType) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                stock={product.attributes.stock}
+                productName={product.attributes.Nume}
+                price={product.attributes.Pret}
+                oldPrice={product.attributes.PretVechi}
+                productImages={product.attributes.PozeProdus}
+                rating={product.attributes.review_produses}
+                slug={product.attributes.slug}
+              />
+            ))}
           </div>
           {/* {paginationNumber > 1 && (
             <Pagination
