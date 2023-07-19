@@ -49,6 +49,7 @@ export const PRODUCTS_CARDS_QUERY = gql`
               id
             }
           }
+          stock
           putere {
             data {
               id
@@ -193,6 +194,7 @@ export const GET_PRODUCT_BY_NAME = gql`
           }
           Nume
           Pret
+          stock
           slug
           PretVechi
           ScurtaDescriere
@@ -1078,6 +1080,21 @@ export const QUERY_WORK_MODE = gql`
               }
             }
           }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_ORDERS = gql`
+  query ($slug: String!) {
+    orders(filters: { stripeId: { eq: $slug } }) {
+      data {
+        id
+        attributes {
+          stripeId
+          products
+          paid
         }
       }
     }

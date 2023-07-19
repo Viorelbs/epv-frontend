@@ -231,6 +231,7 @@ export interface ProdusCardType {
   attributes: {
     review_produses: any;
     Nume: string;
+    stock: number;
     Pret: number;
     PretVechi: number;
     PozeProdus: any;
@@ -292,6 +293,7 @@ export interface Product {
   attributes: {
     Nume: string;
     Pret: Float!;
+    stock: number;
     slug: string;
     PretVechi: Float;
     ScurtaDescriere: string;

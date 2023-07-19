@@ -23,6 +23,7 @@ import HTMLReactParser from "html-react-parser";
 import Head from "next/head";
 import { FiShoppingBag } from "react-icons/fi";
 import useWidth from "@/hooks/useWidth";
+import Stock from "@/components/Layout/Stock";
 
 interface Props {
   product: Product;
@@ -52,6 +53,11 @@ export default function ProductPage({
   const formattedDiscount = Math.abs(discount).toFixed(0) + "%";
   // Add to cart
   const handleCart = () => {
+    if (product.attributes.stock === 0) {
+      alert("Produsul nu se afla in stock");
+      return;
+    }
+
     dispatch(
       addToCart({
         id: product.id,
@@ -220,8 +226,8 @@ export default function ProductPage({
               <h1 className="text-[20px] lg:text-[30px]">
                 {product.attributes.Nume}
               </h1>
-              <div className="flex justify-between my-2 flex-wrap ">
-                <div>
+              <div className="flex justify-between my-2 flex-wrap">
+                <div className="space-x-4">
                   {product.attributes.PretVechi && (
                     <span className="reduced-price text-base lg:text-[20px]">
                       {product.attributes.PretVechi.toLocaleString("en-US", {
@@ -231,7 +237,7 @@ export default function ProductPage({
                       Lei + TVA
                     </span>
                   )}
-                  <span className="price text-[20px] lg:text-[30px] ml-4">
+                  <span className="price text-[20px] lg:text-[30px] ">
                     {product.attributes.Pret.toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
@@ -245,6 +251,10 @@ export default function ProductPage({
                   <span className="text-gray-400">Inca nu exista recenzii</span>
                 )}
               </div>
+              <div className="mt-6">
+                <Stock stock={product.attributes.stock} variant="outlined" />
+              </div>
+
               <div className="my-5 ">
                 {HTMLReactParser(product.attributes.ScurtaDescriere)}
               </div>
@@ -273,10 +283,10 @@ export default function ProductPage({
                 )}
               </div>
               <div className="mt-8 flex flex-col gap-4">
-                <span className="border border-black py-2 px-4 rounded-3xl flex items-center text-green-500 text-xl gap-3 w-fit">
+                {/* <span className="border border-black py-2 px-4 rounded-3xl flex items-center text-green-500 text-xl gap-3 w-fit">
                   <HiOutlineLightBulb className="w-8 h-8 " />
                   Indecis? Cere o oferta personzalizata
-                </span>
+                </span> */}
                 <span>
                   Cod Produs:
                   <span className="ml-2 font-medium">
@@ -310,6 +320,7 @@ export default function ProductPage({
                   price={product.attributes.Pret}
                   oldPrice={product.attributes.PretVechi}
                   slug={product.attributes.slug}
+                  stock={product.attributes.stock}
                   productImages={product.attributes.PozeProdus}
                   rating={product.attributes.review_produses}
                   id={product.id}

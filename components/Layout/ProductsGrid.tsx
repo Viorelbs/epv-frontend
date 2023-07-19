@@ -171,6 +171,7 @@ export default function ProductsGrid({
                 <ProductCard
                   key={product.id}
                   id={product.id}
+                  stock={product.attributes.stock}
                   productName={product.attributes.Nume}
                   price={product.attributes.Pret}
                   oldPrice={product.attributes.PretVechi}

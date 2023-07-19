@@ -14,12 +14,14 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import Rating from "../Common/Rating";
 import useWidth from "@/hooks/useWidth";
+import Stock from "./Stock";
 
 interface Props {
   productName: string;
   price: number;
   oldPrice: number;
   slug: string;
+  stock: number;
   productImages: {
     data: {
       attributes: {
@@ -40,6 +42,7 @@ export default function ProductCard({
   productImages,
   rating,
   id,
+  stock,
   slug,
 }: Props) {
   const url = productImages.data[0].attributes.url;
@@ -55,6 +58,7 @@ export default function ProductCard({
   const ratingLength = rating.data.length;
   const averageRating = sumRatings / ratingLength;
   const favProducts = useSelector((state: RootState) => state.favourite);
+
   const handleFavourite = () => {
     if (favourite) {
       toast.error(
@@ -100,6 +104,7 @@ export default function ProductCard({
         dispatch(
           addFav({
             productName: productName,
+            stock: stock,
             price: price,
             oldPrice: oldPrice,
             productImages: productImages,
@@ -124,6 +129,10 @@ export default function ProductCard({
     price: number,
     oldPrice: number
   ) => {
+    if (stock === 0) {
+      alert("Produsul nu se afla in stock");
+      return;
+    }
     dispatch(
       addToCart({
         id: id,
@@ -157,6 +166,7 @@ export default function ProductCard({
           {formattedDiscount}
         </span>
       )}
+
       <Link href={`/produse/${slug}`}>
         <div className="relative cursor-pointer pt-[80%]  ">
           <Image
@@ -170,6 +180,7 @@ export default function ProductCard({
       </Link>
 
       <div className="border-t border-gray-400 pt-3 mt-6 grow flex flex-col ">
+        <Stock stock={stock} variant="text" />
         {ratingLength > 0 ? (
           <div className="flex items-center gap-1  flex-wrap">
             <Rating rating={averageRating} />{" "}

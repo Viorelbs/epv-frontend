@@ -19,6 +19,7 @@ export default function FavouriteProducts() {
               <ProductCard
                 key={product.id}
                 id={product.id}
+                stock={product.stock}
                 oldPrice={product.oldPrice}
                 price={product.price}
                 productImages={product.productImages}
