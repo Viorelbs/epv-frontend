@@ -140,6 +140,7 @@ export default function Home({
           categories={categories}
           brands={brands}
           powers={powers}
+          pageSize={10}
         />
         <SimpleSection
           title={hpSection.data.attributes.titlu}

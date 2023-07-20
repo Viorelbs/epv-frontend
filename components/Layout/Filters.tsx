@@ -18,15 +18,9 @@ interface Props {
   powers: {
     data: PowersType[];
   };
-  products: ProdusCardType[];
 }
 
-export default function Filters({
-  categories,
-  brands,
-  powers,
-  products,
-}: Props) {
+export default function Filters({ categories, brands, powers }: Props) {
   const [mainFilters, setMainFilters] = useState({});
   const [filters, setFilters] = useState<Record<string, string[] | undefined>>(
     {}
@@ -47,7 +41,6 @@ export default function Filters({
       router.query as Record<string, string>
     );
     Object.entries(mainFilters).forEach((key, value) => {
-      console.log(key, value);
       queryParams.set(key[0], key[1] as string);
     });
     router.push(`${router.pathname}?${queryParams}`, undefined, {
@@ -83,7 +76,7 @@ export default function Filters({
     });
   };
 
-  //Updating Slug based on state
+  // Updating Slug based on state
   useEffect(() => {
     const queryParams = new URLSearchParams(
       router.query as Record<string, string>
@@ -120,13 +113,12 @@ export default function Filters({
     const queryParams = new URLSearchParams(
       router.query as Record<string, string>
     );
+
     queryParams.set("sort", e.target.value);
     router.push(`${router.pathname}?${queryParams.toString()}`, undefined, {
       scroll: false,
     });
   };
-
-  console.log(router.query);
 
   return (
     <>
@@ -175,8 +167,14 @@ export default function Filters({
             </label>
 
             {brands.data.map((brand: any) => {
+              console.log();
               return (
-                <div key={brand.id} className="flex items-center mb-2">
+                <div
+                  key={brand.id}
+                  className={`flex items-center  mb-2 ${
+                    brand.attributes.produses.data.length === 0 && "hidden"
+                  }`}
+                >
                   <input
                     id={brand.attributes.Brand}
                     type="checkbox"

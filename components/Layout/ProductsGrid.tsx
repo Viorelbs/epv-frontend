@@ -4,7 +4,7 @@ import {
   PowersType,
   ProdusCardType,
 } from "@/typings";
-import { Modal, Pagination } from "@mui/material";
+import { Modal } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Filters from "./Filters";
@@ -13,9 +13,8 @@ import useWidth from "@/hooks/useWidth";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import { client } from "@/pages/_app";
+import Pagination from "./Pagination";
 import Loader from "../Common/Loader";
-import { useQuery } from "@apollo/client";
-import { PRODUCTS_CARDS_QUERY } from "@/queries/queries";
 
 interface Props {
   products: {
@@ -32,6 +31,7 @@ interface Props {
   powers: {
     data: PowersType[];
   };
+  pageSize: number;
 }
 
 export default function ProductsGrid({
@@ -40,14 +40,16 @@ export default function ProductsGrid({
   brands,
   powers,
   products,
+  pageSize,
 }: Props) {
-  const paginationNumber = Math.ceil(products.meta.pagination.total / 8);
+  const paginationNumber = Math.ceil(
+    products?.meta.pagination.total / pageSize
+  );
   const router = useRouter();
   const { windowWidth } = useWidth();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { query } = router;
 
   useEffect(() => {
     if (paginationNumber < 1) {
@@ -59,9 +61,9 @@ export default function ProductsGrid({
         scroll: false,
       });
     }
-  }, [paginationNumber, router]);
+  }, [paginationNumber]);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (value: number) => {
     const queryParams = new URLSearchParams(
       router.query as Record<string, string>
     );
@@ -79,15 +81,15 @@ export default function ProductsGrid({
         <p>Alege dintr-o gama variata de produse</p>
       </div>
 
-      {windowWidth < 991 ? (
+      {filters && windowWidth < 991 ? (
         <div className="mt-4">
-          {/* <button
+          <button
             className="btn px-6 border border-gray-400 rounded-md py-1 flex items-center gap-2"
             onClick={handleOpen}
           >
             <BsFilterLeft />
             Filtrează
-          </button> */}
+          </button>
           <Modal
             open={open}
             onClose={handleClose}
@@ -95,37 +97,31 @@ export default function ProductsGrid({
             aria-describedby="modal-modal-description"
           >
             <div className="bg-white  space-y-4 max-h-screen overflow-auto h-full">
-              {/* <div className="flex justify-between p-4 border-b border-gray-400">
+              <div className="flex justify-between p-4 border-b border-gray-400">
                 <span>Filtrează</span>
                 <AiOutlineClose
                   className="float-right inline-block w-5 h-5"
                   onClick={handleClose}
                 />
-              </div> */}
-              {/* <div className="px-4 pb-4 ">
+              </div>
+              <div className="px-4 pb-4 ">
                 <Filters
-                  products={data && data.produses.data}
                   categories={categories}
                   brands={brands}
                   powers={powers}
                 />
-              </div> */}
+              </div>
             </div>
           </Modal>
         </div>
       ) : null}
 
       <div className="flex mt-10 gap-4 ">
-        {/* {windowWidth > 991 ? (
+        {filters && windowWidth > 991 ? (
           <div className="flex-1 box-shadow rounded-[20px] p-5 h-fit">
-            <Filters
-              categories={categories}
-              brands={brands}
-              powers={powers}
-              products={data && data.produses.data}
-            />
+            <Filters categories={categories} brands={brands} powers={powers} />
           </div>
-        ) : null} */}
+        ) : null}
 
         <div className="flex-[5] space-y-8">
           <div
@@ -135,30 +131,28 @@ export default function ProductsGrid({
                 : "grid-cols-2 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             }`}
           >
-            {products.data.map((product: ProdusCardType) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                stock={product.attributes.stock}
-                productName={product.attributes.Nume}
-                price={product.attributes.Pret}
-                oldPrice={product.attributes.PretVechi}
-                productImages={product.attributes.PozeProdus}
-                rating={product.attributes.review_produses}
-                slug={product.attributes.slug}
-              />
-            ))}
+            {products ? (
+              products.data.map((product: ProdusCardType) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  stock={product.attributes.stock}
+                  productName={product.attributes.Nume}
+                  price={product.attributes.Pret}
+                  oldPrice={product.attributes.PretVechi}
+                  productImages={product.attributes.PozeProdus}
+                  rating={product.attributes.review_produses}
+                  slug={product.attributes.slug}
+                />
+              ))
+            ) : (
+              <Loader size={8} />
+            )}
           </div>
-          {/* {paginationNumber > 1 && (
-            <Pagination
-              size="large"
-              color="standard"
-              onChange={handleChange}
-              count={Number(paginationNumber)}
-              variant="outlined"
-              shape={"rounded"}
-            ></Pagination>
-          )} */}
+          <Pagination
+            handleChange={handleChange}
+            count={Number(paginationNumber)}
+          />
         </div>
       </div>
     </div>
