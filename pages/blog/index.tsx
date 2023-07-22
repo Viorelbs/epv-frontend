@@ -128,8 +128,6 @@ export async function getStaticProps({ query }: any) {
   const [articlesData, categories, lastArticles, blogSeo] = await Promise.all([
     client.query({
       query: QUERY_ARTICLE_CARD,
-      fetchPolicy: "no-cache",
-
       variables: {
         pageIdx: Number(query?.page) || 1,
         size: 8,
@@ -137,15 +135,12 @@ export async function getStaticProps({ query }: any) {
     }),
     client.query({
       query: QUERY_ARTICLE_CATEGORY,
-      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_LAST_ARTICLES,
-      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_BLOG_PAGE_SEO,
-      fetchPolicy: "no-cache",
     }),
   ]);
 

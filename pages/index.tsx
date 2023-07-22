@@ -218,13 +218,10 @@ export const getStaticProps = async (context: any) => {
     calcData,
   ] = await Promise.all([
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_HERO,
     }),
     client.query({
       query: PRODUCTS_CARDS_QUERY,
-      fetchPolicy: "no-cache",
-
       variables: {
         catId:
           query?.cat?.length === 0
@@ -244,39 +241,30 @@ export const getStaticProps = async (context: any) => {
       },
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_CATEGORIES,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_BRANDS,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_POWERS,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_PARTENERS,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_SIMPLE_SECTION_HP,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_REVIEWS,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_QA,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_HOME_SEO,
     }),
     client.query({
-      fetchPolicy: "no-cache",
       query: QUERY_CALC,
     }),
   ]);

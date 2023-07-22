@@ -54,7 +54,6 @@ export default function Produse({
 
   const { loading, error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
     client: client,
-    fetchPolicy: "no-cache",
     variables: {
       catId:
         query?.cat?.length === 0
@@ -117,19 +116,15 @@ export const getStaticProps = async () => {
   const [categoriesData, brandsData, powerData, seo] = await Promise.all([
     client.query({
       query: QUERY_CATEGORIES,
-      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_BRANDS,
-      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_POWERS,
-      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_PRODUCT_SEO,
-      fetchPolicy: "no-cache",
     }),
   ]);
 

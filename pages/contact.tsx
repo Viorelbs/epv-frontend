@@ -73,11 +73,9 @@ export const getStaticProps = async () => {
   const [contactInfo, contactSeo] = await Promise.all([
     client.query({
       query: QUERY_CONTACT,
-      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_CONTACT_SEO,
-      fetchPolicy: "no-cache",
     }),
   ]);
 
