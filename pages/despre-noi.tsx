@@ -128,22 +128,28 @@ export async function getStaticProps() {
   ] = await Promise.all([
     client.query({
       query: QUERY_WORK_MODE,
+      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_ABOUT_S_ONE,
+      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_ABOUT_S_TWO,
+      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_ABOUT_S_THREE,
+      fetchPolicy: "no-cache",
     }),
     client.query({
       query: QUERY_ABOUT_S_FOUR,
+      fetchPolicy: "no-cache",
     }),
 
     client.query({
       query: QUERY_QA,
+      fetchPolicy: "no-cache",
     }),
   ]);
 

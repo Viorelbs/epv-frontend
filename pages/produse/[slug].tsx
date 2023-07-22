@@ -366,7 +366,7 @@ export async function getStaticProps({ params }: any) {
   );
 
   return {
-    revalidate: 10, // In seconds
+    revalidate: 5, // In seconds
     props: {
       product: data.data.produses.data[0],
       productsCards: randomSuggestions.slice(0, 4),

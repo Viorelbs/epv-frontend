@@ -17,6 +17,7 @@ export default function PoliticaCookie({ data }: any) {
 export async function getStaticProps() {
   const terms = await client.query({
     query: QUERY_POLITICA,
+    fetchPolicy: "no-cache",
   });
   return {
     revalidate: 120,

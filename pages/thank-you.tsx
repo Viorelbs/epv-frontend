@@ -10,6 +10,7 @@ export default function ThankYouPage({ orders }: any) {
   const router = useRouter();
   const { loading, error, data } = useQuery(QUERY_ORDERS, {
     client: client,
+    fetchPolicy: "no-cache",
     variables: {
       slug: router.query.session_id,
     },
