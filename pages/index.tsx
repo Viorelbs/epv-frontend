@@ -270,6 +270,7 @@ export const getStaticProps = async (context: any) => {
   ]);
 
   return {
+    revalidate: 5, // In seconds
     props: {
       hero: hero.data.hero,
       hpSection: hpSection.data.simpleSectionHome,

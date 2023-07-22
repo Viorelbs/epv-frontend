@@ -80,6 +80,7 @@ export const getStaticProps = async () => {
   ]);
 
   return {
+    revalidate: 5, // In seconds
     props: {
       contactInfo: contactInfo.data.contactInfo.data,
       contactSeo: contactSeo.data.contactSeo,

@@ -148,6 +148,7 @@ export async function getStaticProps() {
   ]);
 
   return {
+    revalidate: 5, // In seconds
     props: {
       workMode: workMode.data.workModeSection,
       sectionOne: sectionOne.data.aboutSOne,

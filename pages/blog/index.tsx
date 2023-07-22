@@ -145,6 +145,7 @@ export async function getStaticProps({ query }: any) {
   ]);
 
   return {
+    revalidate: 5, // In seconds
     props: {
       articles: articlesData.data.articoles.data,
       categories: categories.data,

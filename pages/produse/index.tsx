@@ -129,6 +129,7 @@ export const getStaticProps = async () => {
   ]);
 
   return {
+    revalidate: 5, // In seconds
     props: {
       categories: categoriesData.data.categories,
       brands: brandsData.data.brands,
