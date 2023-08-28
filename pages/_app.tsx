@@ -12,6 +12,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 import logo from "../public/logo.png";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 export const URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -68,6 +69,16 @@ export default function App({ Component, pageProps }: AppProps) {
             <StrapiApolloProvider>
               <WidthProvider>
                 <Layout>
+                  <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
+                  <Script id="google-analytics">
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'GA_MEASUREMENT_ID');
+        `}
+                  </Script>
                   <Component {...pageProps} />
                   <Analytics />
                 </Layout>
