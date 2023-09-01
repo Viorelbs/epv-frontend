@@ -52,7 +52,7 @@ export default function ProductsGrid({
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    if (paginationNumber < 1) {
+    if (paginationNumber < 2) {
       const queryParams = new URLSearchParams(
         router.query as Record<string, string>
       );
@@ -151,7 +151,7 @@ export default function ProductsGrid({
           </div>
           <Pagination
             handleChange={handleChange}
-            count={Number(paginationNumber)}
+            count={Number(paginationNumber - 1)}
           />
         </div>
       </div>

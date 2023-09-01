@@ -13,7 +13,6 @@ export default function Pagination({ handleChange, count }: Props) {
     { length: count },
     (_, index) => index + 1
   );
-
   const assignHandleChange = (idx: number) => {
     setActive(idx);
     handleChange(idx);
