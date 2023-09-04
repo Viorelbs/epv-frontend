@@ -142,7 +142,7 @@ export default function Filters({ categories, brands, powers }: Props) {
         ))}
         <label
           htmlFor="countries"
-          className="mt-4 text-sm font-medium text-gray-900 "
+          className="mt-4 text-sm font-medium text-gray-900"
         >
           Ordoneaza dupa:
         </label>

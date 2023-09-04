@@ -151,7 +151,7 @@ export default function ProductsGrid({
           </div>
           <Pagination
             handleChange={handleChange}
-            count={Number(paginationNumber - 1)}
+            count={Number(paginationNumber)}
           />
         </div>
       </div>
