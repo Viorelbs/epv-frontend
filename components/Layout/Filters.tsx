@@ -48,7 +48,7 @@ export default function Filters({ categories, brands, powers }: Props) {
     });
   }, [mainFilters]);
 
-  // Updating state based on checked inputs
+  // Updating state based on checked inputs.
   const handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
     const checkboxValue = e.currentTarget.value;
     const checkboxName = e.currentTarget.name;

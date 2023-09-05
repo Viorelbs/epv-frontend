@@ -50,7 +50,6 @@ export default function ProductsGrid({
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   useEffect(() => {
     if (paginationNumber < 2) {
       const queryParams = new URLSearchParams(
