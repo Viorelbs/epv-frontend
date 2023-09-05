@@ -41,14 +41,6 @@ export default function ProductPage({
   ogTitle,
   ogDescription,
 }: Props) {
-  if (!product) {
-    return (
-      <div className="min-h-[70vh] grid place-content-center">
-        <Loader size={10} />
-      </div>
-    );
-  }
-
   const [qty, setQty] = useState(1);
   const [favourite, setFavourite] = useState(false);
   const dispatch = useDispatch();
