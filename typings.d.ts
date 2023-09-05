@@ -329,6 +329,9 @@ export interface Review {
 export interface CategoryType {
   attributes: {
     NumeCategorie: String;
+    produses: {
+      data: [];
+    };
   };
   id: Number | InputHTMLAttributes<HTMLInputElement>;
 }
