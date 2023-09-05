@@ -7,6 +7,7 @@ import {
 import { checkbox } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
+import Loader from "../Common/Loader";
 
 interface Props {
   categories: {
@@ -25,6 +26,8 @@ export default function Filters({ categories, brands, powers }: Props) {
   const [filters, setFilters] = useState<Record<string, string[] | undefined>>(
     {}
   );
+
+  const [filteredCategs, setFilteredCategs] = useState([]);
   const router = useRouter();
 
   // Setting main categs
@@ -120,29 +123,36 @@ export default function Filters({ categories, brands, powers }: Props) {
     });
   };
   // Filtering empty categories
-  const filteredCategories = categories.data.filter(
-    (cat: CategoryType) => cat.attributes.produses.data.length > 0
-  );
+  useEffect(() => {
+    const filteredCategories = categories.data.filter(
+      (cat: CategoryType) => cat.attributes.produses.data.length > 0
+    );
+    setFilteredCategs(filteredCategories as []);
+  }, []);
   return (
     <>
       <span className="mt-4 text-sm font-medium text-gray-900">Afiseaza</span>
       <div className="flex flex-col gap-2 mt-2 ">
-        {filteredCategories.map((cat: CategoryType) => (
-          <div key={cat.id} className="checkbox text-[15px]">
-            <input
-              type="radio"
-              value={cat.id}
-              name="cat"
-              checked={router.query.cat?.includes(cat.id)}
-              className="checkbox"
-              onClick={handleMainCateg}
-              id={cat.id}
-            />
-            <label htmlFor={cat.id}>
-              {cat.attributes.NumeCategorie.replace(/_/g, " ")}
-            </label>
-          </div>
-        ))}
+        {filteredCategs ? (
+          filteredCategs.map((cat: CategoryType) => (
+            <div key={cat.id} className="checkbox text-[15px]">
+              <input
+                type="radio"
+                value={cat.id}
+                name="cat"
+                checked={router.query.cat?.includes(cat.id)}
+                className="checkbox"
+                onClick={handleMainCateg}
+                id={cat.id}
+              />
+              <label htmlFor={cat.id}>
+                {cat.attributes.NumeCategorie.replace(/_/g, " ")}
+              </label>
+            </div>
+          ))
+        ) : (
+          <Loader size={4} />
+        )}
         <label
           htmlFor="countries"
           className="mt-4 text-sm font-medium text-gray-900"

@@ -330,7 +330,7 @@ export interface CategoryType {
   attributes: {
     NumeCategorie: String;
     produses: {
-      data: [];
+      data: ProdusCardType[];
     };
   };
   id: Number | InputHTMLAttributes<HTMLInputElement>;
