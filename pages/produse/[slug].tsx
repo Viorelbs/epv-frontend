@@ -47,8 +47,8 @@ export default function ProductPage({
   const { windowWidth } = useWidth();
   const [currentImage, setCurrentImage] = useState<string>();
   const favProducts = useSelector((state: RootState) => state.favourite);
-  const price = product.attributes.Pret;
-  const oldPrice = product.attributes.PretVechi;
+  const price = product?.attributes.Pret;
+  const oldPrice = product?.attributes.PretVechi;
   const discount = ((price - oldPrice) / oldPrice) * 100;
   const formattedDiscount = Math.abs(discount).toFixed(0) + "%";
   // Add to cart
@@ -75,24 +75,21 @@ export default function ProductPage({
     );
   };
 
-  const sumRatings = product.attributes.review_produses.data.reduce(
+  const sumRatings = product?.attributes.review_produses.data.reduce(
     (acc, review) => acc + review.attributes.Rating,
     0
   );
-  const ratingLength = product.attributes.review_produses.data.length;
+  const ratingLength = product?.attributes.review_produses.data.length;
   const averageRating = useMemo(
     () => sumRatings / ratingLength,
     [sumRatings, ratingLength]
   );
 
-  // Setting current image
-  const memoizedCurrentImage = useMemo(
-    () => product.attributes.PozeProdus.data[0].attributes.url,
-    [product.attributes.PozeProdus.data]
-  );
   useEffect(() => {
-    setCurrentImage(memoizedCurrentImage);
-  }, [memoizedCurrentImage]);
+    if (product) {
+      setCurrentImage(product.attributes.PozeProdus.data[0].attributes.url);
+    }
+  }, [product]);
 
   useEffect(() => {
     const prod = favProducts.products.filter(
@@ -157,6 +154,9 @@ export default function ProductPage({
     }
   };
 
+  if (!product) {
+    return <Loader size={10} />;
+  }
   return (
     <>
       <Head>
@@ -342,7 +342,7 @@ export async function getStaticPaths() {
   const paths = data.produses.data.map((product: ProdusCardType) => ({
     params: { slug: product.attributes.slug },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 export async function getStaticProps({ params }: any) {
   const { slug } = params;
