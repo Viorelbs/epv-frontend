@@ -69,16 +69,6 @@ export default function App({ Component, pageProps }: AppProps) {
             <StrapiApolloProvider>
               <WidthProvider>
                 <Layout>
-                  <Script src="https://www.googletagmanager.com/gtag/js?id=G-BS9S0YXMLF" />
-                  <Script id="google-analytics">
-                    {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-BS9S0YXMLF');
-        `}
-                  </Script>
                   <Component {...pageProps} />
                   <Analytics />
                 </Layout>
@@ -87,6 +77,16 @@ export default function App({ Component, pageProps }: AppProps) {
           </ApolloProvider>
         </PersistGate>
       </Provider>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-BS9S0YXMLF" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-BS9S0YXMLF');
+        `}
+      </Script>
     </>
   );
 }

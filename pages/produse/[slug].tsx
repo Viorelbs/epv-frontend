@@ -342,9 +342,8 @@ export async function getStaticPaths() {
   const paths = data.produses.data.map((product: ProdusCardType) => ({
     params: { slug: product.attributes.slug },
   }));
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }
-
 export async function getStaticProps({ params }: any) {
   const { slug } = params;
   const [data, productsCards] = await Promise.all([
@@ -369,10 +368,12 @@ export async function getStaticProps({ params }: any) {
     props: {
       product: data.data.produses.data[0],
       productsCards: randomSuggestions.slice(0, 4),
-      ogTitle: data.data.produses.data[0].attributes.seo[0]?.metaTitle || null,
+      ogTitle:
+        data.data.produses.data[0]?.attributes?.seo[0]?.metaTitle || null,
       ogDescription:
-        data.data.produses.data[0].attributes.seo[0]?.metaDescription || null,
-      ogImage: data.data.produses.data[0].attributes.seo[0]?.metaImage || null,
+        data.data.produses.data[0]?.attributes?.seo[0]?.metaDescription || null,
+      ogImage:
+        data.data.produses.data[0]?.attributes?.seo[0]?.metaImage || null,
     },
   };
 }
