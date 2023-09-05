@@ -48,7 +48,7 @@ export default function Filters({ categories, brands, powers }: Props) {
     });
   }, [mainFilters]);
 
-  // Updating state based on checked inputs
+  // Updating state based on checked inputs.
   const handleChange = (e: React.MouseEvent<HTMLInputElement>) => {
     const checkboxValue = e.currentTarget.value;
     const checkboxName = e.currentTarget.name;
@@ -119,12 +119,15 @@ export default function Filters({ categories, brands, powers }: Props) {
       scroll: false,
     });
   };
-
+  // Filtering empty categories
+  const filteredCategories = categories.data.filter(
+    (cat: CategoryType) => cat.attributes.produses.data.length > 0
+  );
   return (
     <>
       <span className="mt-4 text-sm font-medium text-gray-900">Afiseaza</span>
       <div className="flex flex-col gap-2 mt-2 ">
-        {categories.data.map((cat: CategoryType) => (
+        {filteredCategories.map((cat: CategoryType) => (
           <div key={cat.id} className="checkbox text-[15px]">
             <input
               type="radio"
