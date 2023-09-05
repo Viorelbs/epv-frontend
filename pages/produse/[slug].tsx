@@ -24,6 +24,7 @@ import Head from "next/head";
 import { FiShoppingBag } from "react-icons/fi";
 import useWidth from "@/hooks/useWidth";
 import Stock from "@/components/Layout/Stock";
+import Loader from "@/components/Common/Loader";
 
 interface Props {
   product: Product;
@@ -40,6 +41,14 @@ export default function ProductPage({
   ogTitle,
   ogDescription,
 }: Props) {
+  if (!product) {
+    return (
+      <div className="min-h-[70vh] grid place-content-center">
+        <Loader size={10} />
+      </div>
+    );
+  }
+
   const [qty, setQty] = useState(1);
   const [favourite, setFavourite] = useState(false);
   const dispatch = useDispatch();
@@ -50,7 +59,6 @@ export default function ProductPage({
   const oldPrice = product.attributes.PretVechi;
   const discount = ((price - oldPrice) / oldPrice) * 100;
   const formattedDiscount = Math.abs(discount).toFixed(0) + "%";
-  console.log(product);
   // Add to cart
   const handleCart = () => {
     if (product.attributes.stock === 0) {
