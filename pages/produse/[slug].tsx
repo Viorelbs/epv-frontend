@@ -49,7 +49,6 @@ export default function ProductPage({
   const price = product.attributes.Pret;
   const oldPrice = product.attributes.PretVechi;
   const discount = ((price - oldPrice) / oldPrice) * 100;
-
   const formattedDiscount = Math.abs(discount).toFixed(0) + "%";
   // Add to cart
   const handleCart = () => {

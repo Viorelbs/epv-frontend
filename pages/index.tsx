@@ -25,7 +25,6 @@ import {
   MetaImage,
   PartenersTypes,
   PowersType,
-  ProdusCardType,
   qaSectionType,
   QuestionsType,
   Review,
@@ -232,12 +231,9 @@ export default function Home({
     </>
   );
 }
-export const getStaticProps = async (context: any) => {
-  const { query } = context;
-
+export const getStaticProps = async () => {
   const [
     hero,
-    // productsData,
     categoriesData,
     brandsData,
     powerData,
@@ -251,26 +247,6 @@ export const getStaticProps = async (context: any) => {
     client.query({
       query: QUERY_HERO,
     }),
-    // client.query({
-    //   query: PRODUCTS_CARDS_QUERY,
-    //   variables: {
-    //     catId:
-    //       query?.cat?.length === 0
-    //         ? undefined
-    //         : query?.cat?.split(",").map(Number) || undefined,
-    //     pageIdx: Number(query?.page) || 1,
-    //     size: 10,
-    //     sort: query?.sort || "createdAt:desc",
-    //     brandId:
-    //       query?.cat?.includes(2) || query?.brand?.length === 0
-    //         ? undefined
-    //         : query?.brand?.split(",").map(Number) || undefined,
-    //     putereId:
-    //       query?.cat?.includes(2) || query?.powers?.length === 0
-    //         ? undefined
-    //         : query?.powers?.split(",").map(Number) || undefined,
-    //   },
-    // }),
     client.query({
       query: QUERY_CATEGORIES,
     }),
@@ -308,7 +284,6 @@ export const getStaticProps = async (context: any) => {
       parteners: parteners.data.parteneri,
       reviews: reviews.data.reviews,
       questions: questions.data.intrebaris,
-      // productCard: productsData.data.produses,
       categories: categoriesData.data.categories,
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,
