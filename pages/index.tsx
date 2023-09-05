@@ -25,6 +25,7 @@ import {
   MetaImage,
   PartenersTypes,
   PowersType,
+  ProdusCardType,
   qaSectionType,
   QuestionsType,
   Review,
@@ -37,8 +38,6 @@ import { client } from "./_app";
 import { useRef, useState } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import useWidth from "@/hooks/useWidth";
-import { useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
 
 interface Props {
   hero: {
@@ -56,6 +55,7 @@ interface Props {
     data: QuestionsType[];
   };
 
+  productCard: { data: ProdusCardType[]; meta: {} };
   categories: {
     data: CategoryType[];
   };
@@ -78,6 +78,7 @@ export default function Home({
   parteners,
   reviews,
   questions,
+  productCard,
   categories,
   brands,
   powers,
@@ -104,37 +105,6 @@ export default function Home({
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
-  const router = useRouter();
-  const { query } = router;
-
-  const { loading, error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
-    client: client,
-    variables: {
-      catId:
-        query?.cat?.length === 0
-          ? undefined
-          : Array.isArray(query?.cat)
-          ? query?.cat.map(Number)
-          : query?.cat?.split(",").map(Number) || undefined,
-      pageIdx: Number(query?.page) || 1,
-      size: 12,
-      sort: query?.sort || "createdAt:desc",
-      brandId: query?.cat?.includes("2")
-        ? undefined
-        : query?.brand?.length === 0
-        ? undefined
-        : Array.isArray(query?.brand)
-        ? query?.brand.map(Number)
-        : query?.brand?.split(",").map(Number) || undefined,
-      putereId: query?.cat?.includes("2")
-        ? undefined
-        : query?.power?.length === 0
-        ? undefined
-        : Array.isArray(query?.power)
-        ? query?.power.map(Number)
-        : query?.power?.split(",").map(Number) || undefined,
-    },
-  });
 
   return (
     <>
@@ -165,12 +135,12 @@ export default function Home({
         <CostCalculator data={calcData} />
 
         <ProductsGrid
-          products={data && data.produses}
-          filters={true}
+          products={productCard}
+          filters={false}
           categories={categories}
           brands={brands}
           powers={powers}
-          pageSize={12}
+          pageSize={10}
         />
         <SimpleSection
           title={hpSection.data.attributes.titlu}
@@ -231,9 +201,12 @@ export default function Home({
     </>
   );
 }
-export const getStaticProps = async () => {
+export const getStaticProps = async (context: any) => {
+  const { query } = context;
+
   const [
     hero,
+    productsData,
     categoriesData,
     brandsData,
     powerData,
@@ -246,6 +219,26 @@ export const getStaticProps = async () => {
   ] = await Promise.all([
     client.query({
       query: QUERY_HERO,
+    }),
+    client.query({
+      query: PRODUCTS_CARDS_QUERY,
+      variables: {
+        catId:
+          query?.cat?.length === 0
+            ? undefined
+            : query?.cat?.split(",").map(Number) || undefined,
+        pageIdx: Number(query?.page) || 1,
+        size: 10,
+        sort: query?.sort || "createdAt:desc",
+        brandId:
+          query?.cat?.includes(2) || query?.brand?.length === 0
+            ? undefined
+            : query?.brand?.split(",").map(Number) || undefined,
+        putereId:
+          query?.cat?.includes(2) || query?.powers?.length === 0
+            ? undefined
+            : query?.powers?.split(",").map(Number) || undefined,
+      },
     }),
     client.query({
       query: QUERY_CATEGORIES,
@@ -284,6 +277,7 @@ export const getStaticProps = async () => {
       parteners: parteners.data.parteneri,
       reviews: reviews.data.reviews,
       questions: questions.data.intrebaris,
+      productCard: productsData.data.produses,
       categories: categoriesData.data.categories,
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,

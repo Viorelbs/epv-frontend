@@ -50,6 +50,7 @@ export default function ProductPage({
   const oldPrice = product.attributes.PretVechi;
   const discount = ((price - oldPrice) / oldPrice) * 100;
   const formattedDiscount = Math.abs(discount).toFixed(0) + "%";
+  console.log(product);
   // Add to cart
   const handleCart = () => {
     if (product.attributes.stock === 0) {
@@ -363,7 +364,6 @@ export async function getStaticProps({ params }: any) {
   const randomSuggestions = [...productsCards.data.produses.data].sort(
     () => 0.5 - Math.random()
   );
-
   return {
     revalidate: 5, // In seconds
     props: {
