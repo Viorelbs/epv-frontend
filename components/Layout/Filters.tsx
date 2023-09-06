@@ -19,13 +19,24 @@ interface Props {
   powers: {
     data: PowersType[];
   };
+  // products: { data: ProdusCardType[]; meta: {} };
 }
 
-export default function Filters({ categories, brands, powers }: Props) {
+export default function Filters({
+  categories,
+  brands,
+  powers,
+}: // products,
+Props) {
   const [mainFilters, setMainFilters] = useState({});
   const [filters, setFilters] = useState<Record<string, string[] | undefined>>(
     {}
   );
+
+  // Dynamic filters length
+  // const brandLength = Array.from(
+  //   new Set(products.data.map((brand) => brand.id).l)
+  // );
 
   const [filteredCategs, setFilteredCategs] = useState([]);
   const router = useRouter();

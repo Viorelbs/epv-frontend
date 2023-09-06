@@ -67,14 +67,14 @@ export default function Produse({
       pageIdx: Number(query?.page) || 1,
       size: 12,
       sort: query?.sort || "createdAt:desc",
-      brandId: query?.cat?.includes("2")
+      brandId: query?.cat?.includes("1")
         ? brandIds
         : query?.brand?.length === 0
         ? brandIds
         : Array.isArray(query?.brand)
         ? query?.brand.map(Number)
         : query?.brand?.split(",").map(Number) || brandIds,
-      putereId: query?.cat?.includes("2")
+      putereId: query?.cat?.includes("1")
         ? powerIds
         : query?.power?.length === 0
         ? powerIds
@@ -83,7 +83,6 @@ export default function Produse({
         : query?.power?.split(",").map(Number) || powerIds,
     },
   });
-
   return (
     <>
       <Head>

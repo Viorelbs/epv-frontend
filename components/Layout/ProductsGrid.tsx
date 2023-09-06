@@ -12,7 +12,6 @@ import ProductCard from "./ProductCard";
 import useWidth from "@/hooks/useWidth";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import { client } from "@/pages/_app";
 import Pagination from "./Pagination";
 import Loader from "../Common/Loader";
 
@@ -61,7 +60,6 @@ export default function ProductsGrid({
       });
     }
   }, [paginationNumber]);
-
   const handleChange = (value: number) => {
     const queryParams = new URLSearchParams(
       router.query as Record<string, string>
@@ -72,7 +70,6 @@ export default function ProductsGrid({
       scroll: false,
     });
   };
-
   return (
     <div className="min-h-[70vh] py-14 md:py-24 lg:py-32 container mx-auto px-4">
       <div>
@@ -105,6 +102,7 @@ export default function ProductsGrid({
               </div>
               <div className="px-4 pb-4 ">
                 <Filters
+                  // products={products && products}
                   categories={categories}
                   brands={brands}
                   powers={powers}
@@ -118,7 +116,12 @@ export default function ProductsGrid({
       <div className="flex mt-10 gap-4 ">
         {filters && windowWidth > 991 ? (
           <div className="flex-1 box-shadow rounded-[20px] p-5 h-fit">
-            <Filters categories={categories} brands={brands} powers={powers} />
+            <Filters
+              categories={categories}
+              brands={brands}
+              powers={powers}
+              // products={products && products}
+            />
           </div>
         ) : null}
 

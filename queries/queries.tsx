@@ -102,12 +102,14 @@ export const PRODUCTS_CARDS_QUERY = gql`
     $catId: [ID]
     $sort: [String]
     $brandId: [ID]
+    $putereId: [ID]
   ) {
     produses(
       pagination: { page: $pageIdx, pageSize: $size }
       filters: {
         categorie_produs: { id: { in: $catId } }
         brand: { id: { in: $brandId } }
+        putere: { id: { in: $putereId } }
       }
       sort: $sort
     ) {
