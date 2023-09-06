@@ -233,6 +233,7 @@ export interface ProdusCardType {
     Nume: string;
     stock: number;
     Pret: number;
+    ani_garantie: number;
     PretVechi: number;
     PozeProdus: any;
     slug: string;
@@ -295,6 +296,7 @@ export interface Product {
     Pret: Float!;
     stock: number;
     slug: string;
+    ani_garantie: number;
     PretVechi: Float;
     ScurtaDescriere: string;
     Descriere: string;

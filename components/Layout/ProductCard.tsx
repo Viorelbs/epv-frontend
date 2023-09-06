@@ -20,6 +20,7 @@ interface Props {
   productName: string;
   price: number;
   oldPrice: number;
+  warranty: number | null;
   slug: string;
   stock: number;
   productImages: {
@@ -41,6 +42,7 @@ export default function ProductCard({
   oldPrice,
   productImages,
   rating,
+  warranty,
   id,
   stock,
   slug,
@@ -180,7 +182,14 @@ export default function ProductCard({
       </Link>
 
       <div className="border-t border-gray-400 pt-3 mt-6 grow flex flex-col ">
-        <Stock stock={stock} variant="text" />
+        <div className="flex gap-2 items-center flex-wrap">
+          <Stock stock={stock} variant="text" />
+          {warranty && warranty > 3 ? (
+            <span className=" left-0 bottom-10 bg-orange-700 text-white px-3 md:px-2 py-1 rounded-lg text-sm md:text-sm">
+              {warranty} Garantie
+            </span>
+          ) : null}
+        </div>
         {ratingLength > 0 ? (
           <div className="flex items-center gap-1  flex-wrap">
             <Rating rating={averageRating} />{" "}

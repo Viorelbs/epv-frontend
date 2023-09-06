@@ -139,6 +139,7 @@ export default function ProductsGrid({
                   key={product.id}
                   id={product.id}
                   stock={product.attributes.stock}
+                  warranty={product.attributes.ani_garantie || null}
                   productName={product.attributes.Nume}
                   price={product.attributes.Pret}
                   oldPrice={product.attributes.PretVechi}

@@ -287,6 +287,14 @@ export default function ProductPage({
                   <HiOutlineLightBulb className="w-8 h-8 " />
                   Indecis? Cere o oferta personzalizata
                 </span> */}
+                {product.attributes.ani_garantie ? (
+                  <span>
+                    Garantie:
+                    <span className="ml-2 font-medium">
+                      {product.attributes.ani_garantie} Ani
+                    </span>
+                  </span>
+                ) : null}
                 <span>
                   Cod Produs:
                   <span className="ml-2 font-medium">

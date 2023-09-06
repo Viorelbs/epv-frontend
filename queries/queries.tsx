@@ -130,6 +130,7 @@ export const PRODUCTS_CARDS_QUERY = gql`
           }
           slug
           Nume
+          ani_garantie
           Pret
           categorie_produs {
             data {
@@ -179,6 +180,7 @@ export const SIMILAR_PRODUCTS_CARDS_QUERY = gql`
           createdAt
           slug
           Nume
+          ani_garantie
           Pret
           categorie_produs {
             data {
@@ -271,6 +273,7 @@ export const GET_PRODUCT_BY_NAME = gql`
           Nume
           Pret
           stock
+          ani_garantie
           slug
           PretVechi
           ScurtaDescriere
