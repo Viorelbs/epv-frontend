@@ -296,7 +296,7 @@ export default function ProductPage({
                 <span>
                   Categorie Produs:
                   <span className="ml-2 font-medium">
-                    {product.attributes.categorie_produse?.data?.attributes?.NumeCategorie.replace(
+                    {product.attributes.categorie_produs?.data?.attributes?.NumeCategorie.replace(
                       "_",
                       " "
                     )}
