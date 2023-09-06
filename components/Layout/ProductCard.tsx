@@ -185,7 +185,7 @@ export default function ProductCard({
       <div className="border-t border-gray-400 pt-3 mt-6 grow flex flex-col ">
         <div className="flex gap-2 items-center flex-wrap">
           <Stock stock={stock} variant="text" />
-          {warranty && warranty > 1 ? (
+          {warranty && warranty > 2 ? (
             <span className=" left-0 bottom-10 bg-orange-700 text-white px-3 md:px-2 py-1 rounded-lg text-sm md:text-sm">
               {warranty} Garantie
             </span>
