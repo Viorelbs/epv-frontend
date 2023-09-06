@@ -100,7 +100,6 @@ export default function Produse({
       </Head>
       <main>
         <Banner text="Produse" />
-
         <ProductsGrid
           products={data && data.produses}
           filters={true}

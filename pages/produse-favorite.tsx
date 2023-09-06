@@ -20,6 +20,7 @@ export default function FavouriteProducts() {
                 key={product.id}
                 id={product.id}
                 stock={product.stock}
+                warranty={product.warranty}
                 oldPrice={product.oldPrice}
                 price={product.price}
                 productImages={product.productImages}

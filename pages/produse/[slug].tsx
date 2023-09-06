@@ -93,7 +93,7 @@ export default function ProductPage({
 
   useEffect(() => {
     const prod = favProducts.products.filter(
-      (item: ProdusCardType) => item.id === product.id
+      (item: ProdusCardType) => item.id === product?.id
     );
     prod.length !== 0 ? setFavourite(true) : setFavourite(false);
   }, [favProducts]);
@@ -326,6 +326,7 @@ export default function ProductPage({
                 <ProductCard
                   productName={product.attributes.Nume}
                   price={product.attributes.Pret}
+                  warranty={product.attributes.ani_garantie}
                   oldPrice={product.attributes.PretVechi}
                   slug={product.attributes.slug}
                   stock={product.attributes.stock}
