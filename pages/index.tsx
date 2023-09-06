@@ -106,37 +106,39 @@ export default function Home({
   };
   const router = useRouter();
   const { query } = router;
+  // Filters parameters
+  const categoryIds = Array.from(new Set(categories.data.map((cat) => cat.id)));
+  const brandIds = Array.from(new Set(brands.data.map((brand) => brand.id)));
+  // const powerIds = Array.from(new Set(powers.data.map((power) => power.id)));
 
-  const { loading, error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
+  const { error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
     client: client,
     variables: {
       catId:
         query?.cat?.length === 0
-          ? undefined
+          ? categoryIds
           : Array.isArray(query?.cat)
           ? query?.cat.map(Number)
-          : query?.cat?.split(",").map(Number) || undefined,
+          : query?.cat?.split(",").map(String) || categoryIds,
       pageIdx: Number(query?.page) || 1,
       size: 12,
       sort: query?.sort || "createdAt:desc",
-      brandId: query?.cat?.includes("2")
-        ? undefined
+      brandId: query?.cat?.includes("1")
+        ? brandIds
         : query?.brand?.length === 0
-        ? undefined
+        ? brandIds
         : Array.isArray(query?.brand)
         ? query?.brand.map(Number)
-        : query?.brand?.split(",").map(Number) || undefined,
-      putereId: query?.cat?.includes("2")
-        ? undefined
-        : query?.power?.length === 0
-        ? undefined
-        : Array.isArray(query?.power)
-        ? query?.power.map(Number)
-        : query?.power?.split(",").map(Number) || undefined,
+        : query?.brand?.split(",").map(Number) || brandIds,
+      // putereId: query?.cat?.includes("1")
+      //   ? powerIds
+      //   : query?.power?.length === 0
+      //   ? powerIds
+      //   : Array.isArray(query?.power)
+      //   ? query?.power.map(Number)
+      //   : query?.power?.split(",").map(Number) || powerIds,
     },
   });
-
-  console.log(data, error);
 
   return (
     <>

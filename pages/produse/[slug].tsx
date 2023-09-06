@@ -354,7 +354,7 @@ export async function getStaticProps({ params }: any) {
     client.query({
       query: SIMILAR_PRODUCTS_CARDS_QUERY,
       variables: {
-        catId: undefined,
+        catId: [1, 2, 3, 4, 5, 6],
         slug: slug,
       },
     }),

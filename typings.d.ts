@@ -341,14 +341,14 @@ export interface BrandsType {
     Brand: String;
   };
   produses: ProdusCardType;
-  Id: string;
+  id: string;
 }
 export interface PowersType {
   attributes: {
     Putere: String;
   };
   produses: ProdusCardType;
-  Id: string;
+  id: string;
 }
 
 export interface AboutSectionOneType {

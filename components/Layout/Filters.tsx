@@ -170,7 +170,7 @@ export default function Filters({ categories, brands, powers }: Props) {
           <option value="Pret:asc">Pret Crescator</option>
           <option value="Pret:desc">Pret Descrescator</option>
         </select>
-        {router.query.cat && router.query.cat.includes("2") ? null : (
+        {router.query.cat && router.query.cat.includes("1") ? null : (
           <>
             <label
               htmlFor="sort"
@@ -212,7 +212,7 @@ export default function Filters({ categories, brands, powers }: Props) {
           </>
         )}
 
-        {router.query.cat && router.query.cat.includes("2") ? null : (
+        {/* {router.query.cat && router.query.cat.includes("1") ? null : (
           <>
             <label
               htmlFor="sort"
@@ -250,7 +250,7 @@ export default function Filters({ categories, brands, powers }: Props) {
               );
             })}
           </>
-        )}
+        )} */}
       </div>
     </>
   );

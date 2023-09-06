@@ -21,6 +21,80 @@ export const HERO_QUERY = gql`
   }
 `;
 
+// export const PRODUCTS_CARDS_QUERY = gql`
+//   query ProductsCards(
+//     $pageIdx: Int
+//     $size: Int
+//     $catId: [ID]
+//     $sort: [String]
+//     $brandId: [ID]
+//     $putereId: [ID]
+//   ) {
+//     produses(
+//       pagination: { page: $pageIdx, pageSize: $size }
+//       filters: {
+//         categorie_produs: { id: { in: $catId } }
+//         brand: { id: { in: $brandId } }
+//         putere: { id: { in: $putereId } }
+//       }
+//       sort: $sort
+//     ) {
+//       data {
+//         id
+//         attributes {
+//           createdAt
+//           brand {
+//             data {
+//               id
+//             }
+//           }
+//           stock
+//           putere {
+//             data {
+//               id
+//             }
+//           }
+//           slug
+//           Nume
+//           Pret
+//           categorie_produs {
+//             data {
+//               id
+//               attributes {
+//                 NumeCategorie
+//               }
+//             }
+//           }
+//           PretVechi
+//           PozeProdus {
+//             data {
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           review_produses {
+//             data {
+//               attributes {
+//                 NumeUtilizator
+//                 EmailUtilizator
+//                 Rating
+//                 Recenzie
+//                 createdAt
+//               }
+//             }
+//           }
+//         }
+//       }
+//       meta {
+//         pagination {
+//           total
+//         }
+//       }
+//     }
+//   }
+// `;
+
 export const PRODUCTS_CARDS_QUERY = gql`
   query ProductsCards(
     $pageIdx: Int
@@ -28,14 +102,12 @@ export const PRODUCTS_CARDS_QUERY = gql`
     $catId: [ID]
     $sort: [String]
     $brandId: [ID]
-    $putereId: [ID]
   ) {
     produses(
       pagination: { page: $pageIdx, pageSize: $size }
       filters: {
         categorie_produs: { id: { in: $catId } }
         brand: { id: { in: $brandId } }
-        putere: { id: { in: $putereId } }
       }
       sort: $sort
     ) {

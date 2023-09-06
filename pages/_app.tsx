@@ -63,9 +63,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:image:height" content="300" />
       </Head>
       {/* Components */}
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <ApolloProvider client={client}>
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
             <StrapiApolloProvider>
               <WidthProvider>
                 <Layout>
@@ -74,9 +74,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 </Layout>
               </WidthProvider>
             </StrapiApolloProvider>
-          </ApolloProvider>
-        </PersistGate>
-      </Provider>
+          </PersistGate>
+        </Provider>
+      </ApolloProvider>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-BS9S0YXMLF" />
       <Script id="google-analytics">
         {`
