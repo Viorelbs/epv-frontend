@@ -54,9 +54,8 @@ export default function Produse({
   // Filters parameters
   const categoryIds = Array.from(new Set(categories.data.map((cat) => cat.id)));
   const brandIds = Array.from(new Set(brands.data.map((brand) => brand.id)));
-  // const powerIds = Array.from(new Set(powers.data.map((power) => power.id)));
-
-  const { error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
+  const powerIds = Array.from(new Set(powers.data.map((power) => power.id)));
+  const { loading, error, data } = useQuery(PRODUCTS_CARDS_QUERY, {
     client: client,
     variables: {
       catId:
@@ -68,20 +67,20 @@ export default function Produse({
       pageIdx: Number(query?.page) || 1,
       size: 12,
       sort: query?.sort || "createdAt:desc",
-      brandId: query?.cat?.includes("1")
+      brandId: query?.cat?.includes("2")
         ? brandIds
         : query?.brand?.length === 0
         ? brandIds
         : Array.isArray(query?.brand)
         ? query?.brand.map(Number)
         : query?.brand?.split(",").map(Number) || brandIds,
-      // putereId: query?.cat?.includes("1")
-      //   ? powerIds
-      //   : query?.power?.length === 0
-      //   ? powerIds
-      //   : Array.isArray(query?.power)
-      //   ? query?.power.map(Number)
-      //   : query?.power?.split(",").map(Number) || powerIds,
+      putereId: query?.cat?.includes("2")
+        ? powerIds
+        : query?.power?.length === 0
+        ? powerIds
+        : Array.isArray(query?.power)
+        ? query?.power.map(Number)
+        : query?.power?.split(",").map(Number) || powerIds,
     },
   });
 

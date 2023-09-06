@@ -212,7 +212,7 @@ export default function Filters({ categories, brands, powers }: Props) {
           </>
         )}
 
-        {/* {router.query.cat && router.query.cat.includes("1") ? null : (
+        {router.query.cat && router.query.cat.includes("1") ? null : (
           <>
             <label
               htmlFor="sort"
@@ -250,7 +250,7 @@ export default function Filters({ categories, brands, powers }: Props) {
               );
             })}
           </>
-        )} */}
+        )}
       </div>
     </>
   );
