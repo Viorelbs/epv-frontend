@@ -136,6 +136,8 @@ export default function Home({
     },
   });
 
+  console.log(data, error);
+
   return (
     <>
       <Head>
@@ -284,7 +286,7 @@ export const getStaticProps = async () => {
       parteners: parteners.data.parteneri,
       reviews: reviews.data.reviews,
       questions: questions.data.intrebaris,
-      categories: categoriesData.data.categories,
+      categories: categoriesData.data.categorieProduses,
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,
       seo: seo.data.homepageSeo,

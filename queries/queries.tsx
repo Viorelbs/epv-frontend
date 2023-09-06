@@ -33,11 +33,10 @@ export const PRODUCTS_CARDS_QUERY = gql`
     produses(
       pagination: { page: $pageIdx, pageSize: $size }
       filters: {
-        category: { id: { in: $catId } }
+        categorie_produs: { id: { in: $catId } }
         brand: { id: { in: $brandId } }
         putere: { id: { in: $putereId } }
       }
-
       sort: $sort
     ) {
       data {
@@ -58,8 +57,9 @@ export const PRODUCTS_CARDS_QUERY = gql`
           slug
           Nume
           Pret
-          category {
+          categorie_produs {
             data {
+              id
               attributes {
                 NumeCategorie
               }
@@ -97,7 +97,7 @@ export const PRODUCTS_CARDS_QUERY = gql`
 export const SIMILAR_PRODUCTS_CARDS_QUERY = gql`
   query ProductsCards($catId: [ID], $slug: String!) {
     produses(
-      filters: { category: { id: { in: $catId } }, slug: { ne: $slug } }
+      filters: { categorie_produs: { id: { in: $catId } }, slug: { ne: $slug } }
     ) {
       data {
         id
@@ -106,8 +106,9 @@ export const SIMILAR_PRODUCTS_CARDS_QUERY = gql`
           slug
           Nume
           Pret
-          category {
+          categorie_produs {
             data {
+              id
               attributes {
                 NumeCategorie
               }
@@ -185,8 +186,9 @@ export const GET_PRODUCT_BY_NAME = gql`
             structuredData
             metaViewport
           }
-          category {
+          categorie_produs {
             data {
+              id
               attributes {
                 NumeCategorie
               }
@@ -297,7 +299,7 @@ export const CREATE_ORDER = gql`
 
 export const QUERY_CATEGORIES = gql`
   query {
-    categories {
+    categorieProduses {
       data {
         id
         attributes {

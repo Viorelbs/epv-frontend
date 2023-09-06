@@ -80,7 +80,6 @@ export default function Produse({
         : query?.power?.split(",").map(Number) || undefined,
     },
   });
-
   return (
     <>
       <Head>
@@ -131,7 +130,7 @@ export const getStaticProps = async () => {
   return {
     revalidate: 5, // In seconds
     props: {
-      categories: categoriesData.data.categories,
+      categories: categoriesData.data.categorieProduses,
       brands: brandsData.data.brands,
       powers: powerData.data.puteres,
       seo: seo.data.productPageSeo,

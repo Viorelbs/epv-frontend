@@ -306,7 +306,7 @@ export interface Product {
       reduce(arg0: (acc: any, review: any) => any, arg1: number): unknown;
       data: Review[];
     };
-    category: {
+    categorie_produs: {
       data: {
         attributes: {
           NumeCategorie: String;
