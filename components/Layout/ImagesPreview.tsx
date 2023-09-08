@@ -24,7 +24,7 @@ export default function ImagesPreview({
         )}
 
         {product.attributes.superPret ? (
-          <span className="absolute left-0 top-16 bg-red-600 text-white px-2 md:px-3 py-[5px] rounded-tr-lg rounded-br-lg text-sm pointer-events-none ">
+          <span className="absolute left-0 top-16 bg-red-600 text-white px-2 md:px-3 py-[5px] rounded-tr-lg rounded-br-lg text-sm pointer-events-none z-10">
             Super Pret
           </span>
         ) : null}
