@@ -187,7 +187,7 @@ export default function ProductCard({
           <Stock stock={stock} variant="text" />
           {warranty && warranty > 2 ? (
             <span className=" left-0 bottom-10 bg-orange-700 text-white px-3 md:px-2 py-1 rounded-lg text-sm md:text-sm">
-              {warranty} Garantie
+              {warranty} Ani Garantie
             </span>
           ) : null}
         </div>
