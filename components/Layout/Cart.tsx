@@ -195,7 +195,8 @@ export default function Cart(props: Props) {
           <div className="flex justify-between  ">
             <span className="font-light text-sm md:text-base flex items-center gap-2 cursor-pointer relative group">
               <span className="absolute bottom-[2rem] bg-white md:whitespace-nowrap border  p-2 rounded-xl opacity-0 group-hover:opacity-100 duration-200">
-                Transport gratuit peste suma de 10.000 lei
+                Transport gratuit peste suma de{" "}
+                {process.env.NEXT_PUBLIC_MINIUM_PRICE} lei
               </span>
               Taxa transport
               <AiOutlineExclamationCircle />
