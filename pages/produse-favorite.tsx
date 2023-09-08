@@ -19,6 +19,7 @@ export default function FavouriteProducts() {
               <ProductCard
                 key={product.id}
                 id={product.id}
+                superPrice={product.superPrice}
                 stock={product.stock}
                 warranty={product.warranty}
                 oldPrice={product.oldPrice}

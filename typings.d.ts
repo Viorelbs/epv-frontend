@@ -307,6 +307,7 @@ export interface Product {
     slug: string;
     ani_garantie: number;
     PretVechi: Float;
+    superPret: boolean;
     ScurtaDescriere: string;
     Descriere: string;
     Specificatii: string;

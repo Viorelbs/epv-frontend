@@ -23,6 +23,12 @@ export default function ImagesPreview({
           </span>
         )}
 
+        {product.attributes.superPret ? (
+          <span className="absolute left-0 top-16 bg-red-600 text-white px-2 md:px-3 py-[5px] rounded-tr-lg rounded-br-lg text-sm pointer-events-none ">
+            Super Pret
+          </span>
+        ) : null}
+
         {currentImage && (
           <Image
             className="absolute top-0 hover:scale-125 transition-all duration-300 left-0 right-0 bottom-0 m-auto object-contain w-full h-full p-4 md:p-10"

@@ -58,6 +58,7 @@ export default function ProductCard({
     (acc: number, review: Review) => acc + review.attributes.Rating,
     0
   );
+  console.log(superPrice);
   const { windowWidth } = useWidth();
   const ratingLength = rating.data.length;
   const averageRating = sumRatings / ratingLength;
@@ -109,6 +110,7 @@ export default function ProductCard({
             productName: productName,
             stock: stock,
             price: price,
+            superPrice: superPrice,
             warranty: warranty,
             oldPrice: oldPrice,
             productImages: productImages,
