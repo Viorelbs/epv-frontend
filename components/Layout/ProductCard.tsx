@@ -23,6 +23,7 @@ interface Props {
   warranty: number | null;
   slug: string;
   stock: number;
+  superPrice: boolean;
   productImages: {
     data: {
       attributes: {
@@ -40,6 +41,7 @@ export default function ProductCard({
   productName,
   price,
   oldPrice,
+  superPrice,
   productImages,
   rating,
   warranty,
@@ -60,7 +62,6 @@ export default function ProductCard({
   const ratingLength = rating.data.length;
   const averageRating = sumRatings / ratingLength;
   const favProducts = useSelector((state: RootState) => state.favourite);
-
   const handleFavourite = () => {
     if (favourite) {
       toast.error(
@@ -169,6 +170,11 @@ export default function ProductCard({
           {formattedDiscount}
         </span>
       )}
+      {superPrice ? (
+        <span className="absolute left-0 top-12 bg-red-600 text-white px-2 md:px-3 py-[5px] rounded-tr-lg rounded-br-lg text-sm pointer-events-none ">
+          Super Pret
+        </span>
+      ) : null}
 
       <Link href={`/produse/${slug}`}>
         <div className="relative cursor-pointer pt-[80%]  ">

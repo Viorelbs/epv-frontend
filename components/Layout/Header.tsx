@@ -40,7 +40,7 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [router]);
+  }, []);
 
   const desktopMenu = (
     <div

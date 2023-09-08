@@ -26,6 +26,8 @@ import useWidth from "@/hooks/useWidth";
 import Stock from "@/components/Layout/Stock";
 import Loader from "@/components/Common/Loader";
 import SchemaOrg from "@/components/Layout/SchemaOrg";
+import Link from "next/link";
+import ImagesPreview from "@/components/Layout/ImagesPreview";
 
 interface Props {
   product: Product;
@@ -65,7 +67,6 @@ export default function ProductPage({
       image: product?.attributes?.PozeProdus[0]?.attributes?.url,
     },
   };
-
   const [qty, setQty] = useState(1);
   const [favourite, setFavourite] = useState(false);
   const dispatch = useDispatch();
@@ -213,40 +214,12 @@ export default function ProductPage({
         />
         <div className="container mx-auto px-4">
           <div className="flex gap-10 mb-10 flex-col lg:flex-row">
-            <div className="flex-1 bg-white rounded-md">
-              <div className="relative pt-[70%]  border border-gray-300 mb-4">
-                {product.attributes.PretVechi && (
-                  <span className="absolute top-0 left-0 bg-[#0DC97A] text-white px-5 py-2 rounded-tl-lg rounded-br-lg text-sm md:text-base z-40">
-                    {formattedDiscount}
-                  </span>
-                )}
-
-                {currentImage && (
-                  <Image
-                    className="absolute top-0 left-0 right-0 bottom-0 m-auto object-contain w-full h-full p-4 md:p-10"
-                    src={currentImage}
-                    width={300}
-                    alt="product image"
-                    height={300}
-                  />
-                )}
-              </div>
-              <div className="flex gap-4 overflow-auto  scrollbar-hide ">
-                {product.attributes.PozeProdus.data.map(
-                  (item: ImageSimple, idx: any) => (
-                    <Image
-                      key={idx}
-                      src={item.attributes.url}
-                      alt={product.attributes.Nume}
-                      onClick={() => setCurrentImage(item.attributes.url)}
-                      className="w-24 h-24 p-3 bg-gray-100 hover:bg-gray-200 transition-all duration-75 rounded-sm cursor-pointer"
-                      width={50}
-                      height={50}
-                    />
-                  )
-                )}
-              </div>
-            </div>
+            <ImagesPreview
+              product={product}
+              setCurrentImage={setCurrentImage}
+              formattedDiscount={formattedDiscount}
+              currentImage={currentImage}
+            />
             <div className="flex-1">
               <h1 className="text-[20px] lg:text-[30px]">
                 {product.attributes.Nume}
@@ -323,6 +296,7 @@ export default function ProductPage({
                     {product.attributes.CodProdus}
                   </span>
                 </span>
+
                 <span>
                   Categorie Produs:
                   <span className="ml-2 font-medium">
@@ -332,6 +306,14 @@ export default function ProductPage({
                     )}
                   </span>
                 </span>
+                {/* {product.attributes.PDF.data ? (
+                  <Link
+                    href={product.attributes.PDF?.data?.attributes?.url}
+                    className="w-fit px-5 py-1 text-[#0dc97a] rounded-lg border hover:bg-[#0DC97A] hover:text-white border-[#0DC97A]"
+                  >
+                    Descarca Fisa Tehnica
+                  </Link>
+                ) : null} */}
               </div>
             </div>
           </div>
@@ -341,6 +323,7 @@ export default function ProductPage({
             id={product.id}
             reviews={product.attributes.review_produses.data}
           />
+
           <div className="space-y-6 mt-24 ">
             <h2>Produse Asemanatoare</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -350,6 +333,7 @@ export default function ProductPage({
                   price={product.attributes.Pret}
                   warranty={product.attributes.ani_garantie}
                   oldPrice={product.attributes.PretVechi}
+                  superPrice={product.attributes.superPret}
                   slug={product.attributes.slug}
                   stock={product.attributes.stock}
                   productImages={product.attributes.PozeProdus}

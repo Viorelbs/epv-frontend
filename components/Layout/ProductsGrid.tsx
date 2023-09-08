@@ -142,6 +142,7 @@ export default function ProductsGrid({
                   warranty={product.attributes.ani_garantie || null}
                   productName={product.attributes.Nume}
                   price={product.attributes.Pret}
+                  superPrice={product.attributes.superPret}
                   oldPrice={product.attributes.PretVechi}
                   productImages={product.attributes.PozeProdus}
                   rating={product.attributes.review_produses}

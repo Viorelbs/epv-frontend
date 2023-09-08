@@ -129,6 +129,7 @@ export const PRODUCTS_CARDS_QUERY = gql`
             }
           }
           slug
+          superPret
           Nume
           ani_garantie
           Pret
@@ -178,6 +179,7 @@ export const SIMILAR_PRODUCTS_CARDS_QUERY = gql`
         id
         attributes {
           createdAt
+          superPret
           slug
           Nume
           ani_garantie
@@ -273,8 +275,16 @@ export const GET_PRODUCT_BY_NAME = gql`
           Nume
           Pret
           stock
+          superPret
           ani_garantie
           slug
+          PDF {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
           PretVechi
           ScurtaDescriere
           Descriere
