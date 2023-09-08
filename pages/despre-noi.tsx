@@ -105,12 +105,12 @@ export default function About({
           descriptionOne={sectionThree.data.attributes.descriptionOne}
           descriptionTwo={sectionThree.data.attributes.descriptionTwo}
         />
-        <AboutSectionFour
+        {/* <AboutSectionFour
           title={sectionFour.data.attributes.title}
           description={sectionFour.data.attributes.description}
           imageOne={sectionFour.data.attributes.imageOne.data.attributes.url}
           imageTwo={sectionFour.data.attributes.imageTwo.data.attributes.url}
-        />
+        /> */}
         <Questions questions={questions.data} />
       </main>
     </>

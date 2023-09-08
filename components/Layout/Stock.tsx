@@ -81,7 +81,7 @@ export default function Stock({ stock, variant }: Props) {
       <span
         className={`text-sm lg:text-base ${
           variant === "outlined"
-            ? "border-green-500 border py-1 px-4 rounded-xl text-green-600"
+            ? "border-green-500 border py-[3px] px-4 rounded-xl text-green-600"
             : "text-green-600"
         }`}
       >

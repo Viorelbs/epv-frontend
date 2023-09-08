@@ -89,7 +89,6 @@ export default function Cart(props: Props) {
       0
     );
   }, [products]);
-
   // Closing modal when no products
   useEffect(() => {
     if (products.length === 0) {
@@ -186,12 +185,16 @@ export default function Cart(props: Props) {
           </div>
         </div>
         <div className="p-8 border-t border-gray-500 space-y-3">
-          <div className="flex justify-between  ">
-            <span className="font-light text-sm md:text-base">Economisiți</span>
-            <span className="font-medium text-sm md:text-base text-green-500">
-              {(totalSumOldPrice - totalSumProd).toFixed(2)} Lei + TVA
-            </span>
-          </div>
+          {totalSumOldPrice !== 0 ? (
+            <div className="flex justify-between  ">
+              <span className="font-light text-sm md:text-base">
+                Economisiți
+              </span>
+              <span className="font-medium text-sm md:text-base text-green-500">
+                {(totalSumOldPrice - totalSumProd).toFixed(2)} Lei + TVA
+              </span>
+            </div>
+          ) : null}
           <div className="flex justify-between  ">
             <span className="font-light text-sm md:text-base flex items-center gap-2 cursor-pointer relative group">
               <span className="absolute bottom-[2rem] bg-white md:whitespace-nowrap border  p-2 rounded-xl opacity-0 group-hover:opacity-100 duration-200">

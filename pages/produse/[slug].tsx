@@ -276,8 +276,13 @@ export default function ProductPage({
                   <span className="text-gray-400">Inca nu exista recenzii</span>
                 )}
               </div>
-              <div className="mt-6">
+              <div className="mt-4 flex gap-3 items-center">
                 <Stock stock={product.attributes.stock} variant="outlined" />
+                {product.attributes.ani_garantie ? (
+                  <span className=" left-0 bottom-10 bg-[#0DC97A] text-white px-3 md:px-2 py-1 rounded-lg text-sm md:text-base">
+                    {product.attributes.ani_garantie} Ani Garantie
+                  </span>
+                ) : null}
               </div>
 
               <div className="my-5 ">
@@ -312,14 +317,6 @@ export default function ProductPage({
                   <HiOutlineLightBulb className="w-8 h-8 " />
                   Indecis? Cere o oferta personzalizata
                 </span> */}
-                {product.attributes.ani_garantie ? (
-                  <span>
-                    Garantie:
-                    <span className="ml-2 font-medium">
-                      {product.attributes.ani_garantie} Ani
-                    </span>
-                  </span>
-                ) : null}
                 <span>
                   Cod Produs:
                   <span className="ml-2 font-medium">

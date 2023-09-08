@@ -183,16 +183,16 @@ export default function ProductCard({
       </Link>
 
       <div className="border-t border-gray-400 pt-3 mt-6 grow flex flex-col ">
-        <div className="flex gap-2 items-center flex-wrap">
-          <Stock stock={stock} variant="text" />
-          {warranty && warranty > 2 ? (
-            <span className=" left-0 bottom-10 bg-orange-700 text-white px-3 md:px-2 py-1 rounded-lg text-sm md:text-sm">
+        <div className="flex gap-2 items-center flex-wrap ">
+          <Stock stock={stock} variant="outlined" />
+          {warranty && warranty >= 2 ? (
+            <span className=" left-0 bottom-10 bg-[#0DC97A] text-white px-3 md:px-2 py-1 rounded-lg text-sm">
               {warranty} Ani Garantie
             </span>
           ) : null}
         </div>
         {ratingLength > 0 ? (
-          <div className="flex items-center gap-1  flex-wrap">
+          <div className="flex items-center gap-1 mt-3  flex-wrap">
             <Rating rating={averageRating} />{" "}
             <span className="text-[12px] font-light">({ratingLength})</span>
           </div>
