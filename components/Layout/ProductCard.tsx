@@ -58,7 +58,6 @@ export default function ProductCard({
     (acc: number, review: Review) => acc + review.attributes.Rating,
     0
   );
-  console.log(superPrice);
   const { windowWidth } = useWidth();
   const ratingLength = rating.data.length;
   const averageRating = sumRatings / ratingLength;
@@ -173,7 +172,7 @@ export default function ProductCard({
         </span>
       )}
       {superPrice ? (
-        <span className="absolute left-0 top-12 bg-red-600 text-white px-2 md:px-3 py-[5px] rounded-tr-lg rounded-br-lg text-sm pointer-events-none ">
+        <span className="absolute left-0 top-10 md:top-12 bg-red-600 text-white px-2 md:px-3 py-[4px] rounded-tr-lg rounded-br-lg text-[10px] md:text-sm pointer-events-none ">
           Super Pret
         </span>
       ) : null}
