@@ -4,6 +4,7 @@ import ProductsGrid from "@/components/Layout/ProductsGrid";
 import Questions from "@/components/Layout/Questions";
 import SimpleSection from "@/components/Layout/SimpleSection";
 import Testimonial from "@/components/Layout/Testimonials";
+
 import {
   PRODUCTS_CARDS_QUERY,
   QUERY_BRANDS,
@@ -39,6 +40,8 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import useWidth from "@/hooks/useWidth";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { describe } from "node:test";
+import SchemaOrg from "@/components/Layout/SchemaOrg";
 
 interface Props {
   hero: {
@@ -90,6 +93,24 @@ export default function Home({
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
   const { windowWidth } = useWidth();
+
+  // Schema
+  const schemaData = {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    name: ogTitle,
+    email: "epvinfinity@gmail.com",
+    description: ogDescription,
+    url: "https://www.epvinfinity.ro",
+    logo: {
+      "@type": "ImageObject",
+      inLanguage: "ro-RO",
+      url: "https://www.epvinfinity.ro/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.56884838.png&w=64&q=75",
+      width: "100",
+      height: "100",
+      caption: ogDescription,
+    },
+  };
 
   const handleClick = (direction: string) => {
     setIsMoved(true);
@@ -230,6 +251,7 @@ export default function Home({
           <Questions questions={questions.data} />
         </div>
       </main>
+      <SchemaOrg data={schemaData} />
     </>
   );
 }

@@ -302,6 +302,13 @@ export interface Product {
     Descriere: string;
     Specificatii: string;
     CodProdus: String!;
+    brand: {
+      data: {
+        attributes: {
+          Brand: string;
+        };
+      };
+    };
     PozeProdus: any;
     seo: ComponentSharedSeoType[];
     review_produses: {

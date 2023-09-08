@@ -25,6 +25,7 @@ import { FiShoppingBag } from "react-icons/fi";
 import useWidth from "@/hooks/useWidth";
 import Stock from "@/components/Layout/Stock";
 import Loader from "@/components/Common/Loader";
+import SchemaOrg from "@/components/Layout/SchemaOrg";
 
 interface Props {
   product: Product;
@@ -41,6 +42,30 @@ export default function ProductPage({
   ogTitle,
   ogDescription,
 }: Props) {
+  // Schema
+  const schemaData = {
+    "@context": "http://schema.org",
+    "@type": "Product",
+    name: product?.attributes?.Nume,
+    sku: product?.attributes?.CodProdus,
+    description: product?.attributes?.Descriere,
+    mpn: product?.attributes?.Nume,
+
+    image: product?.attributes?.PozeProdus[0]?.attributes?.url,
+    url: product?.attributes?.slug,
+    brand: {
+      "@type": "Brand",
+      name: product?.attributes?.brand.data.attributes.Brand,
+    },
+    offers: {
+      "@type": "Offer",
+      price: product?.attributes?.Pret,
+      priceCurrency: "RON",
+      availability: "2024-12-31",
+      image: product?.attributes?.PozeProdus[0]?.attributes?.url,
+    },
+  };
+
   const [qty, setQty] = useState(1);
   const [favourite, setFavourite] = useState(false);
   const dispatch = useDispatch();
@@ -340,6 +365,7 @@ export default function ProductPage({
           </div>
         </div>
       </main>
+      <SchemaOrg data={schemaData} />
     </>
   );
 }
