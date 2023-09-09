@@ -50,9 +50,9 @@ export default function Hero({ bgVideo, title, description, image }: Props) {
             </button> */}
             <button
               className="btn-primary"
-              onClick={() => router.push("/servicii/instalare-panouri")}
+              onClick={() => router.push("/produse")}
             >
-              Instalare Panouri
+              Produse
             </button>
             {/* <button
               className="btn-secondary"
