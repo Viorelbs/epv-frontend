@@ -76,7 +76,7 @@ export default function ImagesPreview({
               src={item.attributes.url}
               alt={product.attributes.Nume}
               onClick={() => setCurrentImage(item.attributes.url)}
-              className="w-28 h-28 p-3 bg-gray-100 hover:bg-gray-200 transition-all duration-75 rounded-sm cursor-pointer"
+              className="w-24 h-24 md:w-28 md:h-28 p-3 bg-gray-100 hover:bg-gray-200 transition-all duration-75 rounded-sm cursor-pointer"
               width={70}
               height={70}
             />

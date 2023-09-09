@@ -327,7 +327,7 @@ export default function ProductPage({
 
           <div className="space-y-6 mt-24 ">
             <h2>Produse Asemanatoare</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
               {productsCards.map((product: ProdusCardType) => (
                 <ProductCard
                   productName={product.attributes.Nume}
