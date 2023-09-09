@@ -306,14 +306,15 @@ export default function ProductPage({
                     )}
                   </span>
                 </span>
-                {/* {product.attributes.PDF.data ? (
+                {product?.attributes?.pdfLink ? (
                   <Link
-                    href={product.attributes.PDF?.data?.attributes?.url}
+                    target="_blank"
+                    href={product.attributes.pdfLink}
                     className="w-fit px-5 py-1 text-[#0dc97a] rounded-lg border hover:bg-[#0DC97A] hover:text-white border-[#0DC97A]"
                   >
                     Descarca Fisa Tehnica
                   </Link>
-                ) : null} */}
+                ) : null}
               </div>
             </div>
           </div>

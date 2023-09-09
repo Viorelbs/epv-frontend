@@ -297,13 +297,14 @@ export interface Product {
     Nume: string;
     Pret: Float!;
     stock: number;
-    PDF: {
-      data: {
-        attributes: {
-          url: string;
-        };
-      };
-    };
+    pdfLink: string;
+    // PDF: {
+    //   data: {
+    //     attributes: {
+    //       url: string;
+    //     };
+    //   };
+    // };
     slug: string;
     ani_garantie: number;
     PretVechi: Float;

@@ -278,13 +278,7 @@ export const GET_PRODUCT_BY_NAME = gql`
           superPret
           ani_garantie
           slug
-          PDF {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          pdfLink
           PretVechi
           ScurtaDescriere
           Descriere
